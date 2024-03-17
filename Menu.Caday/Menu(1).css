@@ -1,0 +1,1290 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  overflow-x: hidden;
+  flex-shrink: 0;
+}
+body {
+  height: 200vh;
+  width: 100vw;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: white;
+}
+section {
+  height: 200vh;
+  width: 100vw;
+  overflow-y: scroll;
+}
+/* HEADER */
+.header {
+  height: 15vh;
+  width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0em 1px 1em rgba(0, 0, 0, .2);
+}
+.logo {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0em 0em 0em 2em;
+  overflow: hidden;
+}
+.navigation {
+  height: 100%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 0em 1.85em 0em 0em;
+  gap: 3.75em;
+}
+.logo,
+.navigation {
+  flex: 1;
+  flex-shrink: 0;
+}
+.logo img {
+  width: 5.5em;
+  filter: brightness(0%);
+}
+.navigation a {
+  font: 500 15px League Spartan;
+  color: black;
+  transition: 0.2s;
+}
+.navigation a:hover {
+  color: #7f4f24;
+}
+.selected {
+  height: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  border-bottom: 5px solid #7f4f24;
+  overflow: hidden;
+}
+.highlight {
+  color: #7f4f24;
+}
+/* SIDEBAR */
+.horizontal {
+  height: 85vh;
+  width: 100%;
+  display: flex;
+}
+hr {
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  margin: 8px 0px 2px 0px;
+}
+.sidebar {
+  height: 100%;
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 3em;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  gap: 90px;
+}
+.drinks-menu, 
+.foods-menu {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 0.8em;
+}
+.drinks-menu h2,
+.foods-menu h2 {
+  font: 700 1.3em League Spartan;
+  color: black;
+}
+.drinks-menu a,
+.foods-menu a {
+  font: 500 0.94em League Spartan;
+  color: grey;
+  transition: all 0.3s;
+}
+.drinks-menu a:hover,
+.foods-menu a:hover {
+  color: black;
+  letter-spacing: 1px;
+}
+.drinks-menu a:active,
+.foods-menu a:active {
+  opacity: 0.7;
+}
+/* FOOTER */
+.footer-container {
+  height: 100vh;
+  width: 100%;
+  padding-top: 71px;
+}
+.footer{
+  margin-top: 10em;
+  height: 17em;
+  box-shadow: 0px -1px 0px rgba(97, 97, 97, 0.5);
+  overflow: hidden;
+}
+.footer .content{
+  display: flex;
+  justify-content: space-between;
+  margin: 0em 8em 0em 8em;
+  padding-top: 5em;
+  margin-bottom: 5em;
+}
+.footer ul{
+  list-style: none;
+}
+.footer p{
+  font-family: Inter;
+  font-weight: 700;
+  margin-bottom: 1em;
+  font-size: 16px;
+}
+.footer li a{
+  font-size: 14px;
+  line-height: 2.5;
+  font-family: Inter;
+  text-decoration: none;
+  color: rgb(109, 109, 109);
+}
+.footer li a:hover{
+  color: black;
+}
+
+.privacy{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  font-family: Inter;
+  font-size: 13px;
+  margin: 4em;
+  box-shadow: 0px -1px 0px rgba(146, 146, 146, 0.5);
+}
+.privacy .social-icons{
+  padding-top: 2em;
+  display: flex;
+}
+.privacy .social-icons .content{
+  display: flex;
+  gap: 0.5em;
+}
+.privacy .social-icons img{
+  filter: brightness(25%);
+  width: 2.5em;
+  padding: 3px;
+  object-fit: cover;
+}
+.privacy .social-icons img:hover{
+  box-shadow: 0px 1px 5px rgb(0, 0, 0, .5);
+  border-radius: 25%;
+}
+.privacy p{
+  color: rgb(78, 78, 78);
+  padding-top: 2em;
+}
+/* MAIN */
+.containers {
+  height: 100%;
+  width: 82%;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 2em 1.85em 0em 1.6em;
+  gap: 0.5em;
+}
+.drinks-category,
+.foods-category {
+  overflow: hidden;
+}
+.drinks-text,
+.foods-text {
+  border-bottom: 1px solid rgb(146, 146, 146);
+  box-shadow: 0px -1px 0px rgba(146, 146, 146, 0.5);
+}
+.drinks-text h2,
+.foods-text h2 {
+  font: 700 1.5em League Spartan;
+  color: black;
+  margin-bottom: 0.63em;
+}
+.drinks-options,
+.foods-options {
+  width: 100%;
+  display: flex;
+}
+.options {
+  flex: 1;
+}
+.options img {
+  width: 6em;
+  border-radius: 100%;
+  transition: 0.3s;
+}
+.options img:hover {
+  filter: brightness(65%);
+}
+.options p {
+  font: 600 1em League Spartan;
+  color: black;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+.options p:hover {
+  letter-spacing: 1.25px;
+}
+.options p:active {
+  opacity: 0.6;
+}
+.option {
+  display: flex;
+  align-items: center;
+  margin-top: 0.94em;
+  gap: 0.94em;
+}
+.option span {
+  font: 400 0.9em League Spartan;
+}
+/* ESPRESSO */
+.text {
+  border-bottom: 1px solid rgb(146, 146, 146);
+  box-shadow: 0px 1px 0px rgba(146, 146, 146, 0.2);
+  padding-bottom: 5px;
+}
+.text h1 {
+  color: black;
+  font: 700 1.6em League Spartan;
+  letter-spacing: 1.5px;
+}
+.text h3 {
+  color: black;
+  font: 500 1.06em League Spartan;
+  letter-spacing: 1.5px;
+}
+.text span {
+  font: 600 0.6em League Spartan;
+}
+.menu-options {
+  flex: 1;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.menu-options img {
+  width: 7em;
+  border-radius: 100%;
+  margin-bottom: 3px;
+}
+.menu-options p {
+  font: 600 0.8em League Spartan;
+  color: black;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+.menu-option {
+  text-align: center;
+} 
+/* BREW */
+.sweet-cream p {
+  color: black;
+  font: 600 0.94 League Spartan;
+  letter-spacing: 1.5px;
+}
+/* ALL DAY BREAKFAST */
+.menu-option span,
+.bargain-bites-text span {
+  font: 400 0.9em League Spartan;
+}
+/* CARBS N' CAFFEINE */
+.croffle p {
+  color: black;
+  font: 600 0.94em League Spartan;
+  letter-spacing: 1.5px;
+}
+@media screen and (max-width: 1530px) {
+  /* HEADER */
+  .header {
+    height: 14vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 1em;
+  }
+  .navigation {
+    padding: 0em 1.5em 0em 0em;
+    gap: 3.5em;
+  }
+  .selected {
+    padding-top: 5px;
+    border-bottom: 5px solid #7f4f24;
+  }
+  .logo img {
+    width: 5.5em;
+  }
+  .navigation a {
+    font: 600 13px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 86vh;
+  }
+  .sidebar {
+    padding-left: 2.75em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 1.2em League Spartan;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.9em League Spartan;
+  }
+  /* FOOTER */
+  .footer-container {
+    padding-top: 30px;
+  }
+  .footer .content{
+    margin: 0em 7.5em 0em 7.5em;
+    padding-top: 4.5em;
+    margin-bottom: 4.5em;
+  }
+  .footer p{
+    font: 700 15px Inter;
+    margin-bottom: 1em;
+  }
+  .footer li a{
+    font: 400 13px Inter;
+    line-height: 2.5;
+  }
+  /* MAIN */
+  .containers {
+    padding: 2em 1.5em 0em 1.4em;
+    gap: 0.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1.2em League Spartan;
+  }
+  .options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.9em Inter;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.6px;
+  }
+  .sweet-cream p {
+    font: 600 14px League Spartan;
+  }
+  .text h1 {
+    font: 700 1.2em League Spartan;
+  }
+  .text h3 {
+    font: 500 0.85em League Spartan;
+  }
+  .text span {
+    font: 600 0.6em League Spartan;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.8em League Spartan;
+  }
+  .croffle p {
+    font: 600 14px League Spartan;
+  }
+}
+@media screen and (max-width: 1310px) {
+  /* HEADER */
+  .header {
+    height: 12vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 1.25em 0em 0em;
+    gap: 3.25em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 3.5px solid #7f4f24;
+  }
+  .logo img {
+    width: 4.75em;
+  }
+  .navigation a {
+    font: 600 11.5px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 88vh;
+  }
+  .sidebar {
+    padding-left: 2em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 1em League Spartan;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.75em League Spartan;
+  }
+  /* FOOTER */
+  .footer-container {
+    padding-top: 30px;
+  }
+  .footer .content{
+    margin: 0em 7.5em 0em 7.5em;
+    padding-top: 4.5em;
+    margin-bottom: 4.8em;
+  }
+  .footer p{
+    font: 700 14px Inter;
+    margin-bottom: 1em;
+  }
+  .footer li a{
+    font: 400 12px Inter;
+    line-height: 3;
+  }
+  .privacy .social-icons img{
+    width: 2.3em;
+    padding: 3px;
+  }
+  .privacy p{
+    font: 400 12px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 1.25em 0em 1.3em;
+    gap: 0em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1em League Spartan;
+  }
+  .options img {
+    width: 5em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.75em League Spartan;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 13px League Spartan;
+  }
+  .text h1 {
+    font: 700 1.1em League Spartan;
+  }
+  .text h3 {
+    font: 500 0.8em League Spartan;
+  }
+  .text span {
+    font: 600 0.6em League Spartan;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.7em League Spartan;
+  }
+  .croffle p {
+    font: 600 13px League Spartan;
+  }
+}
+@media screen and (max-width: 1150px) {
+  /* HEADER */
+  .header {
+    height: 11vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 1em 0em 0em;
+    gap: 3em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 2.5px solid #7f4f24;
+  }
+  .logo img {
+    width: 4.25em;
+  }
+  .navigation a {
+    font: 600 9px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 89vh;
+  }
+  .sidebar {
+    padding-left: 1.5em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 1em League Spartan;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.75em League Spartan;
+  }
+  /* FOOTER */
+  .footer-container {
+    padding-top: 30px;
+  }
+  .footer .content{
+    margin: 0em 6.5em 0em 6.5em;
+    padding-top: 5em;
+  }
+  .footer p{
+    font: 700 14px Inter;
+    margin-bottom: 1em;
+  }
+  .footer li a{
+    font: 400 12px Inter;
+    line-height: 3;
+  }
+  .privacy .social-icons img{
+    width: 2.2em;
+    padding: 3px;
+  }
+  .privacy p{
+    font: 400 11px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 1em 0em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1em League Spartan;
+  }
+  .options img {
+    width: 4em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.75em League Spartan;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 13px League Spartan;
+  }
+  .text h1 {
+    font: 700 1.1em League Spartan;
+  }
+  .text h3 {
+    font: 500 0.8em League Spartan;
+  }
+  .text span {
+    font: 600 0.6em League Spartan;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.7em League Spartan;
+  }
+  .croffle p {
+    font: 600 13px League Spartan;
+  }
+}
+@media screen and (max-width: 950px) {
+  /* HEADER */
+  .header {
+    height: 10vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em .75em 0em 0em;
+    gap: 2.75em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 2.5px solid #7f4f24;
+  }
+  .logo img {
+    width: 3.75em;
+  }
+  .navigation a {
+    font: 600 8px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 90vh;
+  }
+  .sidebar {
+    padding-left: 1.2em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 0.9em League Spartan;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.7em League Spartan;
+  }
+  /* FOOTER */
+  .footer-container {
+    padding-top: 30px;
+  }
+  .footer .content{
+    margin: 0em 6.5em 0em 6.5em;
+    padding-top: 6.5em;
+  }
+  .footer p{
+    font: 700 13px Inter;
+    margin-bottom: 0.8em;
+  }
+  .footer li a{
+    font: 400 11px Inter;
+    line-height: 2.4;
+  }
+  .privacy .social-icons img{
+    width: 2em;
+    padding: 1.8px;
+  }
+  .privacy p{
+    font: 400 10px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em .75em 2em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1em League Spartan;
+  }
+  .options img {
+    width: 4em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.75em League Spartan;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 11px League Spartan;
+  }
+  .text h1 {
+    font: 700 0.9em League Spartan;
+  }
+  .text h3 {
+    font: 500 0.6em League Spartan;
+  }
+  .text span {
+    font: 600 0.6em League Spartan;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.55em League Spartan;
+  }
+  .croffle p {
+    font: 600 11px League Spartan;
+  }
+}
+@media screen and (max-width: 750px) {
+  /* HEADER */
+  .header {
+    height: 9vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em .5em 0em 0em;
+    gap: 2em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 2.5px solid #7f4f24;
+  }
+  .logo img {
+    width: 3em;
+  }
+  .navigation a {
+    font: 600 7px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 91vh;
+  }
+  .sidebar {
+    padding-left: 1em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 0.6px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 0.7em League Spartan;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.5em League Spartan;
+  }
+  /* FOOTER */
+  .footer-container {
+    padding-top: 30px;
+  }
+  .footer .content{
+    margin: 0em 5em 0em 5em;
+    padding-top: 7em;
+  }
+  .footer p{
+    font: 700 12px Inter;
+    margin-bottom: 0.8em;
+  }
+  .footer li a{
+    font: 400 10px Inter;
+    line-height: 2.5;
+  }
+  .privacy .social-icons img{
+    width: 1.8em;
+    padding: 1.5px;
+  }
+  .privacy p{
+    font: 400 9.5px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em .5em 2em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 12px League Spartan;
+  }
+  .options img {
+    width: 3.25em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 7px League Spartan;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 9px League Spartan;
+  }
+  .text h1 {
+    font: 700 0.7em League Spartan;
+  }
+  .text h3 {
+    font: 500 0.5em League Spartan;
+  }
+  .text span {
+    font: 600 0.6em League Spartan;
+  }
+  .menu-options img {
+    width: 3.25em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.55em League Spartan;
+  }
+  .croffle p {
+    font: 600 9px League Spartan;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* HEADER */
+  .header {
+    height: 8vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.5em;
+  }
+  .navigation {
+    padding: 0em .5em 0em 0em;
+    gap: 1.5em;
+  }
+  .selected {
+    padding-top: 2px;
+    border-bottom: 3px solid #7f4f24;
+  }
+  .logo img {
+    width: 2.5em;
+  }
+  .navigation a {
+    font: 500 6.5px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 92vh;
+  }
+  .sidebar {
+    padding-left: 0.5em;
+    gap: 140px;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 0.3px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 12px League Spartan;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 8.25px League Spartan;
+  }
+  /* FOOTER */
+  .footer-container {
+    padding-top: 30px;
+  }
+  .footer .content{
+    margin: 0em 4em 0em 4em;
+    padding-top: 7.2em;
+  }
+  .footer p{
+    font: 700 11px Inter;
+    margin-bottom: 0.9em;
+  }
+  .footer li a{
+    font: 400 9px Inter;
+    line-height: 2.8;
+  }
+  .privacy .social-icons img{
+    width: 1.5em;
+    padding: 1px;
+  }
+  .privacy p{
+    font: 400 8.5px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em .5em 1em .75em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 12px League Spartan;
+  }
+  .options img {
+    width: 3em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 5.75px League Spartan;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.6px;
+  }
+  .sweet-cream p {
+    font: 600 8px League Spartan;
+  }
+  .text h1 {
+    font: 700 0.7em League Spartan;
+  }
+  .text h3 {
+    font: 500 0.6em League Spartan;
+  }
+  .text span {
+    font: 600 0.4em League Spartan;
+  }
+  .menu-options img {
+    width: 3.5em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 7.5px League Spartan;
+  }
+  .croffle p {
+    font: 600 8px League Spartan;
+  }
+}
+@media screen and (max-height: 700px) {
+  /* HEADER */
+  .header {
+    height: 12vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 1.25em 0em 0em;
+    gap: 3.25em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 3.5px solid #7f4f24;
+  }
+  .logo img {
+    width: 4em;
+  }
+  .navigation a {
+    font: 600 11.5px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 88vh;
+  }
+  .sidebar {
+    padding-left: 2em;
+    gap: 60px;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 1em League Spartan;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.75em League Spartan;
+  }
+  /* FOOTER */
+  .footer {
+    margin-top: 8em;
+    height: 16em;
+  }
+  .footer-container {
+    padding-top: 20px;
+    overflow: hidden;
+  }
+  .footer .content{
+    margin: 0em 7em 0em 7em;
+    padding-top: 4em;
+  }
+  .footer p{
+    font: 700 12px Inter;
+    margin-bottom: 1em;
+  }
+  .footer li a{
+    font: 400 12px Inter;
+    line-height: 3;
+  }
+  .privacy .social-icons img{
+    width: 2.2em;
+    padding: 3px;
+  }
+  .privacy p{
+    font: 400 11px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 1.25em 0em 1.3em;
+    gap: 0em;
+    overflow: hidden;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1em League Spartan;
+  }
+  .options img {
+    width: 5em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.75em League Spartan;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 13px League Spartan;
+  }
+  .text h1 {
+    font: 700 1.1em League Spartan;
+  }
+  .text h3 {
+    font: 500 0.8em League Spartan;
+  }
+  .text span {
+    font: 600 0.6em League Spartan;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.7em League Spartan;
+  }
+  .croffle p {
+    font: 600 13px League Spartan;
+  }
+}
+@media screen and (max-height: 550px) {
+  /* HEADER */
+  .header {
+    height: 11vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 1em 0em 0em;
+    gap: 2.5em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 2.5px solid #7f4f24;
+  }
+  .logo img {
+    width: 2.75em;
+  }
+  .navigation a {
+    font: 600 8px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 89vh;
+  }
+  .sidebar {
+    padding-left: 1.5em;
+    gap: 25px;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 14px League Spartan
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.6em League Spartan;
+  }
+  /* FOOTER */
+  .footer {
+    margin-top: 5em;
+    height: 13em;
+  }
+  .footer-container {
+    padding-top: 15px;
+    overflow: hidden;
+  }
+  .footer .content{
+    margin: 0em 6em 0em 6em;
+    padding-top: 5em;
+  }
+  .footer p{
+    font: 700 12px Inter;
+    margin-bottom: 1em;
+  }
+  .footer li a{
+    font: 400 9.5px Inter;
+    line-height: 3;
+  }
+  .privacy .social-icons img{
+    width: 2em;
+    padding: 3px;
+  }
+  .privacy p{
+    font: 400 10px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 1em 0em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 14px League Spartan;
+  }
+  .options img {
+    width: 3em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.65em League Spartan;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 9px League Spartan;
+  }
+  .text h1 {
+    font: 700 14px League Spartan;
+  }
+  .text h3 {
+    font: 500 10px League Spartan;
+  }
+  .text span {
+    font: 600 0.6em League Spartan;
+  }
+  .menu-options img {
+    width: 3em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.55em League Spartan;
+  }
+  .croffle p {
+    font: 600 9px League Spartan;
+  }
+}
+@media screen and (max-height: 400px) {
+  /* HEADER */
+  .header {
+    height: 11vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 1em 0em 0em;
+    gap: 2.5em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 2.5px solid #7f4f24;
+  }
+  .logo img {
+    width: 2em;
+  }
+  .navigation a {
+    font: 600 7px League Spartan;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 89vh;
+  }
+  .sidebar {
+    padding-left: 1.5em;
+    gap: 15px;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 10px League Spartan;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.5em League Spartan;
+  }
+  /* FOOTER */
+  .footer {
+    margin-top: 3em;
+    height: 10em;
+  }
+  .footer-container {
+    padding-top: 10px;
+    overflow: hidden;
+  }
+  .footer .content{
+    margin: 0em 6.5em 0em 6.5em;
+    padding-top: 3.5em;
+  }
+  .footer p{
+    font: 700 10px Inter;
+    margin-bottom: 0.8em;
+  }
+  .footer li a{
+    font: 400 9px Inter;
+    line-height: 3;
+  }
+  .privacy .social-icons img{
+    width: 2em;
+    padding: 3px;
+  }
+  .privacy p{
+    font: 400 8px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 1em 0em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 10px League Spartan;
+  }
+  .options img {
+    width: 2em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.5em League Spartan;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 7px League Spartan;
+  }
+  .text h1 {
+    font: 700 10px League Spartan;
+  }
+  .text h3 {
+    font: 500 7px League Spartan;
+  }
+  .text span {
+    font: 600 0.5em League Spartan;
+  }
+  .menu-options img {
+    width: 2.5em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.5em League Spartan;
+  }
+  .croffle p {
+    font: 600 8px League Spartan;
+  }
+}

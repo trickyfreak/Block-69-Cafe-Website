@@ -1,0 +1,794 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@700;800&family=Montserrat:ital,wght@0,900;1,900&family=Oswald:wght@700&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@700;800&family=Lexend:wght@400;600&family=Montserrat:ital,wght@0,900;1,900&family=Oswald:wght@700&family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@700;800&family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;600&family=Montserrat:ital,wght@0,900;1,900&family=Oswald:wght@700&family=Roboto:ital,wght@1,100&family=Yeseva+One&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  letter-spacing: 0.25px;
+  overflow-x: hidden;
+}
+body {
+  height: 200vh;
+  width: 1200vw;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: white;
+}
+section {
+  height: 200vh;
+  width: 100vw;
+  overflow-y: scroll;
+}
+/* HEADER */
+.header {
+  height: 15vh;
+  width: 100%;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0em 1px 1em rgba(0, 0, 0, .3);
+}
+.logo {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0em 0em 0em 2em;
+}
+.navigation {
+  height: 100%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 0em 4.7em 0em 0em;
+  gap: 5.25em;
+}
+.logo,
+.navigation {
+  flex: 1;
+  flex-shrink: 0;
+}
+.logo img {
+  width: 5.5em;
+  filter: brightness(0%);
+  border: 1px solid black;
+}
+.navigation a {
+  font: 500 15px Inter;
+  color: black;
+  transition: 0.2s;
+}
+.navigation a:hover {
+  color: #7f4f24;
+}
+.selected {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  border-bottom: 5px solid #7f4f24;
+}
+.highlight {
+  color: #7f4f24;
+}
+/* SIDEBAR */
+.horizontal {
+  height: 85vh;
+  width: 100%;
+  display: flex;
+}
+hr {
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  margin: 8px 0px 2px 0px;
+}
+.sidebar {
+  height: 100%;
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 3em;
+  letter-spacing: 0.5px;
+}
+.drinks-menu, 
+.foods-menu {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 0.75em;
+}
+.drinks-menu h2,
+.foods-menu h2 {
+  font: 700 1.3em Inter;
+  color: black;
+}
+.drinks-menu a,
+.foods-menu a {
+  font: 500 0.94em Inter;
+  color: grey;
+  transition: all 0.3s;
+}
+.drinks-menu a:hover,
+.foods-menu a:hover {
+  color: black;
+  letter-spacing: 1px;
+}
+.drinks-menu a:active,
+.foods-menu a:active {
+  opacity: 0.7;
+}
+/* FOOTER */
+.footer {
+  height: 100vh;
+  width: 100%;
+} 
+.container-one {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 1px solid grey;
+}
+.sections {
+  height: 100%;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6.9em;
+  gap: 1.6em;
+}
+.sections p {
+  color: grey;
+  font: 300 15px Inter;
+  line-height: 3.4em;
+}
+.sections span {
+  color: white;
+  font: 700 1.4em Inter;
+}
+.container-two {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6em;
+  padding: 5.3em 0em 0em 8.9em;
+}
+.other-info {
+  display: flex;
+  gap: 0.94em;
+}
+.other-info p {
+  color: black;
+  font: 300 1em Inter;
+}
+.line {
+  height: 1.25em;
+  width: 1px;
+  background-color: white;
+}
+.credits p {
+  color: grey;
+  font: 300 1em Inter;
+}
+/* MAIN */
+.containers {
+  height: 100%;
+  width: 82%;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 2em 4.7em 0em 1.6em;
+  gap: 0.5em;
+}
+.drinks-category,
+.foods-category {
+  overflow: hidden;
+}
+.drinks-text h2,
+.foods-text h2 {
+  font: 700 1.5em Inter;
+  color: black;
+  margin-bottom: 0.63em;
+}
+.drinks-options,
+.foods-options {
+  width: 100%;
+  display: flex;
+}
+.options {
+  flex: 1;
+}
+.options img {
+  width: 6em;
+  border-radius: 100%;
+  transition: 0.3s;
+}
+.options img:hover {
+  filter: brightness(65%);
+}
+.options p {
+  font: 500 1em Inter;
+  color: black;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+.options p:hover {
+  letter-spacing: 1.25px;
+}
+.options p:active {
+  opacity: 0.6;
+}
+.option {
+  display: flex;
+  align-items: center;
+  margin-top: 0.94em;
+  gap: 0.94em;
+}
+.option span {
+  font: 400 0.75em Inter;
+}
+/* ESPRESSO */
+hr {
+  border: 1px solid grey;
+  margin: 5px 0px 0px 0px;
+}
+.text h1 {
+  color: black;
+  font: 700 1.6em Inter;
+  letter-spacing: 1.5px;
+}
+.text h3 {
+  color: black;
+  font: 500 1.06em Inter;
+  letter-spacing: 1.5px;
+}
+.text span {
+  font: 600 0.6em Inter;
+}
+.menu-options {
+  flex: 1;
+  flex-shrink: 0;
+}
+.menu-options img {
+  width: 7em;
+  border-radius: 100%;
+  margin-bottom: 3px;
+}
+.menu-options p {
+  font: 500 0.8em Inter;
+  color: black;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+.menu-option {
+  text-align: center;
+} 
+/* BREW */
+.sweet-cream p {
+  color: black;
+  font: 600 0.94 Inter;
+  letter-spacing: 1.5px;
+}
+/* ALL DAY BREAKFAST */
+.menu-option span,
+.bargain-bites-text span {
+  font: 400 0.5em Inter;
+}
+/* CARBS N' CAFFEINE */
+.croffle p {
+  color: black;
+  font: 600 0.94em Inter;
+  letter-spacing: 1.5px;
+}
+@media screen and (max-width: 1530px) {
+  /* HEADER */
+  .header {
+    height: 15vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 1em;
+  }
+  .navigation {
+    padding: 0em 4.5em 0em 0em;
+    gap: 5.15em;
+  }
+  .selected {
+    padding-top: 5px;
+    border-bottom: 5px solid khaki;
+  }
+  .logo img {
+    width: 6em;
+  }
+  .navigation a {
+    font: 600 13px Inter;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 85vh;
+  }
+  .sidebar {
+    padding-left: 2.75em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 1.2em Inter;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.9em Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 4.5em 2em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1.2em Inter;
+  }
+  .options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.9em Inter;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.6px;
+  }
+  .sweet-cream p {
+    font: 600 14px Inter;
+  }
+  .text h1 {
+    font: 700 1.2em Inter;
+  }
+  .text h3 {
+    font: 500 0.85em Inter;
+  }
+  .text span {
+    font: 600 0.6em Inter;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.8em Inter;
+  }
+  .croffle p {
+    font: 600 14px Inter;
+  }
+}
+@media screen and (max-width: 1310px) {
+  /* HEADER */
+  .header {
+    height: 12vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 3.5em 0em 0em;
+    gap: 4.75em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 3.5px solid khaki;
+  }
+  .logo img {
+    width: 5em;
+  }
+  .navigation a {
+    font: 600 11.5px Inter;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 88vh;
+  }
+  .sidebar {
+    padding-left: 2em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 1em Inter;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.75em Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 3.5em 2em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1em Inter;
+  }
+  .options img {
+    width: 5em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.75em Inter;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 13px Inter;
+  }
+  .text h1 {
+    font: 700 1.1em Inter;
+  }
+  .text h3 {
+    font: 500 0.8em Inter;
+  }
+  .text span {
+    font: 600 0.6em Inter;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.7em Inter;
+  }
+  .croffle p {
+    font: 600 13px Inter;
+  }
+}
+@media screen and (max-width: 1150px) {
+  /* HEADER */
+  .header {
+    height: 12vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 3.5em 0em 0em;
+    gap: 4em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 2.5px solid khaki;
+  }
+  .logo img {
+    width: 4em;
+  }
+  .navigation a {
+    font: 600 9px Inter;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 88vh;
+  }
+  .sidebar {
+    padding-left: 1.5em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 1em Inter;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.75em Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 2.5em 2em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1em Inter;
+  }
+  .options img {
+    width: 4em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.75em Inter;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 13px Inter;
+  }
+  .text h1 {
+    font: 700 1.1em Inter;
+  }
+  .text h3 {
+    font: 500 0.8em Inter;
+  }
+  .text span {
+    font: 600 0.6em Inter;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.7em Inter;
+  }
+  .croffle p {
+    font: 600 13px Inter;
+  }
+}
+@media screen and (max-width: 950px) {
+  /* HEADER */
+  .header {
+    height: 11vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 3.5em 0em 0em;
+    gap: 3.15em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 2.5px solid khaki;
+  }
+  .logo img {
+    width: 4em;
+  }
+  .navigation a {
+    font: 600 8px Inter;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 89vh;
+  }
+  .sidebar {
+    padding-left: 1.2em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 1px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 0.9em Inter;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.7em Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 2.5em 2em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 1em Inter;
+  }
+  .options img {
+    width: 4em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 0.75em Inter;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 11px Inter;
+  }
+  .text h1 {
+    font: 700 0.9em Inter;
+  }
+  .text h3 {
+    font: 500 0.6em Inter;
+  }
+  .text span {
+    font: 600 0.6em Inter;
+  }
+  .menu-options img {
+    width: 6em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.55em Inter;
+  }
+  .croffle p {
+    font: 600 11px Inter;
+  }
+}
+@media screen and (max-width: 750px) {
+  /* HEADER */
+  .header {
+    height: 11vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.7em;
+  }
+  .navigation {
+    padding: 0em 3.5em 0em 0em;
+    gap: 1.75em;
+  }
+  .selected {
+    padding-top: 3.5px;
+    border-bottom: 2.5px solid khaki;
+  }
+  .logo img {
+    width: 3.25em;
+  }
+  .navigation a {
+    font: 600 7px Inter;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 89vh;
+  }
+  .sidebar {
+    padding-left: 1em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 0.6px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 0.7em Inter;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 0.5em Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 2.5em 2em 1.4em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 12px Inter;
+  }
+  .options img {
+    width: 3.25em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 7px Inter;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.5px;
+  }
+  .sweet-cream p {
+    font: 600 9px Inter;
+  }
+  .text h1 {
+    font: 700 0.7em Inter;
+  }
+  .text h3 {
+    font: 500 0.5em Inter;
+  }
+  .text span {
+    font: 600 0.6em Inter;
+  }
+  .menu-options img {
+    width: 3.25em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 0.55em Inter;
+  }
+  .croffle p {
+    font: 600 9px Inter;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* HEADER */
+  .header {
+    height: 10vh;
+  }
+  .logo {
+    padding: 0em 0em 0em 0.5em;
+  }
+  .navigation {
+    padding: 0em 2.7em 0em 0em;
+    gap: 1.3em;
+  }
+  .selected {
+    padding-top: 2px;
+    border-bottom: 3px solid khaki;
+  }
+  .logo img {
+    width: 2.75em;
+  }
+  .navigation a {
+    font: 500 6.5px Inter;
+  }
+  /* SIDEBAR */
+  .horizontal {
+    height: 90vh;
+  }
+  .sidebar {
+    padding-left: 0.5em;
+  }
+  .drinks-menu a:hover,
+  .foods-menu a:hover {
+    letter-spacing: 0.3px;
+  }
+  .drinks-menu h2,
+  .foods-menu h2 {
+    font: 700 12px Inter;
+  }
+  .drinks-menu a,
+  .foods-menu a {
+    font: 500 8.25px Inter;
+  }
+  /* MAIN */
+  .containers {
+    padding: 0em 1.5em 1em 1em;
+  }
+  .drinks-text h2,
+  .foods-text h2 {
+    font: 700 12px Inter;
+  }
+  .options img {
+    width: 3em;
+    border-radius: 100%;
+  }
+  .options p {
+    font: 500 5.75px Inter;
+  }
+  /* OTHERS */
+  .options p:hover {
+    letter-spacing: 0.6px;
+  }
+  .sweet-cream p {
+    font: 600 8px Inter;
+  }
+  .text h1 {
+    font: 700 0.7em Inter;
+  }
+  .text h3 {
+    font: 500 0.6em Inter;
+  }
+  .text span {
+    font: 600 0.4em Inter;
+  }
+  .menu-options img {
+    width: 3.5em;
+    border-radius: 100%;
+  }
+  .menu-options p {
+    font: 500 7.5px Inter;
+  }
+  .croffle p {
+    font: 600 8px Inter;
+  }
+}
