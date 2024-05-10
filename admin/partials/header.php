@@ -1,3 +1,14 @@
+
+<?php 
+
+  include_once './config/functions.php';
+  include_once './config/connect.php';
+
+  $conn = get_connection();
+  $userActive = check_login($conn);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,43 +63,11 @@
     </ul>
     <div class="buttons">
       <?php
-        include '../config/functions.php';
-        include '../config/connect.php';
-        include '../sign-out.php';
-
-        $conn = get_connection();
-        $userActive = check_login($conn);
-
-        $foo = $_SESSION['username'];
-
-        echo "<h1>$foo</h1>";
 
     if($userActive){
         echo '
-        <a id="Cart" href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>;
-        <a id="User" onclick="toggleUserPanel()"><i class="fa-solid fa-user" style="font-size: 22px; margin-right: 10px;"></i></a>
-        <div id="userPanel" class="user-panel" style="
-        
-            display: none;
-            // position: absolute;
-            // top: 7em;
-            background-color: black;
-            border: 1px solid black;
-            padding: .5em 0em .5em 0em;
-            // width: 6em;
-            margin-right: 1em;
-            ">
-
-            <a id="" type="button" name="SignOut" style="
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-left: 1.5em;
-            color: white;
-            font-family: League Spartan;
-            font-weight: bold;
-            ">Sign out</a>
+        <a id="Cart" href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="sign-out.php"id="User"><i class="fa-sharp fa-solid fa-right-from-bracket" style="font-size: 22px; margin-right: 10px;"></i></a>
         </div>';
     }else{
         echo '<a href="sign-in.php" id="Sign-in">Login</a>
@@ -97,19 +76,4 @@
     }
     ?>
     </div>
-
-    <form action="sign-out.php" method="post">
-      <button type="submit">LOG OUT XD</button>
-    </form>
   </nav>
-
-  <script>
-    function toggleUserPanel() {
-      var userPanel = document.getElementById("userPanel");
-      if (userPanel.style.display === "none") {
-        userPanel.style.display = "block";
-      } else {
-        userPanel.style.display = "none";
-      }
-    }
-  </script>

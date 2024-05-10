@@ -1,7 +1,7 @@
 <?php 
 
-  require_once './config/connect.php';
-  require_once './config/functions.php';
+  include_once './config/connect.php';
+  include_once './config/functions.php';
 
   session_start(); 
 
@@ -17,8 +17,6 @@
   <div class="content">
     <div class="title">Clubhouse Sandwich Savor, served <br> with crispy fries and a refreshing <br> 12 oz iced tea.
     </div>
-
-    <?php echo $_SESSION['username']; ?>
     <p class="caption"><span style="color: #e0bb5e; font-weight: bold;">Upgrade</span> your iced tea to 16 oz or any
       Block 69 beverage <br> for just an additional 20!
       Don't forget, our Clubhouse Sandwich is also <br> available solo (without fries and drink)!</p>

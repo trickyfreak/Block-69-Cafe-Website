@@ -30,11 +30,7 @@ function get_user_data($conn){
     return $user_data;
   }
 }
+
 function check_login($conn){
   return isset($_SESSION['username']);
-}
-
-function check_status($conn){
-  // $status = "admin";
-  // $query = "SELECT * FROM useraccounts WHERE username = '$username' AND status = '$status'"
 }

@@ -1,6 +1,6 @@
 <?php
-include './config/connect.php';
-include './config/functions.php';
+include_once './config/connect.php';
+include_once './config/functions.php';
 include './partials/header.php'; 
 ?>
 
@@ -11,7 +11,7 @@ include './partials/header.php';
     <h1 h1>Sign in or create an account</h1>
     <div class="form-container">
       <p>*indicates required field</p>
-      <input type="text" name="username" placeholder="* Username or email address">
+      <input type="text" name="username" placeholder="* Username">
       <input type="text" name="password" placeholder="* Password">
       <div class="chk"> <input type="checkbox"> Keep me signed in. <a href="#" style="color: Black">Details</a></div>
       <a href="" class="forgot-info">Forgot your username?</a>
@@ -47,50 +47,29 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 
   $query1 = "SELECT * FROM useraccounts WHERE username='" .$username. "'";
   $query2 = "SELECT * FROM useraccounts WHERE password='" .$password. "'";
-  $query = "SELECT * FROM useraccounts WHERE username = '$username'";
 
-  $sql = "SELECT * FROM useraccounts WHERE username = '" . $username . "' AND password = '" . $password . "'";
-
-  // $conn->mysqli_query();
-
-  $result = mysqli_query($conn, $query);
   $result1 = mysqli_query($conn, $query1);
   $result2 = mysqli_query($conn, $query2);
 
-  $result3 = $conn->execute_query($sql);
-  $user_data = $result3->fetch_assoc();
-
-  if(!$result3) {
-    // Handle error
-    exit;
-  }
-
-  echo $user_data;
-
-  $_SESSION['username'] = $user_data['username'];
-  header("Location: home.php");
-
-  // if($result1 != "" || $result2 != ""){
-  //     if(($result1 && mysqli_num_rows($result1)) && ($result2 && mysqli_num_rows($result2)) > 0){
-  //
-  //       $userData1 = mysqli_fetch_assoc($result1);
-  //       $userData2 = mysqli_fetch_assoc($result2);
-  //       $user_data = mysqli_fetch_assoc($result);
-  //
-  //       if(($userData1['username'] == $username && $userData1['password'] == $password) && $userData2['username'] == $username && $userData2['password'] == $password){
-  //
-  //         $_SESSION['username'] = $username;
-  //         header("Location: home.php");
-  //         include('partials/footer.php');
-  //         die;
-  //
-  //       }
-  //     }elseif(!($result1 && mysqli_num_rows($result1) > 0)){
-  //       echo "incorrect username";
-  //     }elseif(!($result2 && mysqli_num_rows($result2) > 0)){
-  //       echo "incorrect password";
-  //     }
-  //   }
+  if($result1 != "" || $result2 != ""){
+      if(($result1 && mysqli_num_rows($result1)) && ($result2 && mysqli_num_rows($result2)) > 0){
+  
+        $userData1 = mysqli_fetch_assoc($result1);
+        $userData2 = mysqli_fetch_assoc($result2);
+  
+        if(($userData1['username'] == $username && $userData1['password'] == $password) && $userData2['username'] == $username && $userData2['password'] == $password){
+  
+          $_SESSION['username'] = $username;
+          header("Location: home.php");
+          die;
+  
+        }
+      }elseif(!($result1 && mysqli_num_rows($result1) > 0)){
+        echo "incorrect username";
+      }elseif(!($result2 && mysqli_num_rows($result2) > 0)){
+        echo "incorrect password";
+      }
+    }
 }
 
   include('partials/footer.php');
