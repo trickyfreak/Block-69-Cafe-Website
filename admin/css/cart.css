@@ -1,0 +1,40 @@
+
+.fa-face-smile{
+  font-size: 6em;
+}
+
+.cart-title{
+  font-family: League Spartan;
+}
+
+.cart-container{
+  font-family: League Spartan;
+  margin: 13em 13em 20em 13em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cart-container h1{
+  color: #94989e;
+  font-size: 30px;
+}
+
+.promptLogin{
+  display: flex;
+  gap: 1.8em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.cart-container a{
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  padding: 1em 6em 1em 6em;
+  background-color: black;
+}

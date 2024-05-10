@@ -49,30 +49,32 @@
       })
     </script>
   </a>
-  <nav>
+  <nav id="mainNav">
     <ul>
       <img src="Icons/newlogo.png" onclick="window.location.href='../admin/home.php'" style="cursor: pointer;" alt="">
       <input type="checkbox" id="check">
       <label for="check" class="checkbtn">
         <i class="fa fa-bars"></i>
       </label>
+      
       <li><a href="../admin/menu.php">MENU</a></li>
       <li><a href="../admin/blog.php">BLOG</a></li>
       <li><a href="../admin/services.php">SERVICES</a></li>
       <li><a href="../admin/about.php">ABOUT US</a></li>
+
     </ul>
     <div class="buttons">
       <?php
 
     if($userActive){
         echo '
-        <a id="Cart" href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
-        <a href="sign-out.php"id="User"><i class="fa-sharp fa-solid fa-right-from-bracket" style="font-size: 22px; margin-right: 10px;"></i></a>
+        <a id="Cart" href="cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"></i></a>
+        <a href="sign-out.php"  id="User"><i class="fa-sharp fa-solid fa-right-from-bracket" style="font-size: 25px; margin-right: 10px;"></i></a>
         </div>';
     }else{
         echo '<a href="sign-in.php" id="Sign-in">Login</a>
         <a href="sign-up.php" id="Sign-up">Sign up</a>
-        <a id="Cart" href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>';
+        <a id="Cart" href="cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"></i></a>';
     }
     ?>
     </div>
