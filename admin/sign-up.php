@@ -7,26 +7,30 @@ include('config/connect.php')
 
 <link rel="stylesheet" href="css/sign-up.css">
 
-  <form action="sign-up.php" method="post">
-    <div class="sign-up-container">
-      <h1 h1>Create an account</h1>
-      <div class="description">
-        <h2 style="font-family: League Spartan; font-size: 19px;">BLOCK 69 CAFE LOYALTY CARD</h2>
-        <p style="font-size: 18px">Join Block 69 Cafe Loyalty Cards to earn a free cup <br> of coffee of your choice in your 10th payment.</p>
-      </div>
-      
-      <div class="form-container">
-        <p>*indicates required field</p>
-        <input type="text" name="username" placeholder="* Username">
-        <input type="text" name="email" placeholder="* Email Address">
-        <input type="text" name="password" placeholder="* Password">
-        <div class="chk"> <input type="checkbox"> Already have a Loyalty Card?. <a href="#" style="color: Black">Details</a></div>
-        <input type="submit" name="submit" value="Sign up">
-      </div>
+<form action="sign-up.php" method="post">
+  <div class="sign-up-container">
+    <h1 h1>Create an account</h1>
+    <div class="description">
+      <h2 style="font-family: League Spartan; font-size: 19px;">BLOCK 69 CAFE LOYALTY CARD</h2>
+      <p style="font-size: 18px">Join Block 69 Cafe Loyalty Cards to earn a free cup <br> of coffee of your choice in
+        your 10th payment.</p>
     </div>
-  </form>
+
+    <div class="form-container">
+      <p>*indicates required field</p>
+      <input type="text" name="username" placeholder="* Username">
+      <input type="text" name="email" placeholder="* Email Address">
+      <input type="text" name="password" placeholder="* Password">
+      <div class="chk"> <input type="checkbox"> Already have a Loyalty Card?. <a href="#"
+          style="color: Black">Details</a></div>
+      <input type="submit" name="submit" value="Sign up">
+    </div>
+  </div>
+</form>
 
 <?php 
+
+$conn = get_connection();
 
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
 
