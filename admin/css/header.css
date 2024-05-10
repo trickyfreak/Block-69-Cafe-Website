@@ -1,0 +1,246 @@
+*{
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.to-top{
+  position: fixed;
+  background-color: black;
+  border: 1px solid white;
+  bottom: 16px;
+  right: 32px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 26px;
+  color: #fdfdfd;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all .4s;
+}
+.to-top.active{
+  bottom: 32px;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+nav{
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  height: 7em;
+  align-items: center;
+  box-shadow: 0em 1px 10px rgb(0, 0, 0, .2);
+  margin-bottom: 2em;
+}
+nav img{
+  width: 5.5em;
+  /* border: 1px solid black; */
+  filter: brightness(0%);
+  margin: 1.5em 3em;
+  margin-right: 2.5em;
+  margin-bottom: 1em;
+}
+nav ul{
+  list-style: none;
+  display: flex;
+  margin-right: .5em;
+  align-items: center;
+}
+nav ul a{
+  text-decoration: none;
+  margin: 1.5em;
+  color: black;
+  font-size: 20px;
+  font-family: League Spartan;
+  font-weight: 600;
+}
+nav .buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#Sign-in{
+  padding: 8px 20px 8px 20px;
+  background-color: transparent;
+  font-weight: bold;
+  border-radius: 3em;
+  margin-right: 10px;
+  border: 2px solid black;
+  font-size: 16px;
+}
+nav .fa-cart-shopping{
+  font-size: 22px;
+  margin-top: 4px;
+  /* margin-right: 10px; */
+}
+nav .user-icon{
+  font-size: 22px;
+}
+nav .buttons a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-family: Arial;
+  font-size: 15px;
+  margin-right: 1.5em;
+}
+#Sign-up a{
+  color: white;
+  text-decoration: none;
+}
+#Sign-up{
+  padding: 8px 20px 8px 20px;
+  background-color: black;
+  font-weight: bold;
+  color: white;
+  margin-right: 1em;
+  border-radius: 3em;
+  font-size: 16px;
+}
+
+nav ul .viewing{
+  content: '';
+  color: black;
+  padding-bottom: .3em;
+  border-bottom: 5px solid #693304;
+}
+nav li a:hover{
+  color: #5c391a;
+}
+nav a{
+  text-decoration: none;
+}
+nav .fa{
+  display: none;
+}
+nav .checkbtn{
+  font-size: 25px;
+  display: none;
+  cursor: pointer;
+}
+#check{
+  display: none;
+}
+
+@media(max-width: 768px){
+  nav ul a{
+      text-decoration: none;
+      margin: 1.5em;
+      color: black;
+      font-size: 17px;
+      font-family: League Spartan;
+      font-weight: 600;
+  }
+  #Location{
+      display: none;
+  }
+}
+
+@media(max-width: 650px){
+  nav ul .viewing{
+      color: white;
+      border-bottom: none;
+  }
+  nav ul a{
+      color: white;
+      margin: 2em;
+  }
+  nav ul{
+      z-index: 100;
+      position: fixed;
+      flex-direction: column;
+      background-color: black;
+      padding-left: 2em;
+      padding-top: 6em;
+      gap: 2em;
+      width: 15em;
+      height: 100%;
+      top: 0em;
+      right: -100em;
+      transition: all .5s;
+  }
+  nav .fa{
+      display: block;
+      font-size: 25px;
+      cursor: pointer;
+      margin: 1em;
+  }
+  nav .checkbtn{
+      display: block;
+  }
+  #check:checked ~ .checkbtn{
+      z-index: 300;
+      position: fixed;
+      right: 0;
+      color: white;
+  }
+  #check:checked ~ i{
+      z-index: 300;
+      color: white;
+  }
+  #check:checked ~ ul{
+      right: 0em;
+  }
+}
+
+@media(max-width: 426px){
+  nav ul .viewing{
+      color: white;
+      border-bottom: none;
+  }
+  nav ul a{
+      color: white;
+      margin: 2em;
+  }
+  nav ul{
+      z-index: 100;
+      position: fixed;
+      flex-direction: column;
+      background-color: black;
+      padding-left: 2em;
+      padding-top: 6em;
+      gap: 2em;
+      width: 15em;
+      height: 100%;
+      top: 0em;
+      right: -100em;
+      transition: all .5s;
+  }
+  nav .fa{
+      display: block;
+      font-size: 25px;
+      cursor: pointer;
+      margin: 1em;
+  }
+  nav .checkbtn{
+      display: block;
+  }
+  #check:checked ~ .checkbtn{
+      z-index: 300;
+      position: fixed;
+      right: 0;
+      color: white;
+  }
+  #check:checked ~ i{
+      z-index: 300;
+      color: white;
+  }
+  #check:checked ~ ul{
+      right: 0em;
+  }
+}

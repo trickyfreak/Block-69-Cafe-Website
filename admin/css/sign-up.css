@@ -1,0 +1,109 @@
+
+.description{
+  color: gray;
+  margin: 4em 0em 0em 0em;
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.sign-up-container h1, p, a{
+  font-family: League Spartan;  
+}
+
+.sign-up-container h1{
+  font-size: 37px;
+}
+
+.sign-up-container p{
+  font-size: 22px;
+  margin: 0em 0em 1em 0em;
+}
+
+.forgot-info{
+  color: #615027;
+  font-weight: bold;
+  font-size: 21px !important;
+}
+
+.sign-up-container .form-container input[type="text"] {
+  padding: 10px;
+  font-size: 22px;
+  width: 19em;
+  height: 30px;
+  border-radius: 10px;
+  transition: box-shadow 0.5s ease; /* Increase transition duration to 0.5s */
+  box-shadow: 0 0 0 0 rgba(97, 97, 97, 0); /* Initial shadow with no spread */
+}
+
+.sign-up-container .form-container input[type="text"]:focus {
+  box-shadow: 0 0 0 5px rgba(94, 94, 94, 0.1); /* Add shadow effect on click with a small spread radius */
+}
+
+.sign-up-container input[type="text"]:focus::placeholder{
+  transition: .2s ease;
+  color: transparent;
+}
+
+.sign-up-container .chk input[type="checkbox"]{
+  margin: 20px 0px 23px 0px;
+  font-size: 35px;
+  border: 10px solid black;
+  width: 1em;
+  height: 25px;
+  border: 10px solid black; 
+  border-radius: 10px; 
+  background-color: black;
+  color: white;
+}
+.chk{
+  font-size: 22px;
+  font-family: League Spartan;
+}
+.chk a{
+  font-weight: bold;
+  font-size: 23px !important;
+}
+
+.form-container input[type="submit"]{
+  position: relative;
+  top: 2em;
+  left: 17em;
+
+  padding: 1em;
+  color: white;
+  font-weight: bold;
+  font-size: 19px;
+  text-decoration: none;
+  border-radius: 50px;
+  background-color: black;
+  box-shadow: 0px 1px 10px rgba(97, 97, 97, 0.7);
+  width: 6.5em;
+}
+
+.sign-up-container a{
+  font-size: 23px;
+}
+
+.sign-up-container{
+  margin: 6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  margin: 3em;
+  width: 30em;
+  border-radius: 15px;
+  padding: 3em 1em 7em 2em;
+  box-shadow: 0px 1px 10px rgba(97, 97, 97, 0.2);
+}
