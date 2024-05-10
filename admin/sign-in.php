@@ -1,27 +1,31 @@
-<?php 
-
-require_once './partials/header.php'; 
-require_once './config/connect.php';
-require_once './config/functions.php';?>
+<?php
+include './config/connect.php';
+include './config/functions.php';
+include './partials/header.php'; 
+?>
 
 <link rel="stylesheet" href="css/sign-in.css">
 
-  <form action="sign-in.php" method="post">
-    <div class="sign-in-container">
-      <h1 h1>Sign in or create an account</h1>
-      <div class="form-container">
-        <p>*indicates required field</p>
-        <input type="text" name="username" placeholder="* Username or email address">
-        <input type="text" name="password" placeholder="* Password">
-        <div class="chk"> <input type="checkbox"> Keep me signed in. <a href="#" style="color: Black">Details</a></div>
-        <a href="" class="forgot-info">Forgot your username?</a>
-        <a href="" class="forgot-info">Forgot your password?</a>
-        <input type="submit" name="submit" value="Sign in">
-      </div>
+<form action="sign-in.php" method="post">
+  <div class="sign-in-container">
+    <h1 h1>Sign in or create an account</h1>
+    <div class="form-container">
+      <p>*indicates required field</p>
+      <input type="text" name="username" placeholder="* Username or email address">
+      <input type="text" name="password" placeholder="* Password">
+      <div class="chk"> <input type="checkbox"> Keep me signed in. <a href="#" style="color: Black">Details</a></div>
+      <a href="" class="forgot-info">Forgot your username?</a>
+      <a href="" class="forgot-info">Forgot your password?</a>
+      <input type="submit" name="submit" value="Sign in">
     </div>
-  </form>
+  </div>
+</form>
 
 <?php 
+
+session_start();
+
+$conn = get_connection();
 
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
   $username = $_POST['username'];
@@ -45,33 +49,49 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
   $query2 = "SELECT * FROM useraccounts WHERE password='" .$password. "'";
   $query = "SELECT * FROM useraccounts WHERE username = '$username'";
 
+  $sql = "SELECT * FROM useraccounts WHERE username = '" . $username . "' AND password = '" . $password . "'";
+
+  // $conn->mysqli_query();
+
   $result = mysqli_query($conn, $query);
   $result1 = mysqli_query($conn, $query1);
   $result2 = mysqli_query($conn, $query2);
 
-  if($result1 != "" || $result2 != ""){
-      if(($result1 && mysqli_num_rows($result1)) && ($result2 && mysqli_num_rows($result2)) > 0){
+  $result3 = $conn->execute_query($sql);
+  $user_data = $result3->fetch_assoc();
 
-        $userData1 = mysqli_fetch_assoc($result1);
-        $userData2 = mysqli_fetch_assoc($result2);
-        $user_data = mysqli_fetch_assoc($result);
-
-        if(($userData1['username'] == $username && $userData1['password'] == $password) && $userData2['username'] == $username && $userData2['password'] == $password){
-          
-          $_SESSION['username'] = $username;
-          header("Location: home.php");
-          include('partials/footer.php');
-          die;
-          
-        }
-      }elseif(!($result1 && mysqli_num_rows($result1) > 0)){
-        echo "incorrect username";
-      }elseif(!($result2 && mysqli_num_rows($result2) > 0)){
-        echo "incorrect password";
-      }
-    }
+  if(!$result3) {
+    // Handle error
+    exit;
   }
-  
-?>
 
-<?php include('partials/footer.php'); ?>
+  echo $user_data;
+
+  $_SESSION['username'] = $user_data['username'];
+  header("Location: home.php");
+
+  // if($result1 != "" || $result2 != ""){
+  //     if(($result1 && mysqli_num_rows($result1)) && ($result2 && mysqli_num_rows($result2)) > 0){
+  //
+  //       $userData1 = mysqli_fetch_assoc($result1);
+  //       $userData2 = mysqli_fetch_assoc($result2);
+  //       $user_data = mysqli_fetch_assoc($result);
+  //
+  //       if(($userData1['username'] == $username && $userData1['password'] == $password) && $userData2['username'] == $username && $userData2['password'] == $password){
+  //
+  //         $_SESSION['username'] = $username;
+  //         header("Location: home.php");
+  //         include('partials/footer.php');
+  //         die;
+  //
+  //       }
+  //     }elseif(!($result1 && mysqli_num_rows($result1) > 0)){
+  //       echo "incorrect username";
+  //     }elseif(!($result2 && mysqli_num_rows($result2) > 0)){
+  //       echo "incorrect password";
+  //     }
+  //   }
+}
+
+  include('partials/footer.php');
+?>

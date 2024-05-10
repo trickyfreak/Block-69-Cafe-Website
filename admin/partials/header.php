@@ -1,61 +1,68 @@
-<?php
-
-require_once './config/connect.php';
-require_once './config/functions.php';
-$userActive = check_login($conn);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOCK 69 Café</title>
-    
-    <!-- LINK -->
-    <link rel="icon" href="icons/newlogo-light.png">
-    <link rel="stylesheet" href="css/header.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOCK 69 Café</title>
 
-    <!-- FONTS -->
-    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- ICONS -->
-    <link rel="stylesheet" href="https:stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- LINK -->
+  <link rel="icon" href="icons/newlogo-light.png">
+  <link rel="stylesheet" href="css/header.css">
 
-    <!-- SCRIPT -->
-    <script src="https://kit.fontawesome.com/266d743c96.js" crossorigin="anonymous"></script>
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https:stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- SCRIPT -->
+  <script src="https://kit.fontawesome.com/266d743c96.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <a href="#" class="to-top">
-        <i class="fas fa-chevron-up"></i>
-        <script>
-            const toTop = document.querySelector(".to-top");
-            window.addEventListener("scroll", () => {
-                if(window.pageYOffset > 700){
-                    toTop.classList.add("active");
-                } else{
-                    toTop.classList.remove("active");
-                }
-            })
-        </script>
-    </a>
-<nav>
+  <a href="#" class="to-top">
+    <i class="fas fa-chevron-up"></i>
+    <script>
+      const toTop = document.querySelector(".to-top");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 700) {
+          toTop.classList.add("active");
+        } else {
+          toTop.classList.remove("active");
+        }
+      })
+    </script>
+  </a>
+  <nav>
     <ul>
-        <img src="Icons/newlogo.png" onclick="window.location.href='../admin/home.php'"
-        style="cursor: pointer;" alt="">
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fa fa-bars"></i>
-        </label>
-        <li><a href="../admin/menu.php">MENU</a></li>
-        <li><a href="../admin/blog.php">BLOG</a></li>
-        <li><a href="../admin/services.php">SERVICES</a></li>
-        <li><a href="../admin/about.php">ABOUT US</a></li>
+      <img src="Icons/newlogo.png" onclick="window.location.href='../admin/home.php'" style="cursor: pointer;" alt="">
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fa fa-bars"></i>
+      </label>
+      <li><a href="../admin/menu.php">MENU</a></li>
+      <li><a href="../admin/blog.php">BLOG</a></li>
+      <li><a href="../admin/services.php">SERVICES</a></li>
+      <li><a href="../admin/about.php">ABOUT US</a></li>
     </ul>
     <div class="buttons">
-    <?php
+      <?php
+        include '../config/functions.php';
+        include '../config/connect.php';
+        include '../sign-out.php';
+
+        $conn = get_connection();
+        $userActive = check_login($conn);
+
+        $foo = $_SESSION['username'];
+
+        echo "<h1>$foo</h1>";
+
     if($userActive){
         echo '
         <a id="Cart" href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>;
@@ -72,7 +79,7 @@ $userActive = check_login($conn);
             margin-right: 1em;
             ">
 
-            <a id=""type="button" name="SignOut" style="
+            <a id="" type="button" name="SignOut" style="
             display: flex;
             justify-content: center;
             align-items: center;
@@ -90,15 +97,19 @@ $userActive = check_login($conn);
     }
     ?>
     </div>
-</nav>
 
-<script>
+    <form action="sign-out.php" method="post">
+      <button type="submit">LOG OUT XD</button>
+    </form>
+  </nav>
+
+  <script>
     function toggleUserPanel() {
-        var userPanel = document.getElementById("userPanel");
-        if (userPanel.style.display === "none") {
-            userPanel.style.display = "block";
-        } else {
-            userPanel.style.display = "none";
-        }
+      var userPanel = document.getElementById("userPanel");
+      if (userPanel.style.display === "none") {
+        userPanel.style.display = "block";
+      } else {
+        userPanel.style.display = "none";
+      }
     }
-</script>
+  </script>
