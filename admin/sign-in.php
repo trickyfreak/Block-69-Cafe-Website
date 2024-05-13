@@ -13,7 +13,7 @@ include './partials/header.php';
       <p>*indicates required field</p>
       <input type="text" name="username" placeholder="* Username">
       <input type="text" name="password" placeholder="* Password">
-      <div class="chk"> <input type="checkbox"> Keep me signed in. <a href="#" style="color: Black">Details</a></div>
+      <div class="chk"> <input id="KeepSession" type="checkbox"> Keep me signed in. <a href="#" style="color: Black">Details</a></div>
       <a href="" class="forgot-info">Forgot your username?</a>
       <a href="" class="forgot-info">Forgot your password?</a>
       <input type="submit" name="submit" value="Sign in">
@@ -71,6 +71,17 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
       }
     }
 }
-
   include('partials/footer.php');
 ?>
+
+<script type="text/javascript">
+  window.addEventListener("beforeunload", function(event) {
+    var checkbox = document.getElementById("KeepSession");
+    
+    if (!checkbox.checked) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "sign-out.php", true);
+      xhr.send();
+    }
+  });
+</script>

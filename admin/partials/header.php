@@ -33,6 +33,7 @@
 
   <!-- SCRIPT -->
   <script src="https://kit.fontawesome.com/266d743c96.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 </head>
 
 <body>
