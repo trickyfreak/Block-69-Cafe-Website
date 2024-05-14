@@ -62,8 +62,7 @@
     display: none;
 }
 
-.editBtn1, .editBtn2, .editBtn3,
-.editBtn4, .editBtn5{
+.edit-btn{
     cursor: pointer;
     color: white;
     position: absolute;
@@ -75,8 +74,7 @@
     font-size: 18px;
     border: 1px solid white;
 }
-.editBtn1:hover, .editBtn2:hover, .editBtn3:hover,
-.editBtn4:hover, .editBtn5:hover{
+.edit-btn:hover {
     background-color: rgb(26, 26, 26);
 }
 
@@ -132,10 +130,7 @@
     background-color: rgb(26, 26, 26);
 }
 
-
-
-
-.first-content{
+.container {
     display: flex;
     justify-content: space-between;
     height: 40em;
@@ -143,28 +138,30 @@
     background-color: black;
     color: white;
 }
-.first-content .content{
+
+.container .content {
     width: 30em;
     order: 1;
     position: relative;
     top: 11em;
     left: 8em;
 }
-.first-content img{
+
+.container img{
     order: 2;
-    width: 45em;
+    width: 48em;
     object-fit: cover;
     height: 40em;
-    margin-right: 2em;
+    margin-right: 0em;
 }
-.first-content .arrow{
+.container .arrow{
     width: 11.5em;
     position: relative;
     top: -12em;
     left: 34em;
     transform: rotate(-25deg);
 }
-.first-content .view-menu{
+.container .view-menu{
     position: relative;
     text-decoration: none;
     top: 4em;
@@ -177,7 +174,7 @@
     font-weight: bold;
     color: #e9e6e0;
 }
-.first-content .view-menu:hover{
+.container .view-menu:hover{
     background-color: rgb(40, 39, 39);
 }
 
