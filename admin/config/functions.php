@@ -19,12 +19,3 @@ function check_usertype($conn){
     }
   }
 }
-
-function __save($conn){
-  if (isset($_SESSION['username'])){
-    $username = $_SESSION['username'];
-    $query = "INSERT * INTO homecontent WHERE username= '$username'";
-    
-  }
-  
-}

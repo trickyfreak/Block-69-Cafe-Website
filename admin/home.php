@@ -9,87 +9,104 @@
   $user_data = check_login($conn);
   $user_type = check_usertype($conn);
   //GETTING content
-  $all_content = get_content($conn);
+  $content_id = 0;
+  $contents = get_content($conn);
 ?>
 
 <?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/home.css">
 
 <?php 
-  while($row = mysqli_fetch_assoc($all_content)):
-  
-    $content_id = $row['content_id']; 
-
-    if($user_type == 'admin'){
-      echo '
-      <div><button class="editBtn1" data-content-id="' . $content_id . '">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
-      ';
-    }
+  if($user_type == 'admin'){
+    echo '
+    <div><button class="editBtn1" data-content-id="1">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+    ';
+  }
 ?>
 
 <form action="home.php" method="post" enctype="multipart/form-data">
-  <input type="hidden" name="content_id" value="<?php echo $content_id ?>">
+<input type="hidden" name="content_id" value="<?php echo $content_id ?>">
   <!-- Start of Modal -->
   <div class="bg-modal">
     <div class="modal-content">
       <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
-      <p class="modal-title">TITLE</p>
-      <textarea class="edit-content" name="content_title"></textarea>
+      <p class="modal-title">TITLE <?php echo $content_id; ?></p>
+      <textarea class="edit-content" name="content_title"><?php echo $contents[$content_id]['content_title']; ?></textarea>
       <p class="modal-caption">CAPTION</p>
-      <textarea class="edit-content" name="content_caption"></textarea>
+      <textarea class="edit-content" name="content_caption"><?php echo $contents[$content_id]['content_caption']; ?></textarea>
       <div>
-        <label for="content_image" class="custom-file-upload">Upload Content Image</label>
+        <label for="content_image" class="custom-file-upload"><?php echo $contents[$content_id]['content_image']; ?></label>
         <input type="file" id="content_image" name="content_image" class="inputfile"/>
       </div>
       <input class="saveBtn" type="submit" name="submit"></input>
     </div>
   </div>
   <!-- End of Modal -->
-<?php echo $content_id?>
+  
   <div class="first-content">
     <div class="content">
       <div class="title">
-        <?php echo $row['content_title']; ?>
+        <?php echo $contents[0]['content_title']; ?>
       </div>
-      <p class="caption">
-      <?php echo $row['content_caption']; ?>
-      </p>
+      <div class="caption">
+      <?php echo $contents[0]['content_caption']; ?>
+      </div>
       <a class="view-menu" href="menu.html">VIEW MENU</a>
     </div>
-    <?php echo $row['content_image']; ?>
+    <?php echo '<img src="' . $contents[0]['content_image'] . '" alt="Image">'; ?>
   </div>
 
+  <?php 
+    if($user_type == 'admin'){
+      echo '
+        <div><button class="editBtn2" data-content-id="2">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+        ';
+        }
+  ?>
+  
   <div class="second-content">
-    <img src="Homepage Products/Workshop.jpg" alt="">
-    <?php 
-      if($user_type == 'admin'){
-        echo '
-          <div><button class="editBtn2" data-content-id="' . $content_id . '">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
-          ';
-          }
-    ?>
-    <?php echo $content_id?>
+    <?php echo '<img src="' . $contents[1]['content_image'] . '" alt="Image">'; ?>
     <div class="content">
-      <p class="title">A perfect blend of art, flavors, and fun!
-        Which workshop would you like to join next?
-      </p>
-      <p class="caption">Embarked on a <span style="font-weight: bold; color: #e0bb5e;">successful</span> tote bag
-        painting extravaganza today, fueled by the delightful combination of coffee and non-coffee,
-        scrumptious food, and an abundance of creative joy.</p>
+      <div class="title">
+        <?php echo $contents[1]['content_title']; ?>
+      </div>
+      <div class="caption">
+      <?php echo $contents[1]['content_caption']; ?>
+      </div>
       <a class="view-menu" href="#">LEARN MORE</a>
     </div>
   </div>
   </div>
+
+  <?php 
+    if($user_type == 'admin'){
+      echo '
+        <div><button class="editBtn3" data-content-id="3">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+        ';
+        }
+  ?>
+
   <div class="third-content">
-    <img src="Homepage Products/latte.jpg" alt="">
+    <?php echo '<img src="' . $contents[2]['content_image'] . '" alt="Image">'; ?>
     <div class="content">
-      <span class="title">Keep an eye out on Block 69's latte.</span>
-      <p class="caption">Embark on a <span style="font-weight: bold; color: #e0bb5e;">journey</span>
-        through the heart of these vibrant cafes,
-        where every cup holds a tale and each corner whispers cozy conversations.</p>
+      <div class="title">
+        <?php echo $contents[2]['content_title']; ?>
+      </div>
+      <div class="caption">
+      <?php echo $contents[2]['content_caption']; ?>
+      </div>
       <a class="view-menu" href="menu.html">VIEW MENU</a>
     </div>
   </div>
+
+  <?php 
+    if($user_type == 'admin'){
+      echo '
+        <div><button class="editBtn4" data-content-id="4">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+        ';
+        }
+  ?>
+
   <div class="fourth-content">
     <div class="content">
       <div class="title">Indulge in the ultimate non-coffee delights that have won over crowds everywhere! </div>
@@ -100,6 +117,15 @@
     </div>
     <img src="Homepage Products/dark berry design2.png" alt="image">
   </div>
+
+  <?php 
+    if($user_type == 'admin'){
+      echo '
+        <div><button class="editBtn5" data-content-id="5">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+        ';
+        }
+  ?>
+  
   <div class="fifth-content">
     <img src="Homepage Products/pastries (1).png" alt="">
     <div class="content">
@@ -118,15 +144,17 @@
   </div>
 </form>
 
-<?php endwhile; ?>
 <?php include('partials/footer.php'); ?>
 
-<script>
+
 document.querySelectorAll('.editBtn1').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
         var contentId = button.getAttribute('data-content-id');
-        handleEditButtonClick(contentId);
+        
+        var content_id = 1;
+
+        handleEditButtonClick(contentId, content_id);
     });
 });
 
@@ -134,18 +162,59 @@ document.querySelectorAll('.editBtn2').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
         var contentId = button.getAttribute('data-content-id');
-        handleEditButtonClick(contentId);
+        
+        var content_id = 2;
+
+        handleEditButtonClick(contentId, content_id);
+    });
+});
+
+document.querySelectorAll('.editBtn3').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        var contentId = button.getAttribute('data-content-id');
+        
+        var content_id = 3;
+
+        handleEditButtonClick(contentId, content_id);
+    });
+});
+
+document.querySelectorAll('.editBtn4').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        var contentId = button.getAttribute('data-content-id');
+        
+        var content_id = 4;
+
+        handleEditButtonClick(contentId, content_id);
+    });
+});
+
+document.querySelectorAll('.editBtn5').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        var contentId = button.getAttribute('data-content-id');
+        
+        var content_id = 5;
+        
+        handleEditButtonClick(contentId, content_id);
     });
 });
 
 //Function to handle edit button clicks
-function handleEditButtonClick(contentId) {
-    document.querySelector('input[name="content_id"]').value = contentId;
-    document.querySelector('.bg-modal').style.display = 'flex';
+function handleEditButtonClick(contentId, content_id) {
+  // console.log('contentID: ', contentId);
+  // console.log('content_id: ', content_id);
+  document.querySelector('input[name="content_id"]').value = content_id;
+  document.querySelector('.bg-modal').style.display = 'flex';
 }
 
 document.querySelector('.close').addEventListener('click',
   function(){
+    var label = document.querySelector('.custom-file-upload');
+    label.textContent = '<?php echo $contents[$content_id]['content_image']; ?>';
+
     document.querySelector('.bg-modal').style.display = 'none';
   }
 )
@@ -169,4 +238,5 @@ document.getElementById('content_image').addEventListener('change', function() {
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
+
 </script>

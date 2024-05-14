@@ -61,36 +61,25 @@
 .bg-modal{
     display: none;
 }
-.editBtn1{
+
+.editBtn1, .editBtn2, .editBtn3,
+.editBtn4, .editBtn5{
     cursor: pointer;
     color: white;
     position: absolute;
-    top: 9em;
-    right: 1em;
+    margin: 1em;
+    left: 86vw;
     background-color: black;
     padding: 1em;
     font-family: League Spartan;
     font-size: 18px;
     border: 1px solid white;
 }
-.editBtn1:hover{
+.editBtn1:hover, .editBtn2:hover, .editBtn3:hover,
+.editBtn4:hover, .editBtn5:hover{
     background-color: rgb(26, 26, 26);
 }
-.editBtn2{
-    cursor: pointer;
-    color: white;
-    position: absolute;
-    top: 45em;
-    left: 73.5em;
-    background-color: black;
-    padding: 1em;
-    font-family: League Spartan;
-    font-size: 18px;
-    border: 1px solid white;
-}
-.editBtn2:hover{
-    background-color: rgb(26, 26, 26);
-}
+
 .saveBtn{
     font-family: League Spartan;
     cursor: pointer;
