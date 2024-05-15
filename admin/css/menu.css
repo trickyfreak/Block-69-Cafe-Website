@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+a{
+  text-decoration: none;
+}
+li{
+  list-style: none;
+}
+
+.container {
+  height: 35em;
+  width: 100%;
+  display: flex;
+}
+.container a{
+  color: black;
+}
+.sidebar {
+  width: 16em;
+  padding-left: 60px;
+}
+.sidebar li {
+  line-height: 1.9em;
+  transition: all 0.3s;
+}
+.choice:hover {
+  font-weight: bold;
+  letter-spacing: 0.4px;
+}
+.category {
+  display: none;
+}
+#menu {
+  display: block;
+}
+.header1 {
+  font: 700 1.9em League Spartan;
+}
+.header2 {
+  font: 700 1.5em League Spartan;
+}
+.choice {
+  font: 400 1.09em League Spartan;
+}
+
+.contents {
+  height: 35em;
+  width: 82%;
+  padding: 15px 0px 0px 50px;
+}
+.txtEspresso p
+.txtBrew p {
+  font: 400 1em League Spartan;
+  color: grey;
+  margin-top: 5px;
+}
+hr {
+  border: 0.5px solid rgba(94, 90, 90, 0.2);
+  margin: 12px 0px 2px 0px;
+}
+.drinksOptions,
+.foodsOptions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 15px 0px 12px 5px;
+}
+.options img {
+  width: 8.25em;
+  border-radius: 100%;
+  transition: 0.3s;
+}
+.options img:hover {
+  filter: brightness(85%);
+}
+.options p {
+  font: 400 1.3em League Spartan;
+  color: black;
+  transition: all 0.3s;
+}
+.options p:hover {
+  font-weight: bold;
+}
+.options p:active {
+  opacity: 0.6;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 1.25em;
+}
+.option span {
+  font: 300 0.9em League Spartan;
+  color: grey;
+}
+
+.menuContainer {
+  padding-left: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  column-gap: 125px;
+  padding-top: 15px;
+}
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+.menu-options img {
+  width: 9em;
+  border-radius: 100%;
+  margin-bottom: 3px;
+}
+.menu-options p {
+  font: 400 1.1em League Spartan;
+  color: black;
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+}
+.category .menu-options p span {
+  font: 300 0.8em League Spartan;
+  color: grey;
+}
+.txtSweetCream,
+.txtCroffle {
+ margin: 30px 0px 10px 0px;
+}
+h2 span {
+  font: 300 0.6em League Spartan;
+  color: grey;
+}
+.category h2 {
+  font: 700 26px League Spartan;
+}
+
+/* Extra Large Devices (large desktops, 1280px and up) */
+@media (min-width: 1280px) and (max-width: 1400px) {
+  
+}
+/* Large Devices (laptops/desktops, 1024px and up) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  
+}
+/* Medium Devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  
+}
+/* Small Devices (large phones, 480px and up) */
+@media (min-width: 480px) and (max-width: 767px) {
+  
+}
+/* Extra Small Devices (phones, up to 479px) */
+@media (max-width: 479px) {
+  
+}
