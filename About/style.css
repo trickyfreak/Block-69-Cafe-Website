@@ -1,0 +1,432 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: 'League Spartan';
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.heading {
+    text-align: center;
+}
+
+.heading p {
+    margin-top: 60px;
+    color: brown;
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+.heading h2 {
+    margin-top: 10px;
+    color: black;
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+.image1 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+
+.image1 img {
+    height: 375px;
+    width: 700px;
+}
+
+.content1 {
+    margin-top: 15px;
+    text-align: justify; 
+}
+
+.content1 p {
+    max-width: 700px; 
+    margin: 0 auto; 
+    padding: 0 10px;
+    font-size: 20px;
+    margin-top: 15px; 
+    line-height: 25px;
+}
+
+.section {
+  margin-top: 50px;
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+  color: white;
+}
+
+.container {
+  width: 80%;
+  display: block;
+  margin: auto;
+  padding-top: 80px
+}
+
+.content-section {
+  float: left;
+  width: 55%;
+}
+
+.image2 {
+  float: right;
+  width: 40%;
+}
+
+.image2 img {
+  width: 500px;
+  height: 500px;
+}
+
+.content-section .title-mission {
+  text-transform: uppercase;
+  font-size: 35px;
+}
+
+.content-section .title-vision {
+  text-transform: uppercase;
+  font-size: 35px;
+  margin-top: 90px;
+}
+
+.content-section .content-mission {
+  margin-top: 10px;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: justify;
+  width: 250px;
+}
+
+.content-section .content-vision {
+  margin-top: 10px;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: justify;
+  width: 505px;
+}
+
+.section2 {
+  margin-top: 50px;
+  width: 100%;
+  min-height: 90vh;
+  background-color: white;
+  color: black;
+}
+
+.container2 {
+  width: 100%;
+  display: block;
+  margin: auto;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.content-section2 {
+  width: 100%;
+}
+
+.content-section2 .title-compadv {
+  font-size: 35px;
+  font-weight: 200;
+
+} 
+.content-1st {
+  margin-top: 40px;
+  float: left;
+  width: 30%;
+  margin-left: 240px;
+  text-align: justify;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.content-2nd {
+  margin-top: 40px;
+  float: right;
+  width: 30%;
+  margin-right: 240px;
+  font-size: 20px;
+  text-align: justify;
+  line-height: 25px;
+}
+
+.section3 {
+  width: 100%;
+  min-height: 90vh;
+  background-color: black;
+}
+
+.container3 {
+  width: 80%;
+  display: block;
+  margin: auto;
+  padding-top: 80px;
+}
+
+.content-section3 {
+  float: left;
+  width: 40%;
+  color: white;
+}
+
+.image3 {
+  float: right;
+  width: 40%;
+  margin-top: 20px;
+}
+
+.image3 img {
+  width: 300px;
+  height: 400px;
+}
+
+.content-section3 .title-compland {
+  font-size: 35px;
+}
+
+.content-section3 .content-compl p {
+  margin-top: 80px;
+  line-height: 25px;
+  font-size: 20px;
+  text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+  
+  .heading p {
+    margin-top: 80px;
+    color: brown;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.heading h2 {
+    margin-top: 10px;
+    color: black;
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+.image1 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.image1 img {
+  height: 200px;
+  width: 500px;
+}
+
+.content1 {
+  margin-top: 15px;
+  text-align: justify; 
+}
+
+.content1 p {
+  max-width: 700px; 
+  margin: 0 auto; 
+  padding: 0 10px;
+  font-size: 15px;
+  margin-top: 15px; 
+  line-height: 25px;
+}
+
+.container {
+  width: 80%;
+  display: block;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.content-section {
+  float: none;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.content-section .title-mission {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.content-section .title-vision {
+  text-transform: uppercase;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.content-section .content-mission {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 25px;
+  text-align: justify;
+  width: 100%;
+}
+
+.content-section .content-vision {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 25px;
+  text-align: justify;
+  width: 100%;
+}
+
+.section {
+  margin-top: 40px;
+  width: 100%;
+  min-height: 110vh;
+  background-color: black;
+  color: white;
+}
+
+.image2 {
+  float: none;
+  width: 100%;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.image2 img {
+  width: 400px;
+  height: 300px;
+}
+
+.content-1st,
+  .content-2nd {
+    width: 90%; 
+    float: none; 
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+}
+
+.container3 {
+  width: 80%;
+  display: block;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.content-section3 {
+  float: none;
+  width: 100%;
+  color: white;
+  display: block;
+  margin: auto;
+}
+
+.section3 {
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+}
+
+.image3 {
+  float: none;
+  width: 100%;
+  color: white;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.image3 img {
+  width: 200px;
+  height: 250px;
+  display: inline-block;
+}
+
+.content-section3 .content-compl p {
+  margin-top: 40px;
+  line-height: 25px;
+  font-size: 15px;
+  text-align: justify;
+}
+
+}
+
+@media screen and (max-width: 576px) {
+  
+  .heading p {
+    margin-top: 60px;
+    font-size: 20px;
+  }
+
+  .heading h2 {
+    margin-top: 5px;
+    font-size: 30px;
+  }
+
+  .image1 img {
+    height: auto;
+    width: 100%;
+  }
+
+  .content1 p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .container {
+    width: 90%;
+    padding-top: 30px;
+  }
+
+  .content-section .title-mission,
+  .content-section .title-vision {
+    font-size: 18px;
+  }
+
+  .content-section .content-mission,
+  .content-section .content-vision {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .section {
+    min-height: auto;
+    padding: 40px 0;
+  }
+
+  .image2 img {
+    width: 100%;
+    height: auto;
+  }
+
+  .content-1st,
+  .content-2nd {
+    width: 90%; 
+    font-size: 14px;
+  }
+
+  .container3 {
+    padding-top: 30px;
+  }
+
+  .image3 img {
+    width: 150px;
+    height: auto;
+  }
+
+  .content-section3 .content-compl p {
+    font-size: 14px;
+    line-height: 22px;
+    width: 90%;
+  }
+}
+
+
+
