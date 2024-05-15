@@ -16,8 +16,6 @@
 <?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/home.css">
 
-
-
 <form action="home.php" method="post" enctype="multipart/form-data">
 <input type="hidden" name="content_id">
   <?php 
@@ -101,11 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
 document.querySelectorAll('.edit-btn').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
+        //fetch data
         contentTitle = button.getAttribute('data-content-title');
         contentCaption = button.getAttribute('data-content-caption');
         contentImage = button.getAttribute('data-content-image');
         contentId = button.getAttribute('data-content-id');
         contentImageId = 'content_image'+contentId;
+        
         handleEditButtonClick(contentId);
     });
 });
