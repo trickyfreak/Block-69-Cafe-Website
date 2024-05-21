@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
     $content_title = mysqli_real_escape_string($conn, $_POST['content_title'.$content_id]);
     $content_caption = mysqli_real_escape_string($conn, $_POST['content_caption'.$content_id]);
     $content_image_name = 'content_image'.$content_id;
+    
     if (isset($_FILES[$content_image_name])) {
         $file_name = $_FILES[$content_image_name]['name'];
         $temp_name = $_FILES[$content_image_name]['tmp_name'];

@@ -26,7 +26,6 @@
     $contentCaptionName = 'content_caption'.$content['content_id'];
     $contentImageId = 'content_image'.$content['content_id'];
     $customFileUploadClass = 'custom-file-upload custom-file-upload'.$content['content_id'];
-    
     echo '
     
     <!-- Start of Modal -->

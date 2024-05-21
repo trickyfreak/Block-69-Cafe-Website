@@ -1,5 +1,10 @@
 
-<?php include('partials/header.php'); ?>
+<?php 
+
+session_start();
+include('partials/header.php'); 
+
+?>
 <link rel="stylesheet" href="css/services.css">
 
   <div class="landing-page"> 
