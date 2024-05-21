@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/footer.css">
 
-<div class="footer">
+<div class="footer" id="footer">
   <div class="content">
     <ul>
       <p>About Us</p>
@@ -25,7 +25,7 @@
     </ul>
   </div>
 </div>
-<div class="privacy">
+<div class="privacy" id="privacy">
   <div class="social-icons">
     <div class="content">
       <a href="https://www.facebook.com/block69cafe" target="_blank"><img src="Icons/facebook.png" alt=""></a>
