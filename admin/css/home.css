@@ -126,13 +126,14 @@
 }
 
 .dashboard-btn{
+    text-decoration: none;
     cursor: pointer;
     color: black;
     position: relative;
-    margin: 2em 1em 2em 2em;
+    margin: 2em 1em 2em 0em;
     left: 0vw;
     background-color: transparent;
-    padding: 1em;
+    padding: 1.2em 1.5em 1em 1.5em;
     font-family: League Spartan;
     font-size: 18px;
     border: 1px solid black;

@@ -23,9 +23,9 @@
   
   if($user_type == 'admin'){
   echo '
-  <div style="background-color: white;">
+  <div style="background-color: white; margin: 2em;">
 
-    <button class="dashboard-btn"><i class="fa-solid fa-users-gear"></i> Dashboard</button>
+    <a href="dashboard.php" class="dashboard-btn"><i class="fa-solid fa-users-gear"></i> Dashboard</a>
 
     <button class="add-btn" name="edit-btn"><i class="fa-solid fa-plus"></i> Add Content</button>
 
