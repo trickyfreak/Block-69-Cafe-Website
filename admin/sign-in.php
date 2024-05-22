@@ -13,9 +13,8 @@ include './partials/header.php';
       <p>*indicates required field</p>
       <input type="text" name="username" placeholder="* Username">
       <input type="text" name="password" placeholder="* Password">
-      <div class="chk"> <input id="KeepSession" type="checkbox"> Keep me signed in. <a href="#" style="color: Black">Details</a></div>
       <a href="" class="forgot-info">Forgot your username?</a>
-      <a href="" class="forgot-info">Forgot your password?</a>
+      <a href="forgot-password.php" class="forgot-info">Forgot your password?</a>
       <input type="submit" name="submit" value="Sign in">
     </div>
   </div>
