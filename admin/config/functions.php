@@ -9,6 +9,9 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 
+function notification(){
+  
+}
 
 function check_login($conn){
   return isset($_SESSION['username']);
@@ -44,16 +47,19 @@ function send_pass_reset($get_name, $get_email, $token){
     $mail->Port       = 587;                                    
 
     //Recipients
-    $mail->setFrom('block69cafe.team@gmail.com', $get_name);
+    $mail->setFrom('block69cafe.team@gmail.com', 'Block 69 Cafe');
     $mail->addAddress($get_email);  
     $mail->isHTML(true);
     $mail->Subject = "Reset Password Notification";
 
     $email_template = "
-                      <h1>From: Block 69 Cafe</h1>
+                      <h1>Hey ".$get_name."!</h1>
                       <p>You are receiving this email because we received a password reset request from your account.</p>
                       <br><br>
-                      <a href='http://localhost/Block%2069/admin/password-reset.php?token=$token&email=$email' style='color: black;'>Password Recovery Link</a>
+                      <a href='http://localhost/Block%2069/admin/password-reset.php?token=$token&email=$get_email' style='color: black;'>Password Recovery Link</a>
+                      <br><br>
+                      <p>Thanks,</p>
+                      <p>The Block 69 Cafe Team</p>
     ";
 
     $mail->Body = $email_template;

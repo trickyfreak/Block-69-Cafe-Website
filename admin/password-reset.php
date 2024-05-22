@@ -5,13 +5,15 @@ include_once './config/connect.php';
 include_once './config/functions.php';
 session_start();
 
+$token = isset($_GET['token']) ? $_GET['token'] : '';
+$email = isset($_GET['email']) ? $_GET['email'] : '';
 ?>
 
 <?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/password-reset.css">
 
 <form action="password-reset.php" method="post">
-  <input type="hidden" value="<?php if(isset($_GET['token'])){echo $_GET['token'];} ?>">
+<input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
 
   <div class="password-reset-container">
     <div class="password-reset">
@@ -21,9 +23,9 @@ session_start();
       <div>
         <p>Just need to confirm your email and password to reset your password.<p>
         <p>* indicates required field</p>
-        <input type="email" placeholder="* Email" name="email" value="<?php if(isset($_GET['email'])){echo $_GET['email'];} ?>">
-        <input type="password" placeholder="* Enter New Password" name="newPassword">
-        <input type="password" placeholder="* Enter Confirm Password" name="confirmPassword">
+        <input type="email" placeholder="* Email" name="email" value="<?php if(isset($_GET['email'])){echo $_GET['email'];} ?> " required autocomplete="off">
+        <input type="password" placeholder="* Enter New Password" name="newPassword" required autocomplete="off">
+        <input type="password" placeholder="* Enter Confirm Password" name="confirmPassword" required autocomplete="off">
         <button type="submit" name="submit">Update Password</button>
       </div>
     </div>
@@ -36,7 +38,7 @@ if (isset($_POST['submit'])){
   $email = mysqli_escape_string($conn, $_POST['email']);
   $newPassword = mysqli_escape_string($conn, $_POST['newPassword']);
   $confirmPassword = mysqli_escape_string($conn, $_POST['confirmPassword']);
-  $tokenn = mysqli_escape_string($conn, $_POST['token']);
+  $token = mysqli_escape_string($conn, $_POST['token']);
 
   if (!empty($token)){
     if (!empty($email) && !empty($newPassword) && !empty($confirmPassword)){
@@ -49,13 +51,21 @@ if (isset($_POST['submit'])){
           $updateResult = mysqli_query( $conn, $update);
 
           if ($updateResult){
-            
-          }else{
-
+            echo "Password updated successfully!";
+          } else {
+            echo "Failed to update password. Please try again.";
           }
+        } else {
+          echo "Passwords do not match!";
         }
+      } else {
+        echo "Invalid or expired token.";
       }
+    } else {
+      echo "All fields are required!";
     }
+  } else {
+    echo "No token provided.";
   }
 }
 

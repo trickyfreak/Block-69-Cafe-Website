@@ -18,8 +18,14 @@ session_start();
     <div class="forgotPass-form">
       <div>
         <p>Just need to confirm your email to send you instructions to reset your password.<p>
+        <div id="emailNotif1" class="emailNotif">Your email has been sent</div>
+        <div id="emailNotif2" class="triangle"></div>
+        <div id="emailNotif3" class="emailNotif">Failed to generate reset token</div>
+        <div id="emailNotif4" class="triangle"></div>
+        <div id="emailNotif5" class="emailNotif">No account detected</div>
+        <div id="emailNotif6" class="triangle"></div>
         <p>* indicates required field</p>
-        <input type="email" placeholder="* Email" name="email">
+        <input type="email" placeholder="* Email" name="email" required autocomplete="off">
         <button type="submit" name="submit">Send</button>
       </div>
     </div>
@@ -45,12 +51,34 @@ if (isset($_POST['submit'])){
 
     if ($tokenResult){
       send_pass_reset($get_name, $get_email, $token);
-    }else{
-
+      echo "<script>
+              document.getElementById('emailNotif1').style.display = 'flex';
+              document.getElementById('emailNotif2').style.display = 'block';
+              document.addEventListener('click', function() {
+                document.getElementById('emailNotif1').style.display = 'none';
+                document.getElementById('emailNotif2').style.display = 'none';
+              });
+            </script>";
+    } else {
+      echo "<script>
+              document.getElementById('emailNotif3').style.display = 'flex';
+              document.getElementById('emailNotif4').style.display = 'block';
+              document.addEventListener('click', function() {
+                document.getElementById('emailNotif3').style.display = 'none';
+                document.getElementById('emailNotif4').style.display = 'none';
+              });
+            </script>";
     }
 
-  }else{
-    echo 'no account detected';
+  } else{
+    echo "<script>
+              document.getElementById('emailNotif5').style.display = 'flex';
+              document.getElementById('emailNotif6').style.display = 'block';
+              document.addEventListener('click', function() {
+                document.getElementById('emailNotif5').style.display = 'none';
+                document.getElementById('emailNotif6').style.display = 'none';
+              });
+            </script>";
   }
 }
 
