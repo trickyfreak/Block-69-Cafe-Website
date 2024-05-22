@@ -1,8 +1,6 @@
   <?php 
-    session_start();
-    include('partials/header.php'); 
-  ?>
-  
+  session_start();
+  include_once('partials/header.php'); ?>
   <link href="css/menu.css" rel="stylesheet">
   <script src="javascript/menu.js"></script>
   <script src="javascript/menuItems.js"></script>
