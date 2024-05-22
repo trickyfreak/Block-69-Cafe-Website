@@ -91,4 +91,28 @@ function get_content($conn){
   return $all_content;
 }
 
+function get_gallerysection($conn){
+    $query = "SELECT * FROM gallerysection";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_galleryimage($conn){
+    $query = "SELECT * FROM galleryimage";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+  
+  function get_galleryvideo($conn){
+    $query = "SELECT * FROM galleryvideo";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
 ?>
