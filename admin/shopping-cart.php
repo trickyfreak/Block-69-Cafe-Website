@@ -37,24 +37,22 @@
         <input type="checkbox" id="select" class="select" value="product1">
       </div>
       <div class="column product-image">
-        <img src="BLK/SPANISH LATTE.png">
+        <img src="BLK/?.png">
       </div>
       <div class="column product-name">
-        <h4>Spanish Latte</h4>
+        <h4>?</h4>
       </div>
       <div class="column product-customization">
-        <p>12oz</p>
+        <p>?</p>
       </div>
       <div class="column product-price">
-        <p>₱99</p>
+        <p>₱<span>?</span></p>
       </div>
       <div class="column quantity-counter">
-        <button class="btn-minus"">-</button>
-        <input class="quantity-input" type="text" value="1" readonly>
-        <button class="btn-add"">+</button>
+        <p>?</p>
       </div>
       <div class="column total-price">
-        <p>₱198</p>
+        <p>₱<span>?</span></p>
       </div>
       <div class="column delete-button">
         <a href="">Delete</a>
@@ -68,7 +66,7 @@
       <input type="checkbox" id="select-all-checkout" class="select-all-checkout" value="select-all-checkout">
     </div>
     <div class="column select-all-text">
-      <p>Select All (1)</p>
+      <p>Select All (?)</p>
     </div>
     <div class="column delete-checkout">
       <a href="">Delete</a>
@@ -76,7 +74,7 @@
     <div class="column empty"></div>
     <div class="column empty"></div>
     <div class="column total-checkout">
-      <p>Total (1 Item): <span>₱198</span></p>
+      <p>Total (? Item): <span>₱?</span></p>
     </div>
     <div class="column empty"></div>
     <div class="column checkout-button">

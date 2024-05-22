@@ -226,7 +226,7 @@ function generatePopup(id, category) {
           <div><p>Quantity:</p></div>
           <div class="addMinus">
             <button class="btnMinus" onclick="updateQuantity(-1, '${category}')">-</button>
-            <input class="quantityInput" type="text" value="1" readonly>
+            <input class="quantityInput" type="text" value="1" readonly required>
             <button class="btnAdd" onclick="updateQuantity(1, '${category}')">+</button>
           </div>
         </div>
