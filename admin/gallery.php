@@ -2,6 +2,7 @@
 include_once './config/connect.php';
 include_once './config/functions.php';
 include_once './config/content-manage.php';
+include_once './form(gawaNiGio)/gallery.php';
 include_once('partials/header.php');
 
 session_start();
@@ -25,7 +26,7 @@ $contentsvideos1 = get_galleryvideo($conn);
 <?php
 if($user_type == 'admin'){
     echo '
-        <div><button class="edit-btnBlack edit-open" data-modal="modal-1" name="edit-btn">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+        <div><button class="edit-btnWhite edit-open" data-modal="modal-1" name="edit-btn">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
     ';
 }
 ?>
@@ -68,7 +69,7 @@ if($user_type == 'admin'){
                 </div>
                 <div class="flex gap-4">
                     <label class="text-white custom-file-upload" for="image1"><?php echo $img0 ?></label>
-                    <input type="file" class="inputfile" id="image1" name="image1">
+                    <input type="file" class="inputfile text-white" id="image1" name="image1">
                 </div>
         </div>
     </div>

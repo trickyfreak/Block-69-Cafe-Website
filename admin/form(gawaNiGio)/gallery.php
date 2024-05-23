@@ -12,7 +12,3 @@ $conn->query("
   SET img = '$img_url'
   WHERE img_ID = '$img_id'
 ");
-
-// Remove this
-echo "SUCCESSFULLY UPDATED";
-?>
