@@ -9,10 +9,6 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 
-function notification(){
-  
-}
-
 function check_login($conn){
   return isset($_SESSION['username']);
 }
@@ -67,4 +63,12 @@ function send_pass_reset($get_name, $get_email, $token){
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }
+}
+
+function cartcontents($conn){
+  $query = "SELECT * FROM cartcontent";
+  
+  $result = mysqli_query($conn, $query);
+  $cart_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $cart_content;
 }
