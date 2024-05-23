@@ -235,8 +235,7 @@
           </div>
         ';
       }
-      echo 
-              '</div>
+      echo '</div>
             </div>
             <div class="popup" id="popup-matcha"></div>
           </div>
@@ -281,7 +280,7 @@
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'espresso\')">
+            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'alldaybreakfast\')">
               <img src="'.$item_image.'" onclick="openPopup()">
               <p onclick="openPopup()">'.$item_name.'</p>
             </div>
@@ -307,7 +306,7 @@
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'espresso\')">
+            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'silog\')">
               <img src="'.$item_image.'" onclick="openPopup()">
               <p onclick="openPopup()">'.$item_name.'</p>
             </div>
@@ -333,7 +332,7 @@
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'espresso\')">
+            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'pasta\')">
               <img src="'.$item_image.'" onclick="openPopup()">
               <p onclick="openPopup()">'.$item_name.'</p>
             </div>
@@ -359,7 +358,7 @@
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'espresso\')">
+            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'block69bargainbites\')">
               <img src="'.$item_image.'" onclick="openPopup()">
               <p onclick="openPopup()">'.$item_name.'</p>
             </div>
@@ -385,7 +384,7 @@
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'espresso\')">
+            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'sidesandnibbles\')">
               <img src="'.$item_image.'" onclick="openPopup()">
               <p onclick="openPopup()">'.$item_name.'</p>
             </div>
@@ -411,7 +410,7 @@
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'espresso\')">
+            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'carbsandcaffeine\')">
               <img src="'.$item_image.'" onclick="openPopup()">
               <p onclick="openPopup()">'.$item_name.'</p>
             </div>
@@ -431,7 +430,7 @@
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'espresso\')">
+            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'carbsandcaffeine\')">
               <img src="'.$item_image.'" onclick="openPopup()">
               <p onclick="openPopup()">'.$item_name.'</p>
             </div>
