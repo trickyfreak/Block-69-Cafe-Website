@@ -11,9 +11,12 @@
   //GETTING content
   $content_id = 0;
   $contents = get_content($conn);
+
+  if(!($user_type == 'admin')){
+    echo '<div id="preloader"></div>';
+  }
 ?>
 
-<div id="preloader"></div>
 <?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/home.css">
 
