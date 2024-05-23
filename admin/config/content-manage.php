@@ -91,6 +91,8 @@ function get_content($conn){
   return $all_content;
 }
 
+// FUNCTIONS NI AARON PLEASE DON'T TOUCH MY BIRDIE TY
+
 function get_gallerysection($conn){
     $query = "SELECT * FROM gallerysection";
   

@@ -4,7 +4,7 @@ session_start();
 include_once './config/connect.php';
 include_once './config/functions.php';
 include_once './config/content-manage.php';
-include_once './form/gallery.php';
+include_once './form(gawaNiGio)/gallery.php';
 
 $conn = get_connection();
 $user_data = check_login($conn);

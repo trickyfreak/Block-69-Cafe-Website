@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2024 at 05:35 PM
+-- Generation Time: May 23, 2024 at 02:51 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,78 @@ SET time_zone = "+00:00";
 --
 -- Database: `block69cafe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galleryimage`
+--
+
+CREATE TABLE `galleryimage` (
+  `img_ID` int(11) NOT NULL,
+  `img` varchar(1500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `galleryimage`
+--
+
+INSERT INTO `galleryimage` (`img_ID`, `img`) VALUES
+(1, './galleryImages/galleryHome.png'),
+(2, './galleryImages/section2Image1.png'),
+(3, './galleryImages/section2Image2.png'),
+(4, './galleryImages/section2Image3.jpeg'),
+(5, './galleryImages/section2Image4.jpeg'),
+(6, './galleryImages/section3Image1.jpeg'),
+(7, './galleryImages/section3Image2.jepg'),
+(8, './galleryImages/section3Image3.jpeg'),
+(9, './galleryImages/section3Image4.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallerysection`
+--
+
+CREATE TABLE `gallerysection` (
+  `sectionID` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(1500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gallerysection`
+--
+
+INSERT INTO `gallerysection` (`sectionID`, `title`, `description`) VALUES
+(1, 'GALLERY', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+(2, 'BLK Video Advertisement', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'),
+(3, 'BLK 69 REELS', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galleryvideo`
+--
+
+CREATE TABLE `galleryvideo` (
+  `vidID` int(11) NOT NULL,
+  `video` varchar(1500) NOT NULL,
+  `sectionID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `galleryvideo`
+--
+
+INSERT INTO `galleryvideo` (`vidID`, `video`, `sectionID`) VALUES
+(15, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 2),
+(16, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
+(17, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
+(18, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
+(19, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
+(20, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
+(21, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3);
 
 -- --------------------------------------------------------
 
@@ -39,7 +111,7 @@ CREATE TABLE `homecontent` (
 --
 
 INSERT INTO `homecontent` (`content_id`, `content_title`, `content_caption`, `content_image`) VALUES
-(1, '<p>Clubhouse Sandwich Savor, served with crispy fries and a refreshing 12 oz iced tea.&nbsp;</p>', '<p>Upgrade your iced tea to 16 oz or any Block 69 beverage for just an additional 20! Don\'t forget, our Clubhouse Sandwich is also available solo without fries and drink!&nbsp;</p>', './Images/Clubhouse bundle design1.png'),
+(1, '<p>aaron</p>', '<p>Upgrade your iced tea to 16 oz or any Block 69 beverage for just an additional 20! Don\'t forget, our Clubhouse Sandwich is also available solo without fries and drink!&nbsp;</p>', './Images/Clubhouse bundle design1.png'),
 (2, '<p>A perfect blend of art, flavors, and fun! Which workshop would you like to join next?</p>', '<p>Embarked on a successful tote bag painting extravaganza today, fueled by the delightful combination of coffee and non-coffee, scrumptious food, and an abundance of creative joy.</p>', './Images/Workshop.jpg'),
 (5, '<p>Keep an eye out on Block 69\'s latte.&nbsp;</p>', '<p>Embark on a through the heart of these vibrant cafes, where every cup holds a tale and each corner whispers cozy conversations.</p>', './Images/latte.jpg'),
 (7, '<p>Indulge in the ultimate non-coffee delights that have won over crowds everywhere!</p>', '<p>Have you treated yourself to the refreshing allure of our Pink Paradise or the tantalizing blend of flavors in our Dark Berry? Sip, savor, and discover your new favorites today!</p>', './Images/dark berry design2.png'),
@@ -71,6 +143,25 @@ INSERT INTO `useraccounts` (`email`, `status`, `username`, `password`) VALUES
 --
 
 --
+-- Indexes for table `galleryimage`
+--
+ALTER TABLE `galleryimage`
+  ADD PRIMARY KEY (`img_ID`);
+
+--
+-- Indexes for table `gallerysection`
+--
+ALTER TABLE `gallerysection`
+  ADD PRIMARY KEY (`sectionID`);
+
+--
+-- Indexes for table `galleryvideo`
+--
+ALTER TABLE `galleryvideo`
+  ADD PRIMARY KEY (`vidID`),
+  ADD KEY `videos_section` (`sectionID`);
+
+--
 -- Indexes for table `homecontent`
 --
 ALTER TABLE `homecontent`
@@ -87,10 +178,38 @@ ALTER TABLE `useraccounts`
 --
 
 --
+-- AUTO_INCREMENT for table `galleryimage`
+--
+ALTER TABLE `galleryimage`
+  MODIFY `img_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `gallerysection`
+--
+ALTER TABLE `gallerysection`
+  MODIFY `sectionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `galleryvideo`
+--
+ALTER TABLE `galleryvideo`
+  MODIFY `vidID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT for table `homecontent`
 --
 ALTER TABLE `homecontent`
   MODIFY `content_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `galleryvideo`
+--
+ALTER TABLE `galleryvideo`
+  ADD CONSTRAINT `videos_section` FOREIGN KEY (`sectionID`) REFERENCES `gallerysection` (`sectionID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
