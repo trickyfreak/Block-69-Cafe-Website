@@ -13,12 +13,12 @@
   $contents = get_content($conn);
 ?>
 
+<div id="preloader"></div>
 <?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/home.css">
 
 <form action="home.php" method="post" enctype="multipart/form-data">
 <input type="hidden" name="content_id">
-
   <?php 
   
   if($user_type == 'admin'){
@@ -37,7 +37,7 @@
     <!-- Start of Add Modal -->
     <div class="bg-modal-add">
       <div class="modal-content-add">
-        <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
+        <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
         <p class="modal-title">TITLE</p>
         <textarea class="edit-content" name="content_title"></textarea>
         <p class="modal-caption">CAPTION</p>
@@ -63,7 +63,7 @@
     <!-- Start of Edit Modal -->
     <div class="bg-modal '.$modalClass.'">
       <div class="modal-content">
-        <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
+        <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
 
           <p class="modal-title">CONTENT TITLE</p>
           <textarea class="edit-content" name="'.$contentTitleName.'">'.$content['content_title'].'</textarea>
@@ -121,6 +121,13 @@ var contentId = 1;
 var contentCaption = "";
 var contentImage ="";
 var contentImageId = 'content_image'+contentId;
+var loader =document.getElementById('preloader');
+
+window.addEventListener("load", function(){
+  setTimeout(function(){
+    loader.style.display = "none";
+  },1000)
+})
 
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.edit-content').forEach(function(textarea) {
