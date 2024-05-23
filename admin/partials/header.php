@@ -74,7 +74,7 @@
         </div>';
     }else{
         echo '<a href="sign-in.php" id="Sign-in">Login</a>
-        <a href="sign-up.php" id="Sign-up">Sign up</a>
+        <a href="sign-up.php" id="Sign-up">Join now</a>
         <a id="Cart" href="cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"></i></a>';
     }
     ?>
