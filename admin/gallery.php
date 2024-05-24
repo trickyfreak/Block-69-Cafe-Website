@@ -233,11 +233,13 @@ if($user_type == 'admin'){
         ?>
         </div>
         <div class="flex flex-col items-center justify-center p-10">
-            <h1 class="text-white text-center text-2xl pb-3">
+            <div class="px-24">
+            <h1 class="text-white text-center text-2xl py-3">
                 <?php
                     echo $contentssection[1]["title"];
                 ?>
             </h1>
+            </div>
             <h3 class="text-white text-justify font-light">
                 <?php
                     echo $contentssection[1]["description"];
@@ -290,17 +292,19 @@ if($user_type == 'admin'){
 }
 ?>
 <section class="bg-white w-full flex items-center justify-center py-20">
-    <div class="flex flex-col items-center justify-center px-20">
-        <h1 class="text-black text-center text-2xl pb-3">
-            <?php
-                echo $contentssection[2]["title"];
-            ?>
-        </h1>
-        <h3 class="text-black text-center font-light pb-3">
-            <?php
-                echo $contentssection[2]["description"];
-            ?>
-        </h3>
+    <div class="flex flex-col items-center justify-center gap-10 px-20">
+        <div class="">
+            <h1 class="text-black text-center text-2xl pb-3">
+                <?php
+                    echo $contentssection[2]["title"];
+                ?>
+            </h1>
+            <h3 class="text-black text-center font-light pb-3">
+                <?php
+                    echo $contentssection[2]["description"];
+                ?>
+            </h3>
+        </div>
         <div class="grid grid-cols-1 auto-rows-auto grid-flow-cols gap-5 md:grid-cols-3 md:grid-row-2 grid-flow-cols md:gap-4">
             <?php
                 $vid2 = $contentsvideos1[1]["video"];
@@ -318,22 +322,22 @@ if($user_type == 'admin'){
                 $section2_ID = $contentssection[2]["sectionID"];
 
                 echo '
-                <div class="">
+                <div class="w-56">
                     <video src="'.$vid2.'" loop autoplay muted controls></video>
                 </div>
-                <div class="">
+                <div class="w-56">
                     <video src="'.$vid3.'" loop autoplay muted controls></video>
                 </div>
-                <div class="">
+                <div class="w-56">
                     <video src="'.$vid4.'" loop autoplay muted controls></video>
                 </div>
-                <div class="">
+                <div class="w-56">
                     <video src="'.$vid5.'" loop autoplay muted controls></video>
                 </div>
-                <div class="">
+                <div class="w-56">
                     <video src="'.$vid6.'" loop autoplay muted controls></video>
                 </div>
-                <div class="">
+                <div class="w-56">
                     <video src="'.$vid7.'" loop autoplay muted controls></video>
                 </div>
                 ';
@@ -352,40 +356,37 @@ if($user_type == 'admin'){
                 <input hidden name='vid_ID6' value='<?php echo $vid6_id ?>' />
                 <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
                 <div class="flex flex-col gap-4 p-10">
-                    <div class="flex gap-3">
-                        <label class="text-white custom-file-upload" for="section1title">Title</label>
-                        <input type="text" id="section1title" name="section1title" value="<?php echo $contentssection[2]["title"]; ?>">
+                    <div class="flex gap-2">
+                        <label class="text-white custom-file-upload text-xs" for="section1title">Title</label>
+                        <input type="text" id="section1title text-xs" name="section1title" value="<?php echo $contentssection[2]["title"]; ?>">
                     </div>
-                    <div class="flex gap-3">
-                        <label class="text-white custom-file-upload" for="section1description">Description</label>
-                        <textarea id="section1description" name="section1description"><?php echo $contentssection[2]["description"]; ?></textarea>
+                    <div class="flex gap-2">
+                        <label class="text-white custom-file-upload text-xs" for="section1description">Description</label>
+                        <textarea id="section1description text-xs" name="section1description"><?php echo $contentssection[2]["description"]; ?></textarea>
                     </div>
-                    <div class="flex gap-3 flex-col">
-                        <label class="text-center text-white custom-file-upload border border-white p-1" for="vid1"><?php echo $vid2 ?></label>
-                        <input type="file" class="inputfile" id="vid2" name="file-vid1">
+                    <div class="flex gap-2 flex-col">
+                        <label class="text-center text-white custom-file-upload border border-white p-1 text-xs" for="vid1"><?php echo $vid2 ?></label>
+                        <input type="file" class="inputfile text-white text-xs" id="vid2" name="file-vid1">
                     </div>
-                    <div class="flex gap-3 flex-col">
-                        <label class="text-center text-white custom-file-upload border border-white p-1" for="vid1"><?php echo $vid3 ?></label>
-                        <input type="file" class="inputfile" id="vid3" name="file-vid2">
+                    <div class="flex gap-2 flex-col">
+                        <label class="text-center text-white custom-file-upload border border-white p-1 text-xs" for="vid1"><?php echo $vid3 ?></label>
+                        <input type="file" class="inputfile text-white text-xs" id="vid3" name="file-vid2">
                     </div>
-                    <div class="flex gap-3 flex-col">
-                        <label class="text-center text-white custom-file-upload border border-white p-1" for="vid1"><?php echo $vid4 ?></label>
-                        <input type="file" class="inputfile" id="vid4" name="file-vid3">
+                    <div class="flex gap-2 flex-col">
+                        <label class="text-center text-white custom-file-upload border border-white p-1 text-xs" for="vid1"><?php echo $vid4 ?></label>
+                        <input type="file" class="inputfile text-white text-xs" id="vid4" name="file-vid3">
                     </div>
-                    <div class="flex gap-3 flex-col">
-                        <label class="text-center text-white custom-file-upload border border-white p-1" for="vid1"><?php echo $vid5 ?></label>
-                        <input type="file" class="inputfile" id="vid5" name="file-vid4">
+                    <div class="flex gap-2 flex-col">
+                        <label class="text-center text-white custom-file-upload border border-white p-1 text-xs" for="vid1"><?php echo $vid5 ?></label>
+                        <input type="file" class="inputfile text-white text-xs" id="vid5" name="file-vid4">
                     </div>
-                    <div class="flex gap-3 flex-col">
-                        <label class="text-center text-white custom-file-upload border border-white p-1" for="vid1"><?php echo $vid6 ?></label>
-                        <input type="file" class="inputfile" id="vid6" name="file-vid5">
+                    <div class="flex gap-2 flex-col">
+                        <label class="text-center text-white custom-file-upload border border-white p-1 text-xs" for="vid1"><?php echo $vid6 ?></label>
+                        <input type="file" class="inputfile text-white text-xs" id="vid6" name="file-vid5">
                     </div>
-                    <div class="flex gap-3 flex-col">
-                        <label class="text-center text-white custom-file-upload border border-white p-1" for="vid1"><?php echo $vid7 ?></label>
-                        <input type="file" class="inputfile" id="vid7" name="file-vid6">
-                    </div>
-                    <div class="flex gap-4 self-end">
-                        <input class="saveBtn" type="submit" name="submit">
+                    <div class="flex gap-2 flex-col">
+                        <label class="text-center text-white custom-file-upload border border-white p-1 text-xs" for="vid1"><?php echo $vid7 ?></label>
+                        <input type="file" class="inputfile text-white text-xs" id="vid7" name="file-vid6">
                     </div>
                     <div class="">
                         <button type='submit' class="bg-white px-3 py-1">Submit</button>
