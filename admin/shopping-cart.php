@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <div class="cart-items-container">
+  <div class="cart-items-container" id="cartitems">
     <div class="cart-items">
       <div class="column select-container">
         <input type="checkbox" id="select" class="select" value="product1">
@@ -60,7 +60,6 @@
     </div>
   </div>
   
-
   <div class="checkout-area">
     <div class="column select-all-checkout">
       <input type="checkbox" id="select-all-checkout" class="select-all-checkout" value="select-all-checkout">
@@ -82,5 +81,4 @@
     </div>
   </div>
 </div>
-
 <?php include('partials/footer.php'); ?>

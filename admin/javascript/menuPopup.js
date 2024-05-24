@@ -159,42 +159,41 @@ function generatePopup(id, category) {
   
   if(category === "espresso" || category === "brew" || category === "noncofeeandtea" || category === "matcha" || category === "beverages") {
       popupHTML = ` 
-      <div class="popupImage">
-        <img src="BLK/${popupImage}.png">
-      </div>
-      <div class="popupContent">
-        <div class="btnClose">
-          <button onclick="closePopup()"><img src="icons/x.png"></button>
+        <div class="popupImage">
+          <img src="BLK/${popupImage}.png">
         </div>
-        <div class="productName">
-          <h1>${items}</h1>
-        </div>
-        <div class="description">
-          <p>Enjoy our creamy ${items}, made with premium espresso, sweetened condensed milk, and whole milk. Perfectly balanced for a smooth, sweet coffee experience.</p>
-        </div>
-        <div class="price">
-          <div class="txt-price"><p>Price:</p></div>
-          <div class="price-list">
-            <p><input type="radio" name="size" value="${price12Oz}"> 12oz: <span>₱${price12Oz}</span> &nbsp | &nbsp <input type="radio" name="size" value="${price160z}"> 16oz: <span>₱${price160z}</span></p>
+        <div class="popupContent">
+          <div class="btnClose">
+            <button onclick="closePopup()"><img src="icons/x.png"></button>
           </div>
-        </div>
-        <div class="quantity">
-          <div><p>Quantity:</p></div>
-          <div class="addMinus">
-            <button class="btnMinus" onclick="updateQuantity(-1, '${category}')">-</button>
-            <input class="quantityInput" type="text" value="1" readonly>
-            <button class="btnAdd" onclick="updateQuantity(1, '${category}')">+</button>
+          <div class="productName">
+            <h1>${items}</h1>
           </div>
-        </div>
-        <div class="total">
-          <p class="totalPrice">Total: <span></span></p>
-        </div>
-        <div class="addBuy">
-          <button class="addCart"><img src=""><i class="fa-solid fa-cart-shopping" style="font-size: 12px;"></i> Add to Cart</button>
-          <button class="buyNow">Buy Now</button>
-        </div>
-      </div>
-    `;
+          <div class="description">
+            <p>Enjoy our creamy ${items}, made with premium espresso, sweetened condensed milk, and whole milk. Perfectly balanced for a smooth, sweet coffee experience.</p>
+          </div>
+          <div class="price">
+            <div class="txt-price"><p>Price:</p></div>
+            <div class="price-list">
+              <p><input type="radio" name="size" value="${price12Oz}"> 12oz: <span>₱${price12Oz}</span> &nbsp | &nbsp <input type="radio" name="size" value="${price160z}"> 16oz: <span>₱${price160z}</span></p>
+            </div>
+          </div>
+          <div class="quantity">
+            <div><p>Quantity:</p></div>
+            <div class="addMinus">
+              <button class="btnMinus" onclick="updateQuantity(-1, '${category}')">-</button>
+              <input class="quantityInput" type="text" value="1" readonly>
+              <button class="btnAdd" onclick="updateQuantity(1, '${category}')">+</button>
+            </div>
+          </div>
+          <div class="total">
+            <p class="totalPrice">Total: <span></span></p>
+          </div>
+          <div class="addBuy">
+            <button class="addCart"><img src=""><i class="fa-solid fa-cart-shopping" style="font-size: 12px;"></i> Add to Cart</button>
+            <button class="buyNow">Buy Now</button>
+          </div>
+        </div>`;
     popupEspresso.innerHTML = popupHTML;
     popupBrew.innerHTML = popupHTML;
     popupNcat.innerHTML = popupHTML; 
