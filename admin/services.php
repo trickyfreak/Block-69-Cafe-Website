@@ -40,7 +40,7 @@ $content_id = 0;
             <div class="title">
             <h6>Cafe Booking Packages</h6>
             <p>Introducing our Cafe Booking Packages - your gateway to unforgettable moments! Our versatile packages fulfill your every need with premium amenities and ambiance. Let us transform your event dreams into reality. Book now and let the enchantment commence!</p>
-                <a class="learn-more" href="cafe-booking-services.html">Learn More</a>
+                <a class="learn-more" href="../admin/packages.php">Learn More</a>
             </div>
         </div>
         <div class="container">

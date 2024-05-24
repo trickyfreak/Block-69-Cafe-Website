@@ -91,4 +91,146 @@ function get_content($conn){
   return $all_content;
 }
 
+
+
+
+
+
+// FUNCTIONS NI AARON PLEASE DON'T TOUCH MY BIRDIE TY
+
+function get_gallerysection($conn){
+    $query = "SELECT * FROM gallerysection";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_galleryimage($conn){
+    $query = "SELECT * FROM galleryimage";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+  
+  function get_galleryvideo($conn){
+    $query = "SELECT * FROM galleryvideo";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function update_image_when_submit($conn) {
+    if(isset($_POST['img_ID']) && !empty($_FILES['file-img']['name'])) {
+        $img_id = $_POST['img_ID'];
+      
+        $file_name = $_FILES['file-img']['name'];
+        $temp_name = $_FILES['file-img']['tmp_name'];
+        $img_url = './galleryImages/' . $file_name;
+        move_uploaded_file($temp_name, $img_url);
+      
+        $conn->query("
+          UPDATE galleryimage 
+          SET img = '$img_url'
+          WHERE img_ID = '$img_id'
+        ");
+        
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+  
+    if(isset($_POST['img_ID1']) || isset($_POST['img_ID2']) || isset($_POST['img_ID3']) || isset($_POST['img_ID4'])) {
+        for($i = 1; $i <= 4; $i++) {
+            if(!empty($_FILES['file-img' . $i]['name'])) {
+                $img_id = $_POST['img_ID' . $i];
+                $file_name = $_FILES['file-img' . $i]['name'];
+                $temp_name = $_FILES['file-img' . $i]['tmp_name'];
+                $img_url = './galleryImages/' . $file_name;
+                move_uploaded_file($temp_name, $img_url);
+            
+                $conn->query("
+                  UPDATE galleryimage 
+                  SET img = '$img_url'
+                  WHERE img_ID = '$img_id'
+                ");
+            }
+        }
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+
+    if(isset($_POST['img_ID5']) || isset($_POST['img_ID6']) || isset($_POST['img_ID7']) || isset($_POST['img_ID8'])) {
+        for($i = 5; $i <= 8; $i++) {
+            if(!empty($_FILES['file-img' . $i]['name'])) {
+                $img_id = $_POST['img_ID' . $i];
+                $file_name = $_FILES['file-img' . $i]['name'];
+                $temp_name = $_FILES['file-img' . $i]['tmp_name'];
+                $img_url = './galleryImages/' . $file_name;
+                move_uploaded_file($temp_name, $img_url);
+            
+                $conn->query("
+                  UPDATE galleryimage 
+                  SET img = '$img_url'
+                  WHERE img_ID = '$img_id'
+                ");
+            }
+        }
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+}
+
+  function update_sectionContent_when_submit($conn) {
+    if(isset($_POST['sectionID'])) {
+        $section_id = $_POST['sectionID'];
+      
+        $title_name = $_POST['section1title'];
+        $description_name = $_POST['section1description'];
+      
+        $conn->query("
+          UPDATE gallerysection 
+          SET title = '$title_name', description = '$description_name'
+          WHERE sectionID = '$section_id'
+        ");
+        
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+}
+
+function update_video_when_submit($conn) {
+    if(isset($_POST['vid_ID']) && !empty($_FILES['file-vid']['name'])) {
+        $vid_id = $_POST['vid_ID'];
+      
+        $file_name = $_FILES['file-vid']['name'];
+        $temp_name = $_FILES['file-vid']['tmp_name'];
+        $vid_url = './galleryImages/' . $file_name;
+        move_uploaded_file($temp_name, $vid_url);
+      
+        $conn->query("
+          UPDATE galleryvideo 
+          SET video = '$vid_url'
+          WHERE vidID = '$vid_id'
+        ");
+        
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+
+    if(isset($_POST['vid_ID1']) || isset($_POST['vid_ID2']) || isset($_POST['vid_ID3']) || isset($_POST['vid_ID4']) || isset($_POST['vid_ID5']) ||  isset($_POST['vid_ID6'])) {
+        for($i = 1; $i <= 6; $i++) {
+            if(!empty($_FILES['file-vid' . $i]['name'])) {
+                $vid_id = $_POST['vid_ID' . $i];
+                $file_name = $_FILES['file-vid' . $i]['name'];
+                $temp_name = $_FILES['file-vid' . $i]['tmp_name'];
+                $vid_url = './galleryImages/' . $file_name;
+                move_uploaded_file($temp_name, $vid_url);
+            
+                $conn->query("
+                  UPDATE galleryvideo 
+                  SET video = '$vid_url'
+                  WHERE vidID = '$vid_id'
+                ");
+            }
+        }
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+}
 ?>
