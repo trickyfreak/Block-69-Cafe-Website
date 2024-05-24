@@ -202,8 +202,8 @@ if($user_type == 'admin'){
                     <label class="text-center text-white custom-file-upload border border-white p-1" for="image8"><?php echo $img8 ?></label>
                     <input type="file" class="inputfile" id="image8" name="image8">
                 </div>
-                <div class="flex gap-4 self-end">
-                    <input class="saveBtn" type="submit" name="submit">
+                <div class="">
+                        <button type='submit' class="bg-white px-3 py-1">Submit</button>
                 </div>
             </div>
         </div>
