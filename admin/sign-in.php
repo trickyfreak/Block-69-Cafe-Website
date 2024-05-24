@@ -6,6 +6,16 @@ include './partials/header.php';
 
 <link rel="stylesheet" href="css/sign-in.css">
 
+<div id="incorrectuser">
+  <p>Incorrect username. Please input correct credentials.</p> 
+</div>
+<div id="incorrectpass">
+  <p>Incorrect password. Please input correct credentials.</p> 
+</div>
+<div id="nullaccount">
+  <p>No user account detected. Join now before signing in.</p> 
+</div>
+
 <form action="sign-in.php" method="post">
   <div class="sign-in-container">
     <h1 h1>Sign in or create an account</h1>
@@ -70,9 +80,26 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
   
         }
       }elseif(!($result1 && mysqli_num_rows($result1) > 0)){
-        echo "incorrect username";
+        echo "<script>
+              document.getElementById('incorrectuser').style.display = 'flex';
+              document.addEventListener('click', function() {
+                document.getElementById('incorrectuser').style.display = 'none';
+              });
+            </script>";
       }elseif(!($result2 && mysqli_num_rows($result2) > 0)){
-        echo "incorrect password";
+        echo "<script>
+              document.getElementById('incorrectpass').style.display = 'flex';
+              document.addEventListener('click', function() {
+                document.getElementById('incorrectpass').style.display = 'none';
+              });
+            </script>";
+      }else{
+        echo "<script>
+              document.getElementById('nullaccount').style.display = 'flex';
+              document.addEventListener('click', function() {
+                document.getElementById('nullaccount').style.display = 'none';
+              });
+            </script>";
       }
     }
 }

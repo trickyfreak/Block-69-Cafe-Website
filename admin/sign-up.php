@@ -20,6 +20,9 @@ include_once('config/connect.php')
       <div id="success" class="success">
         Successfully signed up. 
       </div>
+      <div id="userdetected" class="success">
+        Username is already in use. 
+      </div>
       <input type="text" name="username" placeholder="* Username" required autocomplete="off">
       <input type="text" name="email" placeholder="* Email Address" required autocomplete="off">
       <input type="text" name="password" placeholder="* Password" required autocomplete="off">
@@ -48,20 +51,31 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $status = "customer";
 
     if(!empty($username) && !empty($email) && !empty($password)){
+      $querySelect = "SELECT * FROM useraccounts WHERE username='$username' AND status='$status'";
+      $result = mysqli_query($conn, $querySelect);
 
-      $query = "INSERT INTO useraccounts (status, username, email, password) VALUES ('$status', '$username', '$email', '$password')";
+      if (mysqli_num_rows($result) > 0) {
+        echo "<script>
+                document.getElementById('userdetected').style.display = 'flex';
+                document.addEventListener('click', function() {
+                  document.getElementById('userdetected').style.display = 'none';
+                });
+              </script>";
+      }else{
+        $query = "INSERT INTO useraccounts (status, username, email, password) VALUES ('$status', '$username', '$email', '$password')";
 
-      mysqli_query($conn, $query);
+        mysqli_query($conn, $query);
 
-      echo "<script>
-              document.getElementById('success').style.display = 'flex';
-              document.addEventListener('click', function() {
-                document.getElementById('success').style.display = 'none';
-              });
-            </script>";
-      
-      include('partials/footer.php'); 
-      die;
+        echo "<script>
+                document.getElementById('success').style.display = 'flex';
+                document.addEventListener('click', function() {
+                  document.getElementById('success').style.display = 'none';
+                });
+              </script>";
+        
+        include('partials/footer.php'); 
+        die;
+      }
 
     }elseif(!empty($username) && empty($email) && !empty($password)){
       echo "Please enter email";
