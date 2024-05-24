@@ -1,13 +1,4 @@
 function showCategory(categoryID) {
-  // const categories = document.querySelectorAll('.category');
-  // const selectedCategory = document.getElementById(categoryID);
-  // // Hide all categories
-  // categories.forEach(category => {
-  //   category.style.display = 'none';
-  // });
-  // // Show the selected category
-  // selectedCategory.style.display = 'block';
-
   // Get all elements with class "category"
   const categories = document.getElementsByClassName('category');
   // Loop through each category element
@@ -22,3 +13,4 @@ function showCategory(categoryID) {
       }
   }
 }
+

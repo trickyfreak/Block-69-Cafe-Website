@@ -1,0 +1,136 @@
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.address-container {
+  height: 120px;
+  width: 1250px;
+  box-shadow: 1px 1px 8px rgb(0, 0, 0, .1);
+}
+.products-ordered-container {
+  box-shadow: 1px 1px 8px rgb(0, 0, 0, .1);
+}
+.address-text {
+  width: 100%;
+  margin-left: 1.5em;
+  margin-top: 1.5em;
+}
+.address-text p {
+  font: 400 1.5em League Spartan;
+}
+.address-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 1.5em;
+  margin-top: 1.5em;
+}
+.contact-number,
+.address {
+  width: 50%;
+}
+.contact-number label,
+.address label {
+  font: 400 1.2em League Spartan;
+}
+.contact-number input,
+.address input {
+  padding: 0.4em 3em;
+  -webkit-appearance: none;
+  border: 1px solid black;
+}
+.products-summary-container {
+  height: 4em;
+  width: 1250px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.products-ordered {
+  margin-left: 1.5em;
+}
+.products-ordered p {
+  font: 400 1.4em League Spartan;
+}
+.item-image {
+  width: 80px;
+  border-radius: 20px;
+}
+.shipping-container {
+  height: 5em;
+  width: 1250px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  border-top: 1px dashed grey;
+}
+.shipping-fee {
+  margin-right: 1em;
+}
+.order-total-container {
+  height: 5em;
+  width: 1250px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  border-top: 1px dashed grey;
+}
+.order-total {
+  margin-right: 1em;
+}
+.orders {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2em 0em;
+}
+.item-image {
+  margin-left: 1.5em;
+}
+.item-subtotal {
+  margin-right: 1.5em;
+}
+.mod-container {
+  width: 1250px;
+  box-shadow: 1px 1px 8px rgb(0, 0, 0, .1);
+}
+.txt-payment {
+  height: 2.5em;
+  margin-left: 1.5em;
+  margin-top: 1em;
+}
+.txt-payment p {
+  font: 400 1.4em League Spartan;
+}
+.payment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  align-items: end;
+  justify-content: center;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  border-top: 1px dashed grey;
+}
+.payment-info > div {
+  margin-right: 1.5em;
+}
+.place-order {
+  height: 6em;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  border-top: 1px dashed grey;
+}
+.place-order button {
+  margin-right: 1.5em;
+  padding: 10px 25px;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font: 500 1em League Spartan;
+}

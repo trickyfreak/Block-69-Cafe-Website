@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
+* {
+  font-family: League Spartan;
+}
 a{
   text-decoration: none;
 }
@@ -7,12 +8,12 @@ li{
   list-style: none;
 }
 
-.container {
-  height: 35em;
+.sidebarAndContent {
+  height: 54em;
   width: 100%;
   display: flex;
 }
-.container a{
+.sidebarAndContent a{
   color: black;
 }
 .sidebar {
@@ -46,11 +47,11 @@ li{
 .contents {
   height: 35em;
   width: 82%;
-  padding: 15px 0px 0px 50px;
+  padding: 15px 50px 0px 50px;
 }
-.txtEspresso p
+.txtEspresso p,
 .txtBrew p {
-  font: 400 1em League Spartan;
+  font: 400 1.1em League Spartan;
   color: grey;
   margin-top: 5px;
 }
@@ -91,7 +92,7 @@ hr {
   gap: 1.25em;
 }
 .option span {
-  font: 300 0.9em League Spartan;
+  font: 300 0.8em League Spartan;
   color: grey;
 }
 
@@ -114,12 +115,14 @@ hr {
   width: 9em;
   border-radius: 100%;
   margin-bottom: 3px;
+  cursor: pointer;
 }
 .menu-options p {
   font: 400 1.1em League Spartan;
   color: black;
   margin-bottom: 5px;
   letter-spacing: 0.5px;
+  cursor: pointer;
 }
 .category .menu-options p span {
   font: 300 0.8em League Spartan;
@@ -135,6 +138,293 @@ h2 span {
 }
 .category h2 {
   font: 700 26px League Spartan;
+}
+.txtDrinks, .txtFoods {
+  display: flex;
+  align-items: center;
+}
+.cms-add {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 25px;
+}
+.cms-add button {
+  padding: 1em 2em;
+  background: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.cms-add button:hover {
+  background-color: black;
+  color: white;
+}
+.cms-edit-delete {
+  position: absolute;
+  display: flex;
+  margin-left: 9.2em;
+  margin-bottom: 8em;
+  gap: 0.5em;
+}
+.cms-edit-delete button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.fa-plus,
+.fa-trash-can,
+.fa-pen-to-square {
+  font-size: 1.2em;
+}
+
+.bg-modal-add{
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, .7);
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content-add{
+  width: 43em;
+  text-align: center;
+  color: black;
+  background-color: white;
+  padding: 0.5em;
+  border: 3px solid black;
+}
+.modal-title, .modal-caption{
+  padding: .5em;
+  color: black;
+  font-family: League Spartan;
+  font-size: 18px;
+  font-weight: bold;
+}
+.edit-content {
+  padding: 0.5em 3em;
+  font: 500 1.2em League Spartan;
+  border: 1px solid black;
+  text-align: center;
+}
+.inputfile {
+  display: none;
+}
+
+.saveBtn{
+  font-family: League Spartan;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  border: 1px solid white;
+  background-color: black;
+  width: 6.5em;
+  padding: 0.5em 0.8em;
+  position: relative;
+  left: 15.4em;
+}
+.saveBtn:hover{
+  background-color: rgb(26, 26, 26);
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  font-family: League Spartan;
+  font-size: 18px;
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 1em;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+}
+.custom-file-upload:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.bg-modal-add {
+  display: none;
+}
+
+.close{
+  position: relative;
+  left: 20.6em;
+  font-size: 2em;
+  width: 30px !important;
+  cursor: pointer;
+}
+
+.popup {
+  height: 28em;
+  width: 58em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 3em;
+  top: 100%;
+  left: 50%;
+  visibility: hidden;
+  transform: translate(-50%,-50%) scale(0.2);
+  transition: transform 0.3s, top 0.3s;
+  z-index: 1000;
+  filter: blur(0px);
+}
+.open-popup {
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(1);
+}
+body .popup-open{
+  overflow: hidden;
+}
+.blur-background {
+  filter: blur(5px);
+  transition: filter 0.4s;
+}
+.popup img {
+  width: 25em;
+  border-radius: 15%;
+}
+.popupImage {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popupContent {
+  height: 100%;
+  width: 50%;
+  padding: 60px 18px 25px 10px;
+  column-gap: 20px;
+}
+.popupContent > div {
+  margin-bottom: 15px; 
+}
+.btnClose {
+  display: flex;
+  justify-content: end;
+}
+.btnClose button {
+  border: none;
+  background: transparent;
+  right: 0%;
+  cursor: pointer;
+}
+.btnClose button img {
+  width: 1.5em;
+  transition: all 0.4s;
+}
+.btnClose button img:hover {
+  width: 1.6em;
+}
+.description p {
+  color: #333333;
+  font: 400 18px League Spartan;
+}
+.price {
+  display: flex;
+  margin-top: 30px;
+}
+.price > div {
+  margin-right: 15px;
+}
+.txt-price p {
+  font: 400 18px League Spartan;
+  color:gray;
+}
+.price-list p {
+  font: 400 19px League Spartan;
+  color: #333333;
+}
+.price-list span {
+  font: 500 20px League Spartan;
+}
+
+
+.quantity {
+  margin-top: 32px;
+}
+.quantity > div {
+  margin-right: 15px;
+}
+.quantity,
+.addMinus {
+  display: flex;
+  align-items: center;
+}
+.quantity p, 
+.total p {
+  font: 400 18px League Spartan;
+  color:gray;
+}
+.quantityInput {
+  width: 1em;
+  text-align: center;
+  color: rgba(0, 0, 0, .8);
+  border: 1px solid rgba(0, 0, 0, .09);
+  -webkit-appearance: none;
+  padding: 3px 10px;
+}
+.total {
+  margin-top: 30px;
+}
+.total span {
+  font: 500 19px League Spartan;
+  color: black;
+}
+.btnAdd,
+.btnMinus {
+  border: none;
+  background: transparent;
+  -webkit-appearance: none;
+  border: 1px solid rgba(0, 0, 0, .09);
+  padding: 3px 8px 3px 8px;
+  cursor: pointer;
+}
+.addBuy {
+  height: 6.75em;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.addBuy > button {
+  margin-right: 18px;
+}
+.addCart,
+.buyNow {
+  padding: 10px 25px;
+  cursor: pointer;
+  border-radius: 20px;
+  font: 600 16px League Spartan;
+  border: 2px solid black;
+  transition: all 0.4s;
+}
+.addCart {
+  color: black;
+  background: transparent;
+}
+.buyNow {
+  color: white;
+  background-color: black;
+}
+.addCart:hover {
+  background-color: black;
+  color: white;
+}
+.buyNow:hover {
+  background: transparent;
+  color: black;
 }
 
 /* Extra Large Devices (large desktops, 1280px and up) */

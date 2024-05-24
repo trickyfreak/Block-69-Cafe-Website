@@ -8,7 +8,6 @@ html, body{
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  
 }
 
 .to-top{
@@ -92,6 +91,19 @@ nav .fa-cart-shopping{
 .fa-right-from-bracket{
   margin-top: 4px;
   /* margin-right: 10em; */
+}
+#Cart span {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 21px;
+  width: 21px;
+  font: 500 12px League Spartan;
+  border-radius: 100%;
+  background-color: wheat;
+  top: 60px;
+  right: 5.8em;
 }
 
 nav .user-icon{
