@@ -37,10 +37,6 @@
     font-size: 18px;
     border: 1px solid white;
 }
-.edit-btn:hover {
-    background-color: rgb(26, 26, 26);
-}
-
 .edit-btnWhite{
     cursor: pointer;
     color: black;

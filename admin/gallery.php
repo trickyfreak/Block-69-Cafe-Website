@@ -24,7 +24,7 @@ include_once('partials/header.php');
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="css/gallery.css">
+<link rel="stylesheet" href="../admin/css/gallery.css">
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
