@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2024 at 02:51 AM
+-- Generation Time: May 24, 2024 at 10:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -43,9 +43,9 @@ INSERT INTO `galleryimage` (`img_ID`, `img`) VALUES
 (4, './galleryImages/section2Image3.jpeg'),
 (5, './galleryImages/section2Image4.jpeg'),
 (6, './galleryImages/section3Image1.jpeg'),
-(7, './galleryImages/section3Image2.jepg'),
+(7, './galleryImages/section3Image2.jpeg'),
 (8, './galleryImages/section3Image3.jpeg'),
-(9, './galleryImages/section3Image4.jpg');
+(9, './galleryImages/section3Image4.jpeg');
 
 -- --------------------------------------------------------
 
@@ -64,9 +64,9 @@ CREATE TABLE `gallerysection` (
 --
 
 INSERT INTO `gallerysection` (`sectionID`, `title`, `description`) VALUES
-(1, 'GALLERY', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
-(2, 'BLK Video Advertisement', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'),
-(3, 'BLK 69 REELS', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua');
+(1, 'GALLERY', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+(2, 'Calling all inspiring artists who love tote bags!', 'For singles, this is your chance to experience a one-of-a-kind self-care, indulge in brunch, and paint a tote bag. For those in a relationship, spice things up with this exciting new date idea!'),
+(3, 'BLK 69 REELS', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
 -- --------------------------------------------------------
 
@@ -85,13 +85,13 @@ CREATE TABLE `galleryvideo` (
 --
 
 INSERT INTO `galleryvideo` (`vidID`, `video`, `sectionID`) VALUES
-(15, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 2),
-(16, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
-(17, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
-(18, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
-(19, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
-(20, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3),
-(21, './galleryImages/Valorant 2024.01.09 - 23.09.03.02.DVR - Trim.mp4\"', 3);
+(1, './galleryImages/BLKvideo.mp4', 2),
+(2, './galleryImages/video1.mp4', 3),
+(3, './galleryImages/video2.mp4', 3),
+(4, './galleryImages/video3.mp4', 3),
+(5, './galleryImages/video4.mp4', 3),
+(6, './galleryImages/video5.mp4', 3),
+(7, './galleryImages/video6.mp4', 3);
 
 -- --------------------------------------------------------
 
@@ -199,7 +199,7 @@ ALTER TABLE `galleryvideo`
 -- AUTO_INCREMENT for table `homecontent`
 --
 ALTER TABLE `homecontent`
-  MODIFY `content_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `content_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
