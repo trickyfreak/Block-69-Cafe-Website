@@ -1,4 +1,17 @@
 
+
+#incorrectuser, #incorrectpass, #nullaccount{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-family: league spartan;
+  font-size: 23px;
+  background-color: rgb(211, 211, 211);
+  color: black;
+  padding: 1em;
+}
+
+
 .sign-in-container h1, p, a{
   font-family: League Spartan;  
 }
@@ -12,10 +25,24 @@
   margin: 0em 0em 1em 0em;
 }
 
+.join-container{
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0em;
+}
+
 .forgot-info{
+  margin-left: .3em;
   color: #615027;
   font-weight: bold;
   font-size: 21px !important;
+}
+.form-container a:nth-child(4){
+  margin-top: 1em;
 }
 
 .sign-in-container .form-container input[type="text"] {
@@ -62,6 +89,7 @@
   top: 2em;
   left: 17em;
 
+  cursor: pointer;
   padding: 1em;
   color: white;
   font-weight: bold;
@@ -78,7 +106,7 @@
 }
 
 .sign-in-container{
-  margin: 6em;
+  margin: 6em 6em 3em 6em;
   display: flex;
   justify-content: center;
   align-items: center;
