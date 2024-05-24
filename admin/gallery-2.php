@@ -27,8 +27,7 @@ for ($i=0; $i < count($content_images); $i++) {
   $dialog_close_class = "dialog-close " . $content_images[$i]['img_ID'];
   $img_url = $content_images[$i]['img'];
   $img_id = $content_images[$i]['img_ID'];
-
-      echo "
+?>
         <dialog class='$dialog_class'>
         <button class='$dialog_close_class'>Close</button>
         hello $img_url
@@ -43,8 +42,9 @@ for ($i=0; $i < count($content_images); $i++) {
           <button type='submit'>Submit</button>
         </form>
         </dialog>
-        <button class='$dialog_show_class'>Show the dialog</button>
+        <button class=<?php echo $dialog_show_class;?>>Show the dialog</button>
       ";
+    <?php
     }
 ?>
 

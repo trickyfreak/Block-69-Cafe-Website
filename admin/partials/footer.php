@@ -5,7 +5,7 @@
     <ul>
       <p>About Us</p>
       <li><a href="/BLOG.LOR/BLOG.html">Company News</a></li>
-      <li><a href="/Gallery.Melendres/Gallery.html">Gallery</a></li>
+      <li><a href="../admin/gallery.php">Gallery</a></li>
       <li><a href="../admin/contact.php">Contact Information</a></li>
     </ul>
     <ul>
