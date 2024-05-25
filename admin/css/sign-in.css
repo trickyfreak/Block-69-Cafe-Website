@@ -1,4 +1,17 @@
 
+
+#incorrectuser, #incorrectpass, #nullaccount{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-family: league spartan;
+  font-size: 23px;
+  background-color: rgb(211, 211, 211);
+  color: black;
+  padding: 1em;
+}
+
+
 .sign-in-container h1, p, a{
   font-family: League Spartan;  
 }

@@ -9,10 +9,6 @@ use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
 require 'vendor/autoload.php';
 
-function notification(){
-  
-}
-
 function check_login($conn){
   return isset($_SESSION['username']);
 }
@@ -56,7 +52,7 @@ function send_pass_reset($get_name, $get_email, $token){
                       <h1>Hey ".$get_name."!</h1>
                       <p>You are receiving this email because we received a password reset request from your account.</p>
                       <br><br>
-                      <a href='http://localhost/Block%2069/admin/password-reset.php?token=$token&email=$get_email' style='color: black;'>Password Recovery Link</a>
+                      <a href='http://localhost/block-69-cafe-website/admin/password-reset.php?token=$token&email=$get_email' style='color: black;'>Password Recovery Link</a>
                       <br><br>
                       <p>Thanks,</p>
                       <p>The Block 69 Cafe Team</p>
@@ -67,4 +63,12 @@ function send_pass_reset($get_name, $get_email, $token){
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }
+}
+
+function cartcontents($conn){
+  $query = "SELECT * FROM cartcontent";
+  
+  $result = mysqli_query($conn, $query);
+  $cart_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $cart_content;
 }
