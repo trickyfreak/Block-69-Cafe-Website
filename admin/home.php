@@ -26,14 +26,13 @@
   
   if($user_type == 'admin'){
   echo '
-  <div style="background-color: white; margin: 2em;">
+    <div style="background-color: white; margin: 2em;">
 
-    <a href="dashboard.php" class="dashboard-btn"><i class="fa-solid fa-users-gear"></i> Dashboard</a>
+      <a href="dashboard.php" class="dashboard-btn"><i class="fa-solid fa-users-gear"></i> Dashboard</a>
 
-    <button class="add-btn" name="edit-btn"><i class="fa-solid fa-plus"></i> Add Content</button>
+      <button class="add-btn" name="edit-btn"><i class="fa-solid fa-plus"></i> Add Content</button>
 
-  </div>
-  ';
+    </div>';
   }
 
   echo '

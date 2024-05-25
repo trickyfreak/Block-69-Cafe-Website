@@ -1,0 +1,380 @@
+/*START: BLOG CONTENT*/
+.BlogMainContainer
+{
+    position: relative;
+    bottom: 90px;
+    margin: 8em 25px;
+}
+
+.BlogDivider
+{
+    margin: 1em 1.5em;
+}
+.BlogDivider h1
+{
+    font-family: League Spartan;
+    font-size: 60px;
+    font-weight: 800;
+}
+.BlogDivider hr
+{
+    border-top: 3px solid black;
+}
+
+.BlogDivider button
+{
+    z-index: 100;
+    position: absolute;
+    top: 0em;
+    right: -2.7em;
+    margin: 0.5em 4.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 2px;
+    border-width: 1.3px;
+    padding: 13px 5px;
+    width: 120px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+.BlogDivider button:hover
+{
+    background: rgba(0, 0, 0, 0.8);
+    border-style: solid;
+    border-width: 1.3px;    
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/*BLOG INPUT: MODAL POPUP*/
+.blog_PopUp {
+    position: fixed;
+    width: 50em;
+    background: white;
+    border-radius: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    padding: 20px 40px;
+    visibility: hidden;
+    transition: transform 0.8s, top 0.8s, visibility 0s 0.5s;
+    z-index: 1001; /* Ensure the popup is above the backdrop */
+}
+.blog_PopUp h2
+{
+    font-family: League Spartan;
+    font-size: 40px;
+    font-weight: 800;
+    text-align: center;
+    padding: 20px 0 20px;
+}
+.blog-to-add-input label
+{
+    font-family: League Spartan;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 0 20px;
+}
+.blog-to-add-input #blogTitle,
+.blog-to-add-input #blogDate 
+{
+    margin: 5px 0 25px;
+    width: 100%;
+    height: 30px;
+    border-width: 2px;
+    border-color: black; 
+    border-style: solid;   
+}
+.blog-to-add-input #blogText 
+{
+    margin: 5px 0 25px;
+    width: 100%;
+    height: 15em;
+    border-width: 2px;
+    border-color: black; 
+    border-style: solid;  
+    resize: none;
+}
+
+.blog-open-popup 
+{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.5s, top 0.1s, visibility 0s 0s;
+}
+.blogClosePopupbtn
+{
+    position: absolute;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    right: 20px;
+    opacity: 50%;
+    transition: 0.1s;
+}
+.blogClosePopupbtn:hover
+{
+    opacity: 100%;
+}
+
+.blog_PopUp .submitBtn input 
+{
+    display: block;
+    width: 10em;
+    margin: 30px auto 20px;
+    padding: 15px 20px;
+    background: rgb(255, 255, 255);
+    border: 2px;
+    outline: black;
+    font-family: League Spartan;
+    font-size: 20px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1.3px;    
+    cursor: pointer;
+}
+.blog_PopUp .submitBtn input:hover 
+{
+    background: rgb(0, 0, 0, 0.8);
+    border: 2px;
+    font-family: League Spartan;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    border-width: 1.3px;    
+    cursor: pointer;
+}
+
+/* Backdrop overlay */
+.blogBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.5s, opacity 0.5s;
+    z-index: 1000; 
+}
+
+.blogBackdrop-active {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s 0s, opacity 0.8s;
+}
+
+/* MESSAGE OF UPLOAD SUCCESS */
+.blogMessageSuccess
+{
+    display: block;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 0 auto;
+    transition: opacity 0.7s ease-out;
+}
+.blogMessageSuccess.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.blogAlertMsg 
+{
+    padding: 20px 50px;
+}
+.blogAlertMsg img
+{
+    position: absolute;
+    cursor: pointer;
+    width: 20px;
+    height: auto;
+    top: 10em;
+    right: 11px;
+    opacity: 50%;
+    transition: 0.1s;
+}
+.blogAlertMsg img:hover
+{
+    opacity: 100%;
+}
+.blogAlertMsg h3
+{
+    font-family: League Spartan;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+}
+.blogAlertMsg p
+{
+    font-family: League Spartan;
+    font-size: 15px;
+    padding: 10px 0 0;
+    color: white;
+}
+/* MESSAGE OF UPLOAD SUCCESS */
+
+
+
+/*START: ARTICLE*/
+.BlogMainContainer .blog-group
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.BlogContainer
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.blog-group
+{
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 25px 3px rgba(174, 174, 174, 0.5);
+    margin: 1em 0em 1em 1em; /*pagitan per box*/
+    border-radius: 3px;
+    align-items: center;
+    padding: 30px;
+    width: 80%;
+    height: 470px;
+}
+
+
+.blog-group img
+{
+    width: 100%;
+    height: 80%;
+    border-radius: 3px;
+    cursor: pointer;
+    /*Centers the Item*/
+    display: block;
+    margin-top: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    /*Centers the Item*/
+}
+.blog-group h2
+{
+    margin: 1em 0 0;
+    font-family: League Spartan;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+}
+.blog-group .blogReadMore 
+{
+    position: relative;
+    top: 1.5em;
+    display: block;
+    margin: auto;
+    background: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: white;
+    border-style: none;
+    border-radius: 2px;
+    border-width: 1.3px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.blog-group .blogToDelete
+{
+    display: block;
+    margin: auto;
+    position: relative;
+    bottom: 24.5em;
+    left: 8.8em;
+    border: none;
+    background: rgb(186, 0, 0,0.7);
+    padding: 8px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;  
+    border-radius: 2px;  
+    cursor: pointer;
+}
+.indivblog div:hover
+{
+    /*
+    background-color: rgba(207, 207, 207, 0.6);
+    */
+    transition: 0.5s;
+    box-shadow: 0px 0px 25px 3px rgba(120, 120, 120, 0.7);
+    
+}
+.indivblog div:hover img
+{
+    /*
+    box-shadow: 0px 0px 10px 3px rgba(165, 165, 165, 0.3);
+    */
+    transition: 0.3s;
+}
+.blog-group .blogReadMore:hover
+{
+    background: rgb(233, 233, 233);
+    color: black;
+    font-weight: bold;
+    border-style: solid;
+    border-radius: 2px;
+    border-width: 1.3px;    
+    transition: 0.3s;
+    padding: 6px 15px;
+}
+.blog-group .blogToDelete:hover
+{
+    background: rgba(255, 0, 0);
+}
+
+
+/*END: ARTICLE*/
+/*END: BLOG CONTENT*/
+
+/*FILE: BLOG TO DELETE*/
+.mainContainerToDelete {
+    position: relative;
+    width: 80%;
+    height: 20em; 
+    margin: auto; /* Center the container within its parent horizontally */
+}
+
+.mainContainerToDelete .blogToDelete {
+    background: rgb(255, 255, 255);
+    /* Center the element horizontally and vertically */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    /* Use flexbox to center the text inside */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center text horizontally */
+    box-shadow: 0em 1px 10px rgb(0, 0, 0, 0.4);
+    border-radius: 20px;
+}
+.mainContainerToDelete .blogToDelete h2
+{
+    margin: 0; 
+    font-family: League Spartan;
+    font-size: 30px;
+}
+.mainContainerToDelete .blogToDelete img
+{
+    width: 5em;
+    height: auto;
+    padding: 15px;
+}
+
