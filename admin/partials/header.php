@@ -34,6 +34,7 @@
   <!-- SCRIPT -->
   <script src="https://kit.fontawesome.com/266d743c96.js" crossorigin="anonymous"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 
 <body>
@@ -52,7 +53,7 @@
   </a>
   <nav id="mainNav">
     <ul>
-      <img src="Icons/newlogo.png" onclick="window.location.href='../admin/home.php'" style="cursor: pointer;" alt="">
+      <img id="logoButton" src="Icons/newlogo.png" onclick="window.location.href='../admin/home.php'" style="cursor: pointer;" alt="">
       <input type="checkbox" id="check">
       <label for="check" class="checkbtn">
         <i class="fa fa-bars"></i>
@@ -70,7 +71,7 @@
     if($userActive){
         echo '
         <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"><span>0</span></i></a>
-        <a href="sign-out.php"  id="User"><i class="fa-sharp fa-solid fa-right-from-bracket" style="font-size: 25px; margin-right: 10px;"></i></a>
+        <a href="sign-out.php" id="Sign-out"><i class="fa-sharp fa-solid fa-right-from-bracket" style="font-size: 25px; margin-right: 10px;"></i></a>
         </div>';
     }else{
         echo '<a href="sign-in.php" id="Sign-in">Login</a>

@@ -1,0 +1,58 @@
+
+.navigationPanel{
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+    position: fixed;
+    margin: -4em 0em 0em 0em;
+}
+.navigationPanel #logoButton{
+    width: 5.5em;
+  /* border: 1px solid black; */
+  filter: brightness(100%);
+  margin: -9em 2em;
+  margin-right: 2.5em;
+  margin-bottom: 5em;
+}
+.navigationPanel .container{
+    justify-content: center;
+    align-items: center;
+    padding: 5em;
+    width: 4.4em;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.navigationPanel button{
+    z-index: 1;
+    text-align: left;
+    font-family: league spartan;
+    font-size: 15px;
+    padding: 2em;
+    border-radius: 10px;
+    width: 15em;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+.navigationPanel button i {
+    margin-right: 2.7em; 
+    margin-left: -.5em;
+    font-size: 1.5em;
+}
+.navigationPanel .backgroundDesign{
+    z-index: 0;
+    margin-left: -3em; 
+    background-color: rgb(77, 77, 77);
+    padding: 1em;
+    position: absolute;
+    left: 0;
+    height: 37em;
+    width: 6em;
+    border-top-right-radius: 100em;
+    border-bottom-right-radius: 100em;
+}
