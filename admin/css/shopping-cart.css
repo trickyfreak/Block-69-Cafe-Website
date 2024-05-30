@@ -80,8 +80,19 @@ a {
 .total-price p {
   color: green;
 }
-.delete-button a {
+.delete-button button {
+  background: transparent;
+  border: none;
+  font: 400 17px League Spartan;
   color: red;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.delete-button button:hover {
+  font: 600 18px League Spartan;
+}
+.delete-button button:active {
+opacity: 0.2;
 }
 
 .checkout-area {
