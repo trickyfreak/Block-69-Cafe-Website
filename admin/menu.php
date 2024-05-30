@@ -167,9 +167,9 @@
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'espresso\')">
-              <img src="'.$item_image.'" onclick="openPopup()">
-              <p onclick="openPopup()">'.$item_name.'</p>
+            <div class="menu-option" onclick="generatePopup(\''.$item['item_name'].'\', \'espresso\')">
+              <img src="'.$item['item_image'].'" onclick="openPopup()">
+              <p onclick="openPopup()">'.$item['item_name'].'</p>
             </div>
           </div>
         ';
@@ -189,16 +189,16 @@
               <div class="menuContainer" id="brewMenuContainer">';
       
       foreach($brew_items as $item){
-        $item_id = $item['item_id'];
-        $item_image = $item['item_image'];
-        $item_name = $item['item_name'];
-        $item_subname = $item['item_subname'];
+        $item_id = 'item_id'.$item['item_id'];
+        $item_image = 'item_image'.$item['item_id'];
+        $item_name = 'item_name'.$item['item_id'];
+        $item_subname = 'item_subname'.$item['item_id'];
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'brew\')">
-              <img src="'.$item_image.'" onclick="openPopup()">
-              <p onclick="openPopup()">'.$item_name.'</p>
+            <div class="menu-option" onclick="generatePopup(\''.$item['item_name'].'\', \'brew\')">
+              <img src="'.$item['item_image'].'" onclick="openPopup()">
+              <p onclick="openPopup()">'.$item['item_name'].'</p>
             </div>
           </div>
         ';
@@ -211,16 +211,16 @@
               </div>
               <div class="menuContainer" id="brewMenuContainerSC">';
       foreach($brewsweetcream_items as $item){
-        $item_id = $item['item_id'];
-        $item_image = $item['item_image'];
-        $item_name = $item['item_name'];
-        $item_subname = $item['item_subname'];
+        $item_id = 'item_id'.$item['item_id'];
+        $item_image = 'item_image'.$item['item_id'];
+        $item_name = 'item_name'.$item['item_id'];
+        $item_subname = 'item_subname'.$item['item_id'];
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'brew\')">
-              <img src="'.$item_image.'" onclick="openPopup()">
-              <p onclick="openPopup()">'.$item_name.'</p>
+            <div class="menu-option" onclick="generatePopup(\''.$item['item_name'].'\', \'brew\')">
+              <img src="'.$item['item_image'].'" onclick="openPopup()">
+              <p onclick="openPopup()">'.$item['item_name'].'</p>
             </div>
           </div>
         ';
@@ -238,16 +238,16 @@
               </div>
               <div class="menuContainer" id="ncatMenuContainer">';
       foreach($noncoffeeandtea_items as $item){
-        $item_id = $item['item_id'];
-        $item_image = $item['item_image'];
-        $item_name = $item['item_name'];
-        $item_subname = $item['item_subname'];
+        $item_id = 'item_id'.$item['item_id'];
+        $item_image = 'item_image'.$item['item_id'];
+        $item_name = 'item_name'.$item['item_id'];
+        $item_subname = 'item_subname'.$item['item_id'];
 
         echo '
           <div class="menu-options" id="'.$item_id.'">
-            <div class="menu-option" onclick="generatePopup(\''.$item_name.'\', \'noncoffeeandtea\')">
-              <img src="'.$item_image.'" onclick="openPopup()">
-              <p onclick="openPopup()">'.$item_name.'</p>
+            <div class="menu-option" onclick="generatePopup(\''.$item['item_name'].'\', \'noncoffeeandtea\')">
+              <img src="'.$item['item_image'].'" onclick="openPopup()">
+              <p onclick="openPopup()">'.$item['item_name'].'</p>
             </div>
           </div>
         ';
