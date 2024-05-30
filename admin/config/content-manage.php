@@ -247,7 +247,7 @@ function update_section_and_image_of_package($conn) {
         $section_id = $_POST['sectionID'];
         
         // Update section content
-        if (isset($_POST['section1title']) && isset($_POST['section1description'])) {
+        if (isset($_POST['section1title']) || isset($_POST['section1description'])) {
             $title_name = $conn->real_escape_string($_POST['section1title']);
             $description_name = $conn->real_escape_string($_POST['section1description']);
             
