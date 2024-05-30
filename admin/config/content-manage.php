@@ -122,6 +122,14 @@ function get_gallerysection($conn){
     return $all_content;
   }
 
+  function get_packagesection($conn){
+    $query = "SELECT * FROM packagesection";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
   function update_image_when_submit($conn) {
     if(isset($_POST['img_ID']) && !empty($_FILES['file-img']['name'])) {
         $img_id = $_POST['img_ID'];
@@ -233,4 +241,39 @@ function update_video_when_submit($conn) {
         echo "<meta http-equiv='refresh' content='0'>";
     }
 }
+
+function update_section_and_image_of_package($conn) {
+    if (isset($_POST['sectionID'])) {
+        $section_id = $_POST['sectionID'];
+        
+        // Update section content
+        if (isset($_POST['section1title']) && isset($_POST['section1description'])) {
+            $title_name = $conn->real_escape_string($_POST['section1title']);
+            $description_name = $conn->real_escape_string($_POST['section1description']);
+            
+            $conn->query("
+              UPDATE packagesection 
+              SET packagetitle = '$title_name', packagedescription = '$description_name'
+              WHERE packageid = '$section_id'
+            ");
+        }
+        
+        // Check if a new image is uploaded
+        if (!empty($_FILES['file-img']['name'])) {
+            $file_name = $_FILES['file-img']['name'];
+            $temp_name = $_FILES['file-img']['tmp_name'];
+            $img_url = './packagesImages/' . $file_name;
+            if (move_uploaded_file($temp_name, $img_url)) {
+                $conn->query("
+                  UPDATE packagesection 
+                  SET packageimage = '$img_url'
+                  WHERE packageid = '$section_id'
+                ");
+            }
+        }
+        
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+}
+
 ?>
