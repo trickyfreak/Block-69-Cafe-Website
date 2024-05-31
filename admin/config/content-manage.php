@@ -130,6 +130,22 @@ function get_gallerysection($conn){
     return $all_content;
   }
 
+  function get_cafepackagecontent($conn){
+    $query = "SELECT * FROM cafepackagescontents";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_cafepackagepaxandprice($conn){
+    $query = "SELECT * FROM cafepackagespaxandprices";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
   function update_image_when_submit($conn) {
     if(isset($_POST['img_ID']) && !empty($_FILES['file-img']['name'])) {
         $img_id = $_POST['img_ID'];
@@ -275,5 +291,3 @@ function update_section_and_image_of_package($conn) {
         echo "<meta http-equiv='refresh' content='0'>";
     }
 }
-
-?>
