@@ -11,7 +11,7 @@ a {
   align-items: center;
   justify-content: start;
   gap: 12px;
-  height: 50em;
+  height: auto;
   background-color: rgb(238, 238, 238);
   width: 100%;
 }
@@ -33,6 +33,11 @@ a {
   display: flex;
   justify-content: center;
 }
+.checkout {
+  flex: 1 1 14.2%;
+  display: flex;
+  justify-content: center;
+}
 .select-all,
 .select {
   height: 20px;
@@ -46,18 +51,19 @@ a {
 }
 
 .cart-items-container {
+  width: 81em;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  margin-bottom: 13em;
 }
 .cart-items {
-  height: 110px;
-  width: 81em;
   background-color: #FFFFFD;
   box-shadow: 1px 1px 8px rgb(0, 0, 0, .2);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.8em 0em;
 }
 
 .product-image img {
@@ -92,20 +98,24 @@ a {
   font: 600 18px League Spartan;
 }
 .delete-button button:active {
-opacity: 0.2;
+  opacity: 0.2;
+  font: 300 16px League Spartan;
 }
 
 .checkout-area {
-  height: 110px;
   width: 1300px;
   display: flex;
   position: fixed;
-  flex-wrap: wrap;
-  bottom: 0%;
+  bottom: 0;
+  left: 50%; /* Start from the center */
+  transform: translateX(-50%); /* Shift back by half of the width */
   justify-content: center;
   align-items: center;
   background-color: #FFFFFD;
-  box-shadow: 1px 1px 8px rgb(0, 0, 0, .5);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 2.1em 0em; /* Optional: padding for inner spacing */
+  z-index: 1000;
 }
 .select-all-checkout {
   height: 20px;
@@ -123,7 +133,7 @@ opacity: 0.2;
   color: green;
   font: 500 20px League Spartan;
 }
-.checkout-button button {
+.checkout-btn {
   margin: 0em 1em 0em 0em;
   padding: 1em 2.5em;
   background-color: black;
@@ -131,16 +141,5 @@ opacity: 0.2;
   cursor: pointer;
   color: white;
   font: 500 15px League Spartan;
-  transition: background-color 0.2s, color 0.2s, border 0.2s, font 0.2s, active 0.2s;
-}
-/* .checkout-button button:hover {
-  background-color: white;
-  border: 2px solid black;
-  color: black;
-  font: 600 15px League Spartan;
-} */
-.checkout-button button:active {
-  background-color: black;
-  border: none;
-  color: white;
+  transition: all 0.3;
 }

@@ -26,7 +26,7 @@ function openPopup(itemId) {
     document.getElementById("alldaybreakfast-container"),
     document.getElementById("silog-container"),
     document.getElementById("pasta-container"),
-    document.getElementById("bargainBites-container"),
+    document.getElementById("bargainbites-container"),
     document.getElementById("sidesandnibbles-container"),
     document.getElementById("carbsandcaffeine-container"),
     document.getElementById("footer"),
@@ -60,7 +60,7 @@ function closePopup(itemId) {
   document.getElementById("alldaybreakfast-container"),
   document.getElementById("silog-container"),
   document.getElementById("pasta-container"),
-  document.getElementById("bargainBites-container"),
+  document.getElementById("bargainbites-container"),
   document.getElementById("sidesandnibbles-container"),
   document.getElementById("carbsandcaffeine-container"),
   document.getElementById("footer"),
@@ -113,26 +113,42 @@ function updateTotalPrice(popupId) {
     totalPriceInput.value = 0;
   }
 }
-
+// Determine the value of itemid and itemcustomization
 function updateCustomization(sizeRadio) {
   const popup = sizeRadio.closest('.popup');
   const customizationInput = popup.querySelector('input[name="itemcustomization"]');
+  const itemIdInput = popup.querySelector('input[name="itemid"]');
   const category = popup.querySelector('input[name="itemcategory"]').value;
+
+  let customizationValue;
 
   if (category.includes("All Day Breakfast") || category.includes("Silog") || category.includes("Pasta") ||  
       category.includes("Bargain Bites") || category.includes("Sides And Nibbles") || category.includes("Carbs And Caffeine")) {
     if (sizeRadio.nextSibling.textContent.includes('Solo')) {
-      customizationInput.value = 'Solo';
+      customizationValue = 'Solo';
     } else {
-      customizationInput.value = 'Savor';
+      customizationValue = 'Savor';
     }
   } else {
     if (sizeRadio.nextSibling.textContent.includes('12oz')) {
-      customizationInput.value = '12oz';
+      customizationValue = '12oz';
     } else {
-      customizationInput.value = '16oz';
+      customizationValue = '16oz';
     }
   }
+
+  // Define the pattern to match existing customization values
+  const customizationPattern = /Solo|Savor|12oz|16oz/;
+
+  // Replace existing customization value or append if not present
+  if (customizationPattern.test(itemIdInput.value)) {
+    itemIdInput.value = itemIdInput.value.replace(customizationPattern, customizationValue);
+  } else {
+    itemIdInput.value += customizationValue;
+  }
+
+  // Update customization input value
+  customizationInput.value = customizationValue;
 
   updateTotalPrice(popup.id);
 }
