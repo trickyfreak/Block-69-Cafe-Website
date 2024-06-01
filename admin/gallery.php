@@ -70,7 +70,7 @@ if($user_type == 'admin'){
         <div class="bg-modal modal-1" id="modal-1">
             <div class="modal-content">
                 <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
-                <div class="flex flex-col gap-4 bg-black p-10">
+                <div class="flex flex-col gap-4 bg-black py-10 px-60">
                     <div class="flex flex-col gap-4">
                         <label class="text-white custom-file-upload" for="section1title">Title</label>
                         <textarea id="section1title" name="section1title"><?php echo $contentssection[0]["title"]; ?></textarea>
@@ -129,7 +129,7 @@ if($user_type == 'admin'){
                 <input hidden name='img_ID2' value='<?php echo $img2_id ?>' />
                 <input hidden name='img_ID3' value='<?php echo $img3_id ?>' />
                 <input hidden name='img_ID4' value='<?php echo $img4_id ?>' />
-                <div class="flex flex-col gap-5 bg-black p-10">
+                <div class="flex flex-col gap-5 bg-black py-10 px-60">
                     <h1 class="text-white">Image displayed:</h1>
                     <div class="flex gap-4">
                         <label class="text-white custom-file-upload text-center text-white custom-file-upload border border-white p-1"><?php echo $img1 ?></label>
@@ -185,7 +185,7 @@ if($user_type == 'admin'){
     <div class="bg-modal modal-3" id="modal-3">
         <div class="modal-content">
             <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
-            <div class="flex flex-col gap-4 p-10">
+            <div class="flex flex-col gap-4 py-10 px-60">
                 <div class="flex gap-4">
                     <label class="text-center text-white custom-file-upload border border-white p-1" for="image5"><?php echo $img5 ?></label>
                     <input type="file" class="inputfile" id="image5" name="image5">
@@ -262,7 +262,7 @@ if($user_type == 'admin'){
                 <input hidden name='vid_ID' value='<?php echo $vid0_id ?>' />
                 <input hidden name='sectionID' value='<?php echo $section1_ID ?>' />
                 <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
-                <div class="flex flex-col gap-4 p-10">
+                <div class="flex flex-col gap-4 py-10 px-60">
                     <div class="flex gap-4">
                         <label class="text-white custom-file-upload" for="section1title">Title</label>
                         <input type="text" id="section2title" name="section1title" value="<?php echo $contentssection[1]["title"]; ?>">
@@ -355,7 +355,7 @@ if($user_type == 'admin'){
                 <input hidden name='vid_ID5' value='<?php echo $vid5_id ?>' />
                 <input hidden name='vid_ID6' value='<?php echo $vid6_id ?>' />
                 <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
-                <div class="flex flex-col gap-4 p-10">
+                <div class="flex flex-col gap-4 py-10 px-60">
                     <div class="flex gap-2">
                         <label class="text-white custom-file-upload text-xs" for="section1title">Title</label>
                         <input type="text" id="section1title text-xs" name="section1title" value="<?php echo $contentssection[2]["title"]; ?>">

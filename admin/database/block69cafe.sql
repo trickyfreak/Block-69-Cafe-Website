@@ -3,7 +3,6 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2024 at 08:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -89,9 +88,9 @@ CREATE TABLE `gallerysection` (
 --
 
 INSERT INTO `gallerysection` (`sectionID`, `title`, `description`) VALUES
-(1, 'GALLERY', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'),
+(1, 'GALLERY', 'Welcome to BLK 69 Cafe gallery! Step into a world of rich aromas, handcrafted beverages, and delectable treats. Browse our photos and get a feel for our warm ambience, friendly faces, and the perfect cup of coffee waiting for you.'),
 (2, 'Calling all inspiring artists who love tote bags!', 'For singles, this is your chance to experience a one-of-a-kind self-care, indulge in brunch, and paint a tote bag. For those in a relationship, spice things up with this exciting new date idea!'),
-(3, 'BLK 69 REELS', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+(3, 'BLK 69 REELS', 'Follow our Reels/Tiktok for a peek at our delicious coffee creations, stunning latte art, and the cozy vibes you need for your next caffeine fix.');
 
 -- --------------------------------------------------------
 
@@ -253,18 +252,18 @@ INSERT INTO `itemprice` (`price_id`, `price_image`, `price_name`, `price_type1`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menucontent`
+-- Table structure for table `packagesection`
 --
 
-CREATE TABLE `menucontent` (
-  `product_id` int(255) NOT NULL,
-  `product_image` varchar(255) NOT NULL,
-  `product_name` varchar(255) NOT NULL,
-  `product_subname` varchar(255) NOT NULL
+CREATE TABLE `packagesection` (
+  `packageid` int(11) NOT NULL,
+  `packagetitle` varchar(1500) NOT NULL,
+  `packagedescription` varchar(1500) NOT NULL,
+  `packageimage` varchar(1500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `menucontent`
+-- Dumping data for table `packagesection`
 --
 
 INSERT INTO `menucontent` (`product_id`, `product_image`, `product_name`, `product_subname`) VALUES
@@ -278,7 +277,7 @@ INSERT INTO `menucontent` (`product_id`, `product_image`, `product_name`, `produ
 (8, 'BLK/AGLIO OLIO.png', 'Pasta', ''),
 (9, 'BLK/CHICKEN KATSUDON.png', 'Block 69 Bargain Bites', ''),
 (10, 'BLK/NONE.png', 'Sides And Nibbles', ''),
-(34, './Images/Clubhouse Sandwich.png', 'Carbs And Caffeine', '');
+(11, 'BLK/CLUBHOUSE SANDWICH.png', 'Carbs And Caffeine', '');
 
 -- --------------------------------------------------------
 
@@ -315,7 +314,7 @@ INSERT INTO `menuitems` (`item_id`, `item_image`, `item_name`, `item_subname`) V
 (15, 'BLK/ICED COFFEE.png', 'Iced Coffee ', ''),
 (16, 'BLK/VANILLA.png', 'Vanilla', ''),
 (17, 'BLK/HAZELNUT.png', 'Hazelnut', ''),
-(18, 'BLK/CARAMEL.png', 'Caramel', ''),
+(18, 'BLK/CARAMEL.png', 'CARAMEL', ''),
 (19, 'BLK/HOT CHOCOLATE.png', 'Hot Chocolate', ''),
 (20, 'BLK/TRIPLE CHOCOLATE.png', 'Triple Chocolate', ''),
 (21, 'BLK/PINK PARADISE.png', 'Pink Paradise', ''),
@@ -340,7 +339,7 @@ INSERT INTO `menuitems` (`item_id`, `item_image`, `item_name`, `item_subname`) V
 (40, 'BLK/MATCHA LATTE.png', 'Matcha Latte', ''),
 (41, 'BLK/DIRTY MATCHA.png', 'Dirty Matcha', ''),
 (42, 'BLK/GREEN AND SWEET.png', 'Green And Sweet', ''),
-(43, 'BLK/ICHIGO MATCHA.png', 'Ichigo Matcha', ''),
+(43, 'ICHIGO MATCHA', 'Ichigo Matcha', ''),
 (44, 'BLK/MANGO JUICE.png', 'Mango Juice', ''),
 (45, 'BLK/CUCUMBER JUICE.png', 'Cucumber Juice', ''),
 (46, 'BLK/ICED TEA.png', 'Iced Tea', ''),
@@ -389,29 +388,6 @@ INSERT INTO `menuitems` (`item_id`, `item_image`, `item_name`, `item_subname`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `servicescontent`
---
-
-CREATE TABLE `servicescontent` (
-  `content_id` int(11) NOT NULL,
-  `event_name` varchar(255) NOT NULL,
-  `content_title` varchar(255) NOT NULL,
-  `content_caption` varchar(255) NOT NULL,
-  `content_images` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `servicescontent`
---
-
-INSERT INTO `servicescontent` (`content_id`, `event_name`, `content_title`, `content_caption`, `content_images`) VALUES
-(23, '<p>birthdays</p>', '<p>Eli\'s 9th Birthday at Pateros, Metro Manila</p>', '<p>140 cups served</p>', './Events Images/0-1-1716565340.jpg,./Events Images/1-1716565340.jpg,./Events Images/2-1716565340.jpg,./Events Images/3-1716565340.jpg,./Events Images/4-1716565340.jpg'),
-(24, '<p>corporate events</p>', '<p>JAAM Foodcorp Christmas Party at Episode Bar + Kitchen</p>', '<p>150 cups served</p>', './Events Images/9-1716565543.png,./Events Images/10-1716565543.png,./Events Images/11-1716565543.png,./Events Images/13-1716565543.png,./Events Images/14-1716565543.png'),
-(25, '<p>community activity</p>', '<p>The Generics Pharmacy Medical Mission</p>', '<p>150 cups served</p>', './Events Images/15-1716565984.png,./Events Images/17-1716565984.png,./Events Images/18-1716565984.png,./Events Images/19-1716565984.png,./Events Images/20-1716565984.jpg');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `useraccounts`
 --
 
@@ -419,8 +395,7 @@ CREATE TABLE `useraccounts` (
   `email` varchar(50) NOT NULL,
   `status` text NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `token` varchar(255) DEFAULT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -428,12 +403,10 @@ CREATE TABLE `useraccounts` (
 --
 
 INSERT INTO `useraccounts` (`email`, `status`, `username`, `password`, `token`) VALUES
-('aaronkennethmelendres@gmail.com', 'customer', 'aaron', 'aaron123', '5c3abbe072b15ae1deddd40287428be8'),
-('meinardsantoss@gmail.com', 'admin', 'admin', 'admin123', 'a8bb9449d9cce868b280be1fd9a82f79'),
+('meinardsantoss@gmail.com', 'admin', 'admin', 'admin123', '8db91abafce16bb01ade0bedb9fbe692'),
 ('eric123@gmail.com', 'customer', 'eric', 'hehehe', NULL),
-('lor.eric.436@gmail.com', 'customer', 'ericc', 'eric123', '40b45fc1a2d6586a6d922f851c8e4157'),
-('louigiecads143@gmail.com', 'customer', 'louie', 'louie123', '9c470d25642bd6e80cc2289d3ce27134'),
-('msantos.k12147976@umak.edu.ph', 'customer', 'meinard', 'umak', 'df28dda76596edfa5a72a33d6bd289b8');
+('louigiecads143@gmail.com', 'customer', 'louie', 'louie123', '7ee3c0a3286f4a80e257b9740230d7c4'),
+('msantos.k12147976@umak.edu.ph', 'customer', 'meinard', 'umak', '09438bc6dfd88b40ebfae5159ea11cc1');
 
 --
 -- Indexes for dumped tables
@@ -483,16 +456,10 @@ ALTER TABLE `itemprice`
   ADD PRIMARY KEY (`price_id`);
 
 --
--- Indexes for table `menucontent`
+-- Indexes for table `packagesection`
 --
-ALTER TABLE `menucontent`
-  ADD PRIMARY KEY (`product_id`);
-
---
--- Indexes for table `menuitems`
---
-ALTER TABLE `menuitems`
-  ADD PRIMARY KEY (`item_id`);
+ALTER TABLE `packagesection`
+  ADD PRIMARY KEY (`packageid`);
 
 --
 -- Indexes for table `servicescontent`
@@ -544,31 +511,35 @@ ALTER TABLE `galleryvideo`
 -- AUTO_INCREMENT for table `homecontent`
 --
 ALTER TABLE `homecontent`
-  MODIFY `content_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+<<<<<<< HEAD
+  MODIFY `content_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `packagesection`
+--
+ALTER TABLE `packagesection`
+  MODIFY `packageid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `itemprice`
 --
-ALTER TABLE `itemprice`
-  MODIFY `price_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+ALTER TABLE `galleryvideo`
+  ADD CONSTRAINT `videos_section` FOREIGN KEY (`sectionID`) REFERENCES `gallerysection` (`sectionID`) ON DELETE CASCADE ON UPDATE CASCADE;
+=======
+  MODIFY `content_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `menucontent`
 --
 ALTER TABLE `menucontent`
-  MODIFY `product_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `product_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `menuitems`
 --
 ALTER TABLE `menuitems`
   MODIFY `item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
-
---
--- AUTO_INCREMENT for table `servicescontent`
---
-ALTER TABLE `servicescontent`
-  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+>>>>>>> origin/test
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
