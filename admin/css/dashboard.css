@@ -130,6 +130,7 @@ body{
     border-radius: 20px;
 }
 
+
 #myChart1{
     background-color: white;
     border-radius: 20px;
@@ -142,8 +143,123 @@ body{
     margin: 3em 0 0 0;
     width: 96% !important;
 }
+#myChart3{
+    background-color: white;
+    border-radius: 20px;
+    height: 300px !important;
+    width: 110% !important;
+    margin-left: -5em;
+}
+
+
 .dashboard h3{
     font-family: league spartan;
     font-size: 25px;
     color: brown;
+}
+
+
+.success{
+    display: none;
+    transition: 1s ease-in-out;
+    padding: 1em;
+    position: absolute;
+    top: 1%;
+    left: 40%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: black;
+    font-family: league spartan;
+    font-size: 20px;
+    color: white;
+    width: 20em;
+    border-radius: 10px;
+}
+
+.users{
+    display: flex;
+    margin-left: 25vw;
+    width: 100vw;
+    display: flex;
+    height: 100%; 
+    width: 100vw;
+}
+
+.users h1{
+    font-family: league spartan;
+    font-size: 35px;
+    margin: 1em 0 0 0;
+    color: black;
+}
+
+.users input[type="text"] {
+    margin: .5em 0 .5em 0;
+    position: relative;
+    left: 55%;
+    padding: 10px;
+    font-size: 18px;
+    width: 19em;
+    height: 30px;
+    border-radius: 10px;
+    transition: box-shadow 0.5s ease; /* Increase transition duration to 0.5s */
+    box-shadow: 0 0 0 0 rgba(97, 97, 97, 0); /* Initial shadow with no spread */
+}
+.users select {
+    margin: .5em 0 .5em 0;
+    position: relative;
+    left: 55%;
+    padding: 10px;
+    font-size: 18px;
+    width: 20.2em;
+    height: 50px;
+    border-radius: 10px;
+    transition: box-shadow 0.5s ease; /* Increase transition duration to 0.5s */
+    box-shadow: 0 0 0 0 rgba(97, 97, 97, 0); /* Initial shadow with no spread */
+}
+
+.users input[type="text"]:focus {
+    box-shadow: 0 0 0 5px rgba(94, 94, 94, 0.1); /* Add shadow effect on click with a small spread radius */
+}
+
+.users input[type="text"]:focus::placeholder{
+    transition: .2s ease;
+    color: transparent;
+}
+
+.users input[type="submit"]{
+    position: relative;
+    top: 2em;
+    left: 75%;
+  
+    cursor: pointer;
+    padding: 1em;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    text-decoration: none;
+    border-radius: 50px;
+    background-color: black;
+    box-shadow: 0px 1px 10px rgba(97, 97, 97, 0.7);
+    width: 12em;
+  }
+
+.users .container{
+    width: 70%;
+    height: 100%;
+    margin-bottom: 51em !important;
+}
+.users .staff{
+    display: flex;
+    margin: 3em 0 0 0;
+    padding: 5em;
+    background-color: white;
+    border-radius: 20px;
+}
+.users .inputFIeld{
+    display: flex;
+    flex-direction: column;
+}
+.users .inputFIeld div{
+    margin-left: -13em;
 }
