@@ -1,3 +1,5 @@
+<!-- FOR: EDIT THE IMAGE BLOG SLIDER -->
+
 <?php
 session_start();
 include_once('partials/header.php');

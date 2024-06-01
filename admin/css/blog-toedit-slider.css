@@ -47,8 +47,11 @@ body {
     width: 40em;
     height: auto;
 }
-.sliderEditBtn a
+.sliderEditBtn button
 {
+    font-family: League Spartan;
+    font-size: 20px;
+    background: white;
     text-decoration: none;
     padding: 15px 30px;
     color: rgb(0, 0, 0);
@@ -56,7 +59,7 @@ body {
     border: solid 2px rgb(217, 217, 217);
     transition: 0.1s;
 }
-.sliderEditBtn a:hover
+.sliderEditBtn button:hover
 {
     background: rgb(0, 255, 0);
     color: rgb(0, 0, 0);
@@ -84,7 +87,7 @@ body {
 
 }
 
-/*FUNCTION: TO DELETE*/
+/*START FUNCTION: TO DELETE*/
 .mainContainerToDelete {
     position: relative;
     width: 80%;
@@ -121,6 +124,9 @@ body {
     height: auto;
     padding: 15px;
 }
+/*END FUNCTION: TO DELETE*/
+
+
 /*BLOG INPUT: MODAL POPUP*/
 .blog_PopUp {
     position: fixed;
@@ -135,42 +141,19 @@ body {
     transition: transform 0.8s, top 0.8s, visibility 0s 0.5s;
     z-index: 1001; /* Ensure the popup is above the backdrop */
 }
-.blog_PopUp h2
+form
 {
-    font-family: League Spartan;
-    font-size: 40px;
-    font-weight: 800;
-    text-align: center;
-    padding: 20px 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
-.blog-to-add-input label
+.editSliderContainer
 {
-    font-family: League Spartan;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 0 0 20px;
+    width: 50em;
+    padding: 20px;
 }
-.blog-to-add-input #blogTitle,
-.blog-to-add-input #blogDate 
-{
-    margin: 5px 0 25px;
-    width: 100%;
-    height: 30px;
-    border-width: 2px;
-    border-color: black; 
-    border-style: solid;   
-}
-.blog-to-add-input #blogText 
-{
-    margin: 5px 0 25px;
-    width: 100%;
-    height: 15em;
-    border-width: 2px;
-    border-color: black; 
-    border-style: solid;  
-    resize: none;
-}
-
+/* TAKES EFFECT WHEN THE EDIT BUTTON WAS CLI */
 .blog-open-popup 
 {
     visibility: visible;
@@ -193,35 +176,6 @@ body {
     opacity: 100%;
 }
 
-.blog_PopUp .submitBtn input 
-{
-    display: block;
-    width: 10em;
-    margin: 30px auto 20px;
-    padding: 15px 20px;
-    background: rgb(255, 255, 255);
-    border: 2px;
-    outline: black;
-    font-family: League Spartan;
-    font-size: 20px;
-    border-color: rgb(0, 0, 0);
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 1.3px;    
-    cursor: pointer;
-}
-.blog_PopUp .submitBtn input:hover 
-{
-    background: rgb(0, 0, 0, 0.8);
-    border: 2px;
-    font-family: League Spartan;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    border-radius: 5px;
-    border-width: 1.3px;    
-    cursor: pointer;
-}
 
 /* Backdrop overlay */
 .blogBackdrop {
@@ -236,12 +190,81 @@ body {
     transition: visibility 0s 0.5s, opacity 0.5s;
     z-index: 1000; 
 }
-
 .blogBackdrop-active {
     visibility: visible;
     opacity: 1;
     transition: visibility 0s 0s, opacity 0.8s;
 }
+
+
+
+
+.editSliderContainer .sliderPrevImg
+{
+    display: block;
+    margin: auto;
+    position: relative;
+    padding: 10px;
+    border: solid 3px black;
+}
+.editSliderContainer .editTitle h1
+{
+    font-family: League Spartan;
+    font-weight: 900;
+    text-align: center;
+    padding: 0 0 10px;
+} 
+.sliderPrevImg label
+{
+    font-family: League Spartan;
+    font-size: 20px;
+    font-weight: bold;
+}
+.sliderNewImg
+{
+    padding: 30px 0;
+    font-family: League Spartan;
+    font-size: 20px;
+    font-weight: bold;
+}
+.sliderPrevImg img
+{
+    width: 25em;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+
+} 
+.submitBtn input
+{
+    display: block;
+    margin: auto;
+    font-family: League Spartan;
+    font-size: 25px;
+    padding: 10px 30px;
+    background: white;
+    border: solid 1px black;
+
+    transition: 0.1s;
+}
+.submitBtn input:hover
+{
+    background: rgb(0, 0, 0);
+    border: solid 1px black;
+    color: white;
+    font-weight: bold;
+}
+/*BLOG INPUT: MODAL POPUP*/
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -295,7 +318,7 @@ body {
 
 
 /* FILE: FOR edit.php */
-form
+/* form
 {
     display: flex;
     justify-content: center;
@@ -306,7 +329,6 @@ form
 }
 .editSliderContainer
 {
-    background-color: rgb(255, 255, 255);
     width: 50em;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -364,7 +386,7 @@ form
     border: solid 1px black;
     color: white;
     font-weight: bold;
-}
+} */
 
 
 

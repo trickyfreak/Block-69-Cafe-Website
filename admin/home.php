@@ -73,7 +73,7 @@
           <textarea class="edit-content" name="'.$contentCaptionName.'">'.$content['content_caption'].'</textarea>
 
         <div>
-        <p style="color: white; margin:1em 2em 0em 2em; font-family: league spartan; font-size: 20px; font-weight:bold;">UPLOADED IMAGE</p>
+        <p style="color: black; margin:1em 2em 0em 2em; font-family: league spartan; font-size: 20px; font-weight:bold;">UPLOADED IMAGE</p>
 
           <label for="'.$contentImageId.'" class="'.$customFileUploadClass.'">'.basename($content['content_image']).'</label>
           <input type="file" id="'.$contentImageId.'" name="'.$contentImageId.'" class="inputfile">

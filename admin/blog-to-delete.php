@@ -1,41 +1,25 @@
-
-<html>
-<header>
-    <link rel="icon" href="icons/newlogo-light.png">
-    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/blog-allpost.css">    
-    <title></title>
-</header>
-
 <?php
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "block69cafe";
-$data = mysqli_connect($host, $user, $password, $database);
+// Include necessary files and start session
+include_once './config/connect.php';
+session_start();
 
-$blogID = $_GET['blogID'];
-$query = "DELETE FROM blogcontents WHERE blogIDNum = '$blogID'";
-$result = mysqli_query($data, $query);
+$conn = get_connection();
 
-if($result)
-{   
-    echo 
-    "
-    <div class='mainContainerToDelete'>
-        <div class='blogToDelete'>
-            <img src='icons/check-mark.png' alt='check mark' class='blogCheckMark'>
-            <h2>DELETED SUCCESSFULLY!</h2>
-        </div>
-    </div> 
-    ";
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $blogID = $_POST['blogID'];
+
+    $query = "DELETE FROM blogcontents WHERE blogIDNum = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $blogID);
+    $success = $stmt->execute();
+
+    if ($success) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    $stmt->close();
 }
-else
-{
-    echo "ERROR: NOT DELETED";
-}
+
+$conn->close();
 ?>
-
