@@ -50,7 +50,7 @@ $content_id = 0;
             <p>Sip, savor, and celebrate with our exquisite coffee bar and delightful souvenirs! 
                 From lattes to non-coffee drinks, we've got your event covered. 
                 Explore our packages at the button below and let the aroma of exceptional coffee elevate your experience. </p>
-                <a class="learn-more" href="coffee-bar-services.html">Learn More</a>
+                <a class="learn-more" href="barservices.php">Learn More</a>
             </div>
         </div>
     </div>
