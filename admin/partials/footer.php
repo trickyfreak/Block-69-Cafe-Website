@@ -4,7 +4,7 @@
   <div class="content">
     <ul>
       <p>About Us</p>
-      <li><a href="/BLOG.LOR/BLOG.html">Company News</a></li>
+      <li><a href="../admin/blog.php">Company News</a></li>
       <li><a href="../admin/gallery.php">Gallery</a></li>
       <li><a href="../admin/contact.php">Contact Information</a></li>
     </ul>
@@ -13,15 +13,15 @@
       <li><a
           href="https://www.grab.com/ph/download/?pid=inappsharing&c=2-C4LVWAVXCF5XE2&is_retargeting=true&af_force_deeplink=true&fbclid=IwAR3_Ai2QMasaJOGzQ2TGCPl4Z25OfmvcQnOfd3L953dtv5kO3NfJ60kEu0M">Order
           on the App</a></li>
-      <li><a href="/Menu.Caday/menu.html">Order on the Web</a></li>
+      <li><a href="../admin/menu.php">Order on the Web</a></li>
       <li><a
           href="https://www.grab.com/ph/download/?pid=inappsharing&c=2-C4LVWAVXCF5XE2&is_retargeting=true&af_force_deeplink=true&fbclid=IwAR3_Ai2QMasaJOGzQ2TGCPl4Z25OfmvcQnOfd3L953dtv5kO3NfJ60kEu0M">Delivery
           Options</a></li>
     </ul>
     <ul>
       <p>Social Impact</p>
-      <li><a href="">Workshop</a></li>
-      <li><a href="">People</a></li>
+      <li><a href="../admin/blog.php">Workshop</a></li>
+      <li><a href="../admin/blog.php">People</a></li>
     </ul>
   </div>
 </div>

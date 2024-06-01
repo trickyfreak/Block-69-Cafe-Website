@@ -11,6 +11,59 @@
     line-height: 1.5;
 }
 
+#notifAddContent, #notifDeletedContent{
+    z-index: 1000;
+    transition: 1s ease-in-out;
+    position: fixed;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5em;
+    width: 100%;
+    font-family: league spartan;
+    font-size: 25px;
+    color: white;
+    background-color: rgb(62, 62, 62);
+}
+
+.deleteModal {
+    font-family: league spartan;
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.deleteModal .modal-content {
+    background-color: #fefefe; 
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.deleteModal .modal-content button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.deleteModal .modal-content button:hover {
+    background-color: #ddd;
+}
+
+.deleteModal .modal-content p {
+    margin-bottom: 10px;
+}
+
 #preloader{
     background: white url(../Images/preloader.gif) no-repeat center;
     background-size: 30%;
