@@ -27,8 +27,11 @@
   <link href="css/menu.css" rel="stylesheet">
   <script src="javascript/menu.js"></script>
 
-  <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST" enctype="multipart/form-data">
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="content_id">
+    <div id="notification" class="notification">
+      <p>Item added to cart successfully!</p>
+    </div>
     <!-- Sidebar -->
     <div class="sidebarAndContent">
       <div class="sidebar" id="sidebar">
@@ -58,7 +61,7 @@
           <!-- Display drinks options -->
           <div class="txtDrinks">
             <h2>Drinks</h2>
-            <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add content</button></div>'; ?>
+            <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add category</button></div>'; ?>
             <!-- Start of Add Modal -->
             <div class="bg-modal-add">
               <div class="modal-content-add">
@@ -93,8 +96,7 @@
           <!-- Display foods options -->
           <div class="txtFoods">
             <h2>Foods</h2>
-            <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add content</button></div>'; ?>
-        
+            <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add category</button></div>'; ?>
           </div>
           <hr>
           <div class="foodsOptions" id="foodsNav">
@@ -118,27 +120,31 @@
           $categories = [
             'espresso' => $espresso_items,
             'brew' => $brew_items,
-            'noncoffeeandtea' => $noncoffeeandtea_items,
+            'non-coffee-and-tea' => $noncoffeeandtea_items,
             'matcha' => $matcha_items,
             'beverages' => $beverages_items,
-            'alldaybreakfast' => $alldaybreakfast_items,
+            'all-day-breakfast' => $alldaybreakfast_items,
             'silog' => $silog_items,
             'pasta' => $pasta_items,
-            'bargainbites' => $bargainbites_items,
-            'sidesandnibbles' => $sidesandnibbles_items,
-            'carbsandcaffeine' => $carbsandcaffeine_items
+            'bargain-bites' => $bargainbites_items,
+            'sides-and-nibbles' => $sidesandnibbles_items,
+            'carbs-and-caffeine' => $carbsandcaffeine_items
           ]; 
           // Create sections for each Category
           foreach($categories as $category => $items) {
             echo '
-              <div id="'.$category.'" class="category">
-              <div id="'.$category.'-container">
-                <div class="txt'.ucfirst($category).'" id="'.$category.'-text">
-                  <h2>'.ucfirst($category).'</h2> 
-                  <p>Iced/Hot</p> 
-                  <hr>
+              <div id="'.str_replace('-', '', $category).'" class="category">
+              <div id="'.str_replace('-', '', $category).'-container">
+                <div class="txt'.str_replace('-', '', ucfirst($category)).'" id="'.str_replace('-', '', $category).'-text">
+                  <div class="column">
+                    <h2>'.ucwords(str_replace('-', ' ', $category)).'</h2>';
+                    if($category == 'espresso' || $category == 'brew') echo '<p>Iced/Hot</p>';
+                  echo '</div>';
+                  if($user_type == 'admin') echo '<div class="column cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add item</button></div>';
+                echo' 
                 </div>
-                <div class="menuContainer" id="'.$category.'MenuContainer">';
+                <hr>
+                <div class="menuContainer" id="'.str_replace('-', '', $category).'MenuContainer">';
                 // All items depends on Category
                 foreach($items as $item) {
                   echo '
@@ -159,9 +165,9 @@
         <?php   // Popup for items
                 foreach($items as $item) {
                   echo'
-                    <form action="shopping-cart.php" method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data">
                       <div class="popup" id="popup-'.$item["item_name"].$item['item_id'].'">
-                        <input type="hidden" name="itemid" value="'.$item['item_id'].'">
+                        <input type="hidden" name="itemid" value="'.$item['item_name'].'-'.$item['item_id'].'-">
                         <input type="hidden" name="itemcategory" value="'.$item['item_category'].'">
                         <div class="popupImage">
                           <input type="hidden" name="itemimage" value="'.$item['item_image'].'">
@@ -212,7 +218,7 @@
                             <p class="totalPrice">Total: <span></span></p>
                           </div>
                           <div class="add-buy">
-                            <input type="submit" class="addCart" name="add-buy" value="Add to Cart">
+                            <input type="submit" class="addCart" onclick="closePopup(\''.$item["item_name"].$item['item_id'].'\')" name="add-buy" value="Add to Cart">
                             <input type="submit" class="buyNow" name="add-buy" value="Buy Now">
                           </div>
                         </div>
@@ -225,7 +231,6 @@
         ?>
       </div>
     </div>
-
 <?php
   include('partials/footer.php');
 ?>
@@ -265,6 +270,48 @@
     });
     });
 
+    // Prevents Add to Cart navigate to shopping-cart.php
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.addCart').forEach(function(button) {
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+          var form = this.closest('form');
+          var formData = new FormData(form);
+
+          fetch('shopping-cart.php', {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.text())
+          .then(data => {
+            showNotification('Item added to cart successfully!');
+            var itemId = form.querySelector('input[name="itemid"]').value;
+            closePopup(itemId);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        });
+      });
+      document.querySelectorAll('.buyNow').forEach(function(button) {
+        button.addEventListener('click', function() {
+          var form = this.closest('form');
+          form.action = 'shopping-cart.php';
+          form.submit();
+        });
+      });
+    });
+
+    // Notify items are added to cart
+    function showNotification(message) {
+      var notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.style.display = 'block';
+      setTimeout(function() {
+        notification.style.display = 'none';
+        
+      }, 2000);
+    }
     // const dialog = document.getElementById(`popup-${itemId}`);
     // const wrapper = document.querySelector(".wrapper");
     // const showPopup = (show) => show ? dialog.showModal() : dialog.close()
