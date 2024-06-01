@@ -1,20 +1,115 @@
 /*START: CONTENT*/
+
+.backBtn
+{
+    margin: 0px 50px 30px;
+}
+.backBtn a
+{
+    background: black;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 30px;
+    color: white;
+    opacity: 30%;
+    transition: 0.15s;
+}
+.backBtn a:hover
+{
+    opacity: 100%;
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+
+.MainContainer {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.ImageContainer {
+    position: relative;
+    margin: 0px 30px 0;
+}
+.ImageContainer img {
+    display: block;
+    margin: auto;
+    width: 88em; 
+    height: 65em; 
+    border-radius: 30px;
+    object-fit: cover;
+    opacity: 80%;
+}
+.TextContainer {
+    position: relative;
+    /*width: calc(100% - 125px);  Adjusted width */
+    height: auto;
+    width: 79%;
+    margin: 0 10em; 
+    bottom: 17.8em;
+}
+.ArticleContainer
+{
+    padding: 30px 30px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.85);
+}
+.ArticleContainer h1
+{
+    font-family: League Spartan;
+    font-size: 7em;
+    font-weight: 800;
+    padding-bottom: 20px;
+}
+.ArticleContainer h4
+{
+    font-family: League Spartan;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 10px 0 30px;
+}
+.ArticleContainer p
+{
+    font-family: League Spartan;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 0 80px;
+    line-height: 30px;
+    text-align: justify;
+}
 .edit-btn {
     z-index: 100;
     cursor: pointer;
-    color: white;
+    color: rgb(0, 0, 0);
     position: absolute;
-    margin: 1em;
-    left: 86vw;
-    background-color: black;
+    width: 170px;
+    top: 13.5em;
+    left: 82vw;
+    background-color: rgb(255, 255, 255);
     padding: 1em;
     font-family: League Spartan;
     font-size: 18px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px;
+}
+.fa-pen-to-square{
+    font-size: 20px;
+    margin-left: .5em;
+}
+
+.edit-btn:hover {
+    background-color: rgb(0, 0, 0);
+    font-weight: bold;
+    color: white;
     border: 1px solid white;
 }
-.edit-btn:hover {
-    background-color: rgb(26, 26, 26);
-}
+/*END: CONTENT*/
+
+
+
+
+
+/* MODAL: POPUP */
 .bg-modal {
     z-index: 100;
     width: 100%;
@@ -30,88 +125,144 @@
     width: 50em;
     text-align: center;
     color: black;
-    background-color: black;
-    padding: 1em;
-    border: 1px solid white;
+    background-color: rgb(255, 255, 255);
+    padding: 15px 40px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    box-shadow: 0px 0px 25px 3px rgba(152, 152, 152, 0.5);
 }
-.edit-content {
+/* .modal-content .edit-content {
     background-color: white;
-    color: black;
+    color: #000000;
     padding: 10px;
     width: 90%;
     margin: 10px 0;
-}
-.saveBtn {
-    font-family: League Spartan;
-    cursor: pointer;
-    color: white;
-    font-size: 10px;
-    border: 1px solid white;
-    background-color: black;
-    width: 6.5em;
-    padding: 1em;
-    margin: 10px auto;
-}
-.saveBtn:hover {
-    background-color: rgb(26, 26, 26);
-}
-.close {
-    font-size: 2em;
-    cursor: pointer;
-    color: white;
-    text-align: right;
-    width: 100%;
-}
-.modal-title, .modal-caption {
-    padding: 0.5em;
-    color: white;
-    font-family: League Spartan;
-    font-size: 18px;
-    font-weight: bold;
     resize: none;
+} */
+.modal-content h2
+{
+    font-family: League Spartan;
+    font-size: 40px;
+    font-weight: 800;
+    text-align: center;
+    padding: 20px 0 20px;
+}
+/* .blog-to-add-input .edit-content
+{
+    width: 100%;
+    resize: none;
+    border: 1px solid black;
+    padding: 0;
+    margin: 5px 0 25px;
+} */
+.blog-to-add-input .blogTitle,
+.blog-to-add-input .blogDate
+{
+    width: 100%;
+    resize: none;
+    border: 2px solid black;
+    padding: 0;
+    margin: 5px 0 25px;
+    height: 30px;
+
+}
+.blog-to-add-input .blogCaption 
+{
+    width: 100%;
+    resize: none;
+    border: 2px solid black;
+    padding: 0;
+    margin: 5px 0 25px;
+    height: 15em;
+}
+.modal-title, .modal-date, .modal-caption, .modal-imgtitle 
+{
+    padding: 0 ;
+    color: rgb(0, 0, 0);
+    font-family: League Spartan;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+.modal-imgname
+{
+    padding: 0 ;
+    color: rgb(0, 0, 0);
+    font-family: League Spartan;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
 }
 .inputfile {
     display: none;
 }
-.custom-file-upload {
+.blog-to-add-input .custom-file-upload 
+{
     border: 1px solid #ccc;
     font-family: League Spartan;
     font-size: 18px;
     display: inline-block;
     padding: 6px 12px;
+    margin: 10px;
     cursor: pointer;
     background-color: black;
     color: white;
-    margin-top: 10px;
+    border-radius: 4px;
 }
 .custom-file-upload:hover {
     background-color: rgb(26, 26, 26);
 }
 
 
-
-
-
-
-
-
-.MainContainer {
-    margin: 0;
-    height: auto;
+.saveBtn 
+{
+    width: 5em;
+    padding: 15px;
+    margin: 30px auto 20px;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-family: League Spartan;
+    font-size: 20px;
+    border: 1.3px solid black;
+    border-radius: 5px;
 }
-.ImageContainer {
+.saveBtn:hover {
+    background: rgb(0, 0, 0, 0.8);
+    font-family: League Spartan;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+.modal-content .blogClosePopupbtn{
+    z-index: 100;
+    color: rgb(0, 0, 0);
     position: relative;
-    margin: 60px 30px 0;
+    cursor: pointer;
+    width: 35px;
+    height: auto;
+    float: right;
+    right: -1em;
+    opacity: 50%;
+    transition: 0.1s;
 }
-.ImageContainer img {
-    display: block;
-    margin: auto;
-    width: 88em; /* Adjusted width */
-    height: 65em; /* Adjusted height */
-    border-radius: 30px;
-    object-fit: cover;
-    opacity: 80%;
+.blogClosePopupbtn:hover
+{
+    opacity: 100%;
 }
+
+
+
+
+
+
+
+
+
+
+/* PREVIOUS CSS FOR POPUP MODAL */
+
+/*
 .blogEditButtonContainer button
 {
     z-index: 1;
@@ -156,7 +307,7 @@
     padding: 20px 40px;
     visibility: hidden;
     transition: transform 0.8s, top 0.8s, visibility 0s 0.5s;
-    z-index: 1001; /* Ensure the popup is above the backdrop */
+    z-index: 1001; 
 }
 .blog_PopUp h2
 {
@@ -244,10 +395,10 @@
     border-radius: 5px;
     border-width: 1.3px;    
     cursor: pointer;
-}
+} */
 
 /* Backdrop overlay */
-.blogBackdrop {
+/* .blogBackdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -264,7 +415,7 @@
     visibility: visible;
     opacity: 1;
     transition: visibility 0s 0s, opacity 0.8s;
-}
+} */
 
 
 
@@ -284,41 +435,3 @@
 
 
 
-.TextContainer {
-    position: relative;
-    /*width: calc(100% - 125px);  Adjusted width */
-    height: auto;
-    width: 79%;
-    margin: 0 10em; 
-    bottom: 17.8em;
-}
-.ArticleContainer
-{
-    padding: 30px 30px;
-    border-radius: 10px;
-    background: rgb(255, 255, 255, 0.85);
-}
-.ArticleContainer h1
-{
-    font-family: League Spartan;
-    font-size: 7em;
-    font-weight: 800;
-    padding-bottom: 20px;
-}
-.ArticleContainer h4
-{
-    font-family: League Spartan;
-    font-weight: 400;
-    font-size: 18px;
-    padding: 10px 0 30px;
-}
-.ArticleContainer p
-{
-    font-family: League Spartan;
-    font-weight: 400;
-    font-size: 18px;
-    padding: 0 80px;
-    line-height: 30px;
-    text-align: justify;
-}
-/*END: CONTENT*/
