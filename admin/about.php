@@ -1,99 +1,408 @@
-<?php 
+<?php
+include_once './config/connect.php';
+include_once './config/functions.php';
+include_once './config/functions-about.php';
 
 session_start();
-include_once('partials/header.php');
+$conn = get_connection();
+$user_data = check_login($conn);
+$user_type = check_usertype($conn);
 
+$id = 0;
+$contents = get_content($conn);
 ?>
 
+<?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/about.css">
 
-<div class="heading">
-    <p>Our Company</p><br>
-    <h2>Learn More About Us</h2><br>
-</div>
+<form action="about.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id">
+    <?php
+    foreach ($contents as $content) {
+        $modalClass = 'modal-' . $content['id'];
+        $modalClass2 = 'modal-2' . $content['id'];
+        $modalClass3 = 'modal-3' . $content['id'];
+        $modalClass4 = 'modal-4' . $content['id'];
 
-<div class="image1">
-    <img src="BLK/img1.jpg">
-</div>
+        $contentIdName = 'content_id' . $content['id'];
 
-<div class="content1">
-    <p>Our menu features a wide selection of hot and cold drinks, including various coffee and 
-        tea options and refreshing fruit juices. We also offer a variety of sweet and savory snacks, 
-        breakfast items, sandwiches, and pastries, all-day- breakfast meals all made with fresh and 
-        locally sourced ingredients whenever possible.</p>
-    <p>At Block 69 Café, we prioritize customer satisfaction, and our friendly and knowledgeable staff 
-        are always happy to assist with recommendations or dietary restrictions. We also offer free Wi-Fi 
-        and ample seating, offering fun activities for the customers and making our cafe the perfect spot 
-        for a quick bite or a relaxing time.</p>
-    <p>Whether you're in the mood for a latte and a croissant or a hearty sandwich and a cold brew, 
-        we've got you covered at Block 69 Café. Come by and experience our cozy and inviting atmosphere 
-        for yourself!</p>
-</div>
+        $contentHeading = 'title_header' . $content['id'];
+        $contentTCaption = 'title_caption' . $content['id'];
+        $contentContentH = 'content_caption' . $content['id'];
+        $contentImage1 = 'image_about' . $content['id'];
+        $customFileUploadClass = 'custom-file-upload custom-file-upload' . $content['id'];
 
-<div class="section">
-    <div class="container">
-        <div class="content-section">
-                <p class="title-mission">Mission</p>
-                <p class="content-mission">Our mission is to provide quality yet affordable coffee to the neighborhood.</p>
-                <p class="title-vision">Vision</p>
-                <p class="content-vision">Our objective is to extend our presence beyond the immediate vicinity to cover not 
-                    only the neighborhood but also the entire Metro Manila region in 2024. By 2025, we aim to establish a 
-                    presence outside the Metro, including within malls. Our ambitious plan for 2030 involves the 
-                    establishment of over five hundred kiosks and cafes throughout the Philippines.</p>
+        $contentTitleM = 'title_mission' . $content['id'];
+        $contentCaptionM = 'content_mission' . $content['id'];
+        $contentTitleV = 'title_vision' . $content['id'];
+        $contentCaptionV = 'content_vision' . $content['id'];
+        $contentImage2 = 'image2_about' . $content['id'];
+        $customFileUploadClass = 'custom-file-upload custom-file-upload' . $content['id'];
+
+        $contentTitleCA = 'title_competitive' . $content['id'];
+        $contentCaption1CA = 'caption_competitive' . $content['id'];
+        $contentCaption2CA = 'caption2nd_competitive' . $content['id'];
+
+        $contentTitleLS = 'title_landscape' . $content['id'];
+        $contentCaptionLS = 'content_landscape' . $content['id'];
+        $contentImage3 = 'image3_about' . $content['id'];
+        $customFileUploadClass = 'custom-file-upload custom-file-upload' . $content['id'];
+
+
+        echo '
+    
+        <!-- Start of 1st Modal -->
+        <div class="bg-modal ' . $modalClass . '">
+          <div class="modal-content">
+            <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
+            <p class="modal-title">TITLE HEADING</p>
+            <textarea class="edit-content" name="' . $contentHeading . '">' . $content['title_header'] . '</textarea>
+            <p class="modal-caption">TITLE CAPTION</p>
+            <textarea class="edit-content" name="' . $contentTCaption . '">' . $content['title_caption'] . '</textarea>
+            <p class="modal-caption">CAPTION</p>
+            <textarea class="edit-content" name="' . $contentContentH . '">' . $content['content_caption'] . '</textarea>
+            <div>
+              <label for="' . $contentImage1 . '" class="' . $customFileUploadClass . '">' . $content['image_about'] . '</label>
+              <input type="file" id="' . $contentImage1 . '" name="' . $contentImage1 . '" class="inputfile">
+            </div>
+            <input class="saveBtn" type="submit" name="submit">
+          </div>
         </div>
-        <div class="image2">
-            <img src="BLK/img2.jpg">
+        <!-- End of 1st Modal -->';
+
+
+
+        echo '
+        <div class="container-heading">';
+        if ($user_type == 'admin') {
+            echo '
+            <div><button class="edit-btn" name="edit-btn" content-id="' . $content['id'] . '" title-header="
+            ' . $content['title_header'] . '" title-caption="' . $content['title_caption'] . '" caption-header="' . $content['content_caption'] . '
+            " header-image=" ' . $content['image_about'] . '">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+            ';
+        }
+        echo '
+        <div class="heading">
+        <div class="header">' . $content['title_header'] . '</div>
+        <div class="header-caption">' . $content['title_caption'] . '</div>
         </div>
-    </div>
-</div>
 
-<div class="section2">
-    <div class="container2">
-        <div class="content-section2">
-                <p class="title-compadv">COMPETITIVE ADVANTAGE</p>
+        <div class="image1">
+        <img src="' . $content['image_about'] . '" alt="Image">
         </div>
-    </div>
 
-    <div class="content-1st">
-        <p>Our competitive advantage lies in the following factors:</p>
-        
-        <p>• Personalized Service: We prioritize customer satisfaction by providing personalized service to each of our customers. 
-            Our baristas and staff take the time to get to know each customer and their preferences, creating a warm and welcoming 
-            atmosphere.</p>
-        <p>• Fresh and Local Ingredients: We source our ingredients locally and use only the freshest ingredients in our baked goods, 
-                plates of pasta, rice meals, and coffee. This allows us to offer high-quality products that our customers appreciate and 
-                enjoy.</p>
-        </ul>
-    </div>
+        <div class="content1">
+        ' . $content['content_caption'] . '
+        </div>
+        </div>';
 
-    <div class="content-2nd">
-        <p>Community Involvement: We offer workshops and classes for the neighborhood and local students, covering topics such as keychain making, 
-            basic calligraphy, candle making, and different recreational activities for our dear guests. This helps us to build stronger relationships 
-            with the community and provide a valuable service to our customers. We also support the local barangays on projects like Ms. Gay Pageants, 
-            collaborations with The Generics Pharmacy Branches for their Health Awareness Projects, and more sponsorships.</p> 
-    </div>
-</div>
+        echo '
+        <!-- Start of 2nd Modal -->
+        <div class="bg-modal2 ' . $modalClass2 . '">
+          <div class="modal-content2">
+            <div class="close2"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
+            <p class="modal-title">TITLE</p>
+            <textarea class="edit-content" name="' . $contentTitleM . '">' . $content['title_mission'] . '</textarea>
+            <p class="modal-caption">CAPTION</p>
+            <textarea class="edit-content" name="' . $contentCaptionM . '">' . $content['content_mission'] . '</textarea>
+            <p class="modal-title">TITLE</p>
+            <textarea class="edit-content" name="' . $contentTitleV . '">' . $content['title_vision'] . '</textarea>
+            <p class="modal-caption">CAPTION</p>
+            <textarea class="edit-content" name="' . $contentCaptionV . '">' . $content['content_vision'] . '</textarea>
+            <div>
+              <label for="' . $contentImage2 . '" class="' . $customFileUploadClass . '">' . $content['image2_about'] . '</label>
+              <input type="file" id="' . $contentImage2 . '" name="' . $contentImage2 . '" class="inputfile">
+            </div>
+            <input class="saveBtn" type="submit" name="submit">
+          </div>
+        </div>
+        <!-- End of 2nd Modal -->';
 
-<div class="section3">
-    <div class="container3">
-        <div class="content-section3">
-            <div class="title-compland">
-                <p>COMPETITIVE LANDSCAPE</p>
+        echo '
+        <div class="section">';
+        if ($user_type == 'admin') {
+            echo '
+            <div><button class="edit-btn2nd" name="edit-btn" content-id="' . $content['id'] . '" title-mission="
+            ' . $content['title_mission'] . '" caption_mission="' . $content['content_mission'] . '" title_vision="' . $content['title_vision'] . '"
+            caption_vision="' . $content['content_vision'] . '" section2-image=" ' . $content['image2_about'] . '">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+            ';
+        }
+        echo '
+            <div class="container">
+                <div class="content-section">
+                <div class="title-mission">' . $content['title_mission'] . '</div>
+                <div class="content-mission">' . $content['content_mission'] . '</div>
+                <div class="title-vision">' . $content['title_vision'] . '</div>
+                <div class="content-vision">' . $content['content_vision'] . '</div>
+                </div>
+                <div class="image2">
+                <img src="' . $content['image2_about'] . '" alt="Image">
+                </div>
+            </div>
+        </div>';
+
+        echo '
+        <!-- Start of 3rd Modal -->
+        <div class="bg-modal3 ' . $modalClass3 . '">
+          <div class="modal-content3">
+            <div class="close3"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
+            <p class="modal-title">TITLE</p>
+            <textarea class="edit-content" name="' . $contentTitleCA . '">' . $content['title_competitive'] . '</textarea>
+            <p class="modal-caption">CAPTION</p>
+            <textarea class="edit-content" name="' . $contentCaption1CA . '">' . $content['caption_competitive'] . '</textarea>
+            <p class="modal-caption">CAPTION</p>
+            <textarea class="edit-content" name="' . $contentCaption2CA . '">' . $content['caption2nd_competitive'] . '</textarea>
+            <input class="saveBtn" type="submit" name="submit">
+          </div>
+        </div>
+        <!-- End of 3rd Modal -->';
+
+
+        echo '
+        <div class="section2">';
+        if ($user_type == 'admin') {
+            echo '
+            <div><button class="edit-btn3rd" name="edit-btn" content-id="' . $content['id'] . '" title-compa="
+            ' . $content['title_competitive'] . '" caption1_compa="' . $content['caption_competitive'] . '" caption2_compa="
+            ' . $content['caption2nd_competitive'] . '">Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+            ';
+        }
+        echo '
+            <div class="container2">
+                <div class="content-section2">
+                <div class="title-compadv">' . $content['title_competitive'] . '</div>
+                </div>
             </div>
 
-            <div class="content-compl">
-                <p>In the area, there are several other cafes that offer similar products and services.
-                    However, we differentiate ourselves by focusing on providing a warm and friendly environment for 
-                    our customers, with personalized service and attention to detail. We impart great experiences through 
-                    our different services. The cafe has also been awarded a Recommendation badge by Restaurant Guru, 
-                    one of the world's most popular foodie websites with over 30 million monthly users.</p>
+            <div class="content-1st">
+            ' . $content['caption_competitive'] . '
             </div>
-            
+
+            <div class="content-2nd">
+            ' . $content['caption2nd_competitive'] . '
+            </div>
+        </div>';
+
+        echo '
+        <!-- Start of 4th Modal -->
+        <div class="bg-modal4 ' . $modalClass4 . '">
+          <div class="modal-content4">
+            <div class="close4"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
+            <p class="modal-title">TITLE</p>
+            <textarea class="edit-content" name="' . $contentTitleLS . '">' . $content['title_landscape'] . '</textarea>
+            <p class="modal-caption">CAPTION</p>
+            <textarea class="edit-content" name="' . $contentCaptionLS . '">' . $content['content_landscape'] . '</textarea>
+            <div>
+                <label for="' . $contentImage3 . '" class="' . $customFileUploadClass . '">' . $content['image3_about'] . '</label>
+                <input type="file" id="' . $contentImage3 . '" name="' . $contentImage3 . '" class="inputfile">
+             </div>
+            <input class="saveBtn" type="submit" name="submit">
+          </div>
         </div>
-        <div class="image3">
-            <img src="BLK/img3.jpg">
-        </div>
-    </div>
-</div>
-   
-<?php include('partials/footer.php'); ?>
+        <!-- End of 4th Modal -->';
+
+        echo '
+        <div class="section3">';
+        if ($user_type == 'admin') {
+            echo '
+            <div><button class="edit-btn4th" name="edit-btn" content-id="' . $content['id'] . '" title-compls="
+            ' . $content['title_landscape'] . '" caption_compls="' . $content['content_landscape'] . '" 
+            section3-image=" ' . $content['image3_about'] . '" >Edit Content <i class="fa-regular fa-pen-to-square"></i></button></div>
+            ';
+        }
+        echo '
+            <div class="container3">
+                <div class="content-section3">
+                    <div class="title-compland">
+                    ' . $content['title_landscape'] . '
+                    </div>
+
+                    <div class="content-compl">
+                    ' . $content['content_landscape'] . '
+                    </div>
+                    
+                </div>
+                <div class="image3">
+                <img src="' . $content['image3_about'] . '" alt="Image">
+                </div>
+            </div>
+        </div>';
+    }
+    ?>
+
+    <?php include('partials/footer.php'); ?>
+
+    <script>
+        var Id = 1;
+        var modalClass = "modal-1";
+        var modalClass2 = "modal-2";
+        var modalClass3 = "modal-3";
+        var modalClass4 = "modal-4";
+
+        var contentTitleHeader = "";
+        var contentTitleCaption = "";
+        var contentCaptionHeader = "";
+        var contentImage1 = "";
+        var contentImage1Id = 'image_about' + Id;
+
+        var contentTitleM = "";
+        var contentCaptionM = "";
+        var contentTitleV = "";
+        var contentCaptionV = "";
+        var contentImage2 = "";
+        var contentImage2Id = 'image2_about' + Id;
+
+        var contentTitleCA = "";
+        var contentCaptionCA = "";
+        var contentCaption2ndCA = "";
+
+        var contentTitleLS = "";
+        var contentCaptionLS = "";
+        var contentImage3 = "";
+        var contentImage3Id = 'image3_about' + Id;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.edit-content').forEach(function(textarea) {
+                ClassicEditor
+                    .create(textarea)
+                    .catch(function(error) {
+                        console.error(error);
+                    });
+            });
+        });
+        /* 1st Modal */
+        document.querySelectorAll('.edit-btn').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                //fetch data
+                contentTitleHeader = button.getAttribute('title-header');
+                contentTitleCaption = button.getAttribute('title-caption');
+                contentCaptionHeader = button.getAttribute('content-header');
+                contentImage1 = button.getAttribute('header-image');
+                Id = button.getAttribute('content-id');
+                contentImage1Id = 'image_about' + Id;
+
+                handleEditButtonClick(Id);
+            });
+        });
+
+        //Function to handle edit button clicks
+        function handleEditButtonClick(Id) {
+            modalClass = "modal-" + Id;
+            document.querySelector('input[name="id"]').value = Id;
+            document.querySelector('.bg-modal.' + modalClass).style.display = 'flex';
+        }
+
+        document.querySelectorAll('.close').forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.querySelector('.bg-modal.' + modalClass).style.display = 'none';
+            });
+        });
+
+        document.getElementById('image_about' + Id).addEventListener('change', function() {
+            var fileName = this.files[0].name;
+            var label = document.querySelector('.custom-file-upload.custom-file-upload' + Id);
+            label.textContent = fileName;
+        });
+        /* 1st Modal */
+
+        /* 2nd Modal */
+        document.querySelectorAll('.edit-btn2nd').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                //fetch data
+                contentTitleM = button.getAttribute('title-mission');
+                contentCaptionM = button.getAttribute('caption_mission');
+                contentTitleV = button.getAttribute('title_vision');
+                contentCaptionV = button.getAttribute('caption_vision');
+                contentImage2 = button.getAttribute('section2-image');
+                Id = button.getAttribute('content-id');
+                contentImage2Id = 'image2_about' + Id;
+
+                handleEditButton2ndClick(Id);
+            });
+        });
+
+        //Function to handle edit button clicks
+        function handleEditButton2ndClick(Id) {
+            modalClass = "modal-2" + Id;
+            document.querySelector('input[name="id"]').value = Id;
+            document.querySelector('.bg-modal2.' + modalClass).style.display = 'flex';
+        }
+
+        document.querySelectorAll('.close2').forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.querySelector('.bg-modal2.' + modalClass).style.display = 'none';
+            });
+        });
+
+        document.getElementById('image2_about' + Id).addEventListener('change', function() {
+            var fileName = this.files[0].name;
+            var label2 = document.querySelector('.custom-file-upload.custom-file-upload' + Id);
+            label2.textContent = fileName;
+        });
+        /* 2nd Modal */
+
+        /* 3rd Modal */
+        document.querySelectorAll('.edit-btn3rd').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                //fetch data
+                contentTitleCA = button.getAttribute('title-compa');
+                contentCaptionCA = button.getAttribute('caption1_compa');
+                contentCaption2ndCA = button.getAttribute('caption2_compa');
+                Id = button.getAttribute('content-id');
+
+                handleEditButton3rdClick(Id);
+            });
+        });
+
+        //Function to handle edit button clicks
+        function handleEditButton3rdClick(Id) {
+            modalClass = "modal-3" + Id;
+            document.querySelector('input[name="id"]').value = Id;
+            document.querySelector('.bg-modal3.' + modalClass).style.display = 'flex';
+        }
+
+        document.querySelectorAll('.close3').forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.querySelector('.bg-modal3.' + modalClass).style.display = 'none';
+            });
+        });
+        /* 3rd Modal */
+
+        /* 4th Modal */
+        document.querySelectorAll('.edit-btn4th').forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                //fetch data
+                contentTitleLS = button.getAttribute('title-compLS');
+                contentCaptionLS = button.getAttribute('caption_compLS');
+                contentImage3 = button.getAttribute('section3-image');
+                Id = button.getAttribute('content-id');
+                contentImage3Id = 'image3_about' + Id;
+
+                Id = button.getAttribute('content-id');
+
+                handleEditButton4thClick(Id);
+            });
+        });
+
+        //Function to handle edit button clicks
+        function handleEditButton4thClick(contentId) {
+            modalClass = "modal-4" + Id;
+            document.querySelector('input[name="id"]').value = Id;
+            document.querySelector('.bg-modal4.' + modalClass).style.display = 'flex';
+        }
+
+        document.querySelectorAll('.close4').forEach(function(element) {
+            element.addEventListener('click', function() {
+                document.querySelector('.bg-modal4.' + modalClass).style.display = 'none';
+            });
+        });
+        /* 4th Modal */
+
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>

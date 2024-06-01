@@ -8,6 +8,18 @@ li{
   list-style: none;
 }
 
+.notification {
+  display: none; 
+  position: fixed; 
+  top: 10px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  background-color: black; 
+  padding: 12px 20px;
+  border-radius: 5px;
+  color: white; 
+  font: 500 1.05em League Spartan;
+}
 .sidebarAndContent {
   height: 54em;
   width: 100%;
@@ -48,6 +60,21 @@ li{
   height: 35em;
   width: 82%;
   padding: 15px 50px 0px 50px;
+}
+.txtEspresso, 
+.txtBrew, 
+.txtNoncoffeeandtea,
+.txtMatcha,
+.txtBeverages,
+.txtAlldaybreakfast,
+.txtSilog,
+.txtPasta,
+.txtSidesandnibbles,
+.txtCarbsnadcaffeine {
+  display: flex; 
+}
+.column {
+  flex: 1 1 50%;
 }
 .txtEspresso p,
 .txtBrew p {
@@ -261,10 +288,21 @@ h2 span {
   cursor: pointer;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* Ensure it covers everything else */
+  display: none; /* Initially hidden */
+}
 .popup {
   height: 28em;
   width: 58em;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -276,13 +314,16 @@ h2 span {
   visibility: hidden;
   transform: translate(-50%,-50%) scale(0.2);
   transition: transform 0.3s, top 0.3s;
-  z-index: 1000;
+  z-index: 1001;
   filter: blur(0px);
 }
 .open-popup {
   visibility: visible;
   top: 50%;
   transform: translate(-50%,-50%) scale(1);
+}
+.open-popup .overlay {
+  display: block; /* Show overlay when popup is open */
 }
 body .popup-open{
   overflow: hidden;
@@ -368,7 +409,7 @@ body .popup-open{
   font: 400 18px League Spartan;
   color:gray;
 }
-.quantityInput {
+.quantity-input {
   width: 1em;
   text-align: center;
   color: rgba(0, 0, 0, .8);
@@ -392,17 +433,14 @@ body .popup-open{
   padding: 3px 8px 3px 8px;
   cursor: pointer;
 }
-.addBuy {
+.add-buy {
   height: 6.75em;
   display: flex;
   align-items: end;
   justify-content: end;
 }
-.addBuy > button {
-  margin-right: 18px;
-}
-.addCart,
-.buyNow {
+.add-buy > input {
+  margin-right: 0.8em;
   padding: 10px 25px;
   cursor: pointer;
   border-radius: 20px;

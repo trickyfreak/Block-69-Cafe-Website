@@ -1,0 +1,265 @@
+
+body{
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgb(220, 220, 220));
+}
+
+.navigationPanel{
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+    z-index: 200;
+    position: fixed;
+    margin: -4em 0em 0em 0em;
+    background-color: white;
+    border: 1px solid black;
+}
+.navigationPanel #logoButton{
+    width: 7em;
+  /* border: 1px solid black; */
+  filter: brightness(100%);
+  margin: -13em 4.5em;
+  margin-right: 2.5em;
+  margin-bottom: 4em;
+}
+.navigationPanel .container{
+    justify-content: center;
+    align-items: center;
+    padding: 5em;
+    width: 4.4em;
+    height: 100vh;
+    margin: 0;
+    /* background-color: black; */
+    /* background-image: linear-gradient(to bottom, rgb(46, 46, 46), rgb(0, 0, 0)); */
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.navigationPanel button{
+    z-index: 1;
+    text-align: left;
+    font-family: league spartan;
+    font-size: 23px;
+    padding: 1em 0 1em 1em;
+    margin-left: 2em;
+    border-radius: 10px;
+    width: 9em;
+    background-color: transparent;
+    color: black;
+    font-weight: bold;
+    border: none;
+}
+.navigationPanel button.active {
+    background-color: black;
+    color: white;
+}
+.navigationPanel button.active:hover {
+    background-color: black; 
+    color: white;
+}
+.navigationPanel button:hover{
+    background-color: rgb(240, 240, 240);
+}
+#logoutButton{
+    text-decoration: none;
+    color: black;
+}
+#logoutButton.active {
+    background-color: transparent; 
+    color: black;
+}
+.navigationPanel button i {
+    margin-right: 1em; 
+    font-size: 1em;
+}
+
+.adminDashboard{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.dashboard h1{
+    font-family: league spartan;
+    font-size: 35px;
+    margin: 1em 0 0 0;
+    color: black;
+}
+.dashboard p{
+    color: black;
+    font-family: league spartan;
+    font-size: 20px;
+    margin: 0em 0em 1em 0em;
+}
+.dashboard h2{
+    color: black;
+    font-family: league spartan;
+    font-size: 40px;
+    /* margin: 5em 0em 1em 0em; */
+}
+.dashboard .percentIncrease p{
+    color: rgb(108, 160, 30);
+    margin: .5em 0em 0em 0em;
+}
+.dashboard{
+    margin-left: 25vw;
+    width: 100vw;
+    overflow-y: auto;
+    display: flex;
+    /* justify-content: center; */
+    height: 100%; 
+    width: 100vw;
+}
+.dashboard .container{
+    /* margin-left: 40em; */
+    width: 70%;
+    height: 100%;
+    margin-bottom: 51em !important;
+}
+.dashboard2{
+    margin-left: 30vw;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    height: 30%; 
+}
+.revenue{
+    background-color: white;
+    margin: 3em 0em 0em 0em;
+    padding: 3em;
+    width: 60vw;
+    border-radius: 20px;
+}
+
+
+#myChart1{
+    background-color: white;
+    border-radius: 20px;
+    margin: 3em 0 0 0;
+    width: 96% !important;
+}
+#myChart2{
+    background-color: white;
+    border-radius: 20px;
+    margin: 3em 0 0 0;
+    width: 96% !important;
+}
+#myChart3{
+    background-color: white;
+    border-radius: 20px;
+    height: 300px !important;
+    width: 110% !important;
+    margin-left: -5em;
+}
+
+
+.dashboard h3{
+    font-family: league spartan;
+    font-size: 25px;
+    color: brown;
+}
+
+
+.success{
+    display: none;
+    transition: 1s ease-in-out;
+    padding: 1em;
+    position: absolute;
+    top: 1%;
+    left: 40%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: black;
+    font-family: league spartan;
+    font-size: 20px;
+    color: white;
+    width: 20em;
+    border-radius: 10px;
+}
+
+.users{
+    display: flex;
+    margin-left: 25vw;
+    width: 100vw;
+    display: flex;
+    height: 100%; 
+    width: 100vw;
+}
+
+.users h1{
+    font-family: league spartan;
+    font-size: 35px;
+    margin: 1em 0 0 0;
+    color: black;
+}
+
+.users input[type="text"] {
+    margin: .5em 0 .5em 0;
+    position: relative;
+    left: 55%;
+    padding: 10px;
+    font-size: 18px;
+    width: 19em;
+    height: 30px;
+    border-radius: 10px;
+    transition: box-shadow 0.5s ease; /* Increase transition duration to 0.5s */
+    box-shadow: 0 0 0 0 rgba(97, 97, 97, 0); /* Initial shadow with no spread */
+}
+.users select {
+    margin: .5em 0 .5em 0;
+    position: relative;
+    left: 55%;
+    padding: 10px;
+    font-size: 18px;
+    width: 20.2em;
+    height: 50px;
+    border-radius: 10px;
+    transition: box-shadow 0.5s ease; /* Increase transition duration to 0.5s */
+    box-shadow: 0 0 0 0 rgba(97, 97, 97, 0); /* Initial shadow with no spread */
+}
+
+.users input[type="text"]:focus {
+    box-shadow: 0 0 0 5px rgba(94, 94, 94, 0.1); /* Add shadow effect on click with a small spread radius */
+}
+
+.users input[type="text"]:focus::placeholder{
+    transition: .2s ease;
+    color: transparent;
+}
+
+.users input[type="submit"]{
+    position: relative;
+    top: 2em;
+    left: 75%;
+  
+    cursor: pointer;
+    padding: 1em;
+    color: white;
+    font-weight: bold;
+    font-size: 19px;
+    text-decoration: none;
+    border-radius: 50px;
+    background-color: black;
+    box-shadow: 0px 1px 10px rgba(97, 97, 97, 0.7);
+    width: 12em;
+  }
+
+.users .container{
+    width: 70%;
+    height: 100%;
+    margin-bottom: 51em !important;
+}
+.users .staff{
+    display: flex;
+    margin: 3em 0 0 0;
+    padding: 5em;
+    background-color: white;
+    border-radius: 20px;
+}
+.users .inputFIeld{
+    display: flex;
+    flex-direction: column;
+}
+.users .inputFIeld div{
+    margin-left: -13em;
+}

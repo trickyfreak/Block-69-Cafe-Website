@@ -19,6 +19,30 @@
 
 <?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/home.css">
+<link rel="icon" href="icons/newlogo-light.png">
+<?php 
+if ($newContentAdded) {
+  echo '
+        <div id="notifAddContent">
+          Added Content Successfully
+        </div>
+  ';
+}else if ($ContentDeleted){
+  echo '
+        <div id="notifDeletedContent">
+          Deleted Content Successfully
+        </div>
+  ';
+}
+?>
+
+<div id="deleteModal" class="deleteModal">
+  <div class="modal-content">
+    <p>Are you sure you want to delete this content?</p>
+    <button id="cancelBtn">Cancel</button>
+    <button id="confirmDeleteBtn">Delete</button>
+  </div>
+</div>
 
 <form action="home.php" method="post" enctype="multipart/form-data">
 <input type="hidden" name="content_id">
@@ -98,7 +122,7 @@
             <div class="content">
                 <div class="title"> ' .$content['content_title']. ' </div>
                 <div class="caption"> ' .$content['content_caption']. ' </div>
-                <a class="view-menu" href="menu.html">VIEW MENU</a>
+                <a class="view-menu" href="menu.php">VIEW MENU</a>
             </div>
             <img src="' .$content['content_image']. '" alt="Image">
           </div>';
@@ -125,10 +149,17 @@ var contentImage ="";
 var contentImageId = 'content_image'+contentId;
 var loader =document.getElementById('preloader');
 
+document.addEventListener('click', function() {
+  document.getElementById('notifAddContent').style.display = 'none';
+});
+document.addEventListener('click', function() {
+  document.getElementById('notifDeletedContent').style.display = 'none';
+});
+
 window.addEventListener("load", function(){
   setTimeout(function(){
     loader.style.display = "none";
-  },1000)
+  }, 1000)
 })
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -194,18 +225,31 @@ document.querySelectorAll('.delete-btn').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
         var contentId = button.getAttribute('data-content-id');
-        if (confirm('Are you sure you want to delete this content?')) {
+        var deleteModal = document.getElementById('deleteModal');
+        deleteModal.style.display = 'block';
+        
+        document.getElementById('cancelBtn').addEventListener('click', function() {
+            deleteModal.style.display = 'none';
+        });
+        
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
             var form = document.createElement('form');
             form.method = 'post';
             form.action = 'home.php';
+
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'delete_content_id';
             input.value = contentId;
+            
             form.appendChild(input);
+            
             document.body.appendChild(form);
+            
             form.submit();
-        }
+            
+            deleteModal.style.display = 'none';
+        });
     });
 });
 

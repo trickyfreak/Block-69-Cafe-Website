@@ -2,12 +2,16 @@
 <?php 
 include_once './config/connect.php';
 $conn = get_connection();
+$newContentAdded = false;
+$ContentDeleted = false;
 
 // Handle content deletion
 if (isset($_POST['delete_content_id'])) {
     $delete_content_id = mysqli_real_escape_string($conn, $_POST['delete_content_id']);
     $query = "DELETE FROM homecontent WHERE content_id = '$delete_content_id'";
+    $ContentDeleted = true;
     if (mysqli_query($conn, $query)) {
+        $ContentDeleted = true;
         echo '
         <script>
             if (window.history.replaceState) {
@@ -56,8 +60,10 @@ if (isset($_POST['submit'])) {
     } else {
         // Insert new content
         if ($file_name) {
+            $newContentAdded = true;
             $query = "INSERT INTO homecontent (content_id, content_title, content_caption, content_image) VALUES ('$content_id', '$content_title', '$content_caption', '$folder')";
         } else {
+            $newContentAdded = true;
             $query = "INSERT INTO homecontent (content_id, content_title, content_caption) VALUES ('$content_id', '$content_title', '$content_caption')";
         }
     }
@@ -116,6 +122,62 @@ function get_gallerysection($conn){
   
   function get_galleryvideo($conn){
     $query = "SELECT * FROM galleryvideo";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_packagesection($conn){
+    $query = "SELECT * FROM packagesection";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_cafepackagecontent($conn){
+    $query = "SELECT * FROM cafepackagescontents";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_cafepackagepaxandprice($conn){
+    $query = "SELECT * FROM cafepackagespaxandprices";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_cafepackageshomecontent($conn){
+    $query = "SELECT * FROM cafepackageshomecontent";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_cateringservicestable($conn){
+    $query = "SELECT * FROM cateringservicestable";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_cateringservicescontent($conn){
+    $query = "SELECT * FROM cateringservicescontent";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_packagecontactcontent($conn){
+    $query = "SELECT * FROM packagecontactcontent";
   
     $result = mysqli_query($conn, $query);
     $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -233,4 +295,37 @@ function update_video_when_submit($conn) {
         echo "<meta http-equiv='refresh' content='0'>";
     }
 }
-?>
+
+function update_section_and_image_of_package($conn) {
+    if (isset($_POST['sectionID'])) {
+        $section_id = $_POST['sectionID'];
+        
+        // Update section content
+        if (isset($_POST['section1title']) || isset($_POST['section1description'])) {
+            $title_name = $conn->real_escape_string($_POST['section1title']);
+            $description_name = $conn->real_escape_string($_POST['section1description']);
+            
+            $conn->query("
+              UPDATE packagesection 
+              SET packagetitle = '$title_name', packagedescription = '$description_name'
+              WHERE packageid = '$section_id'
+            ");
+        }
+        
+        // Check if a new image is uploaded
+        if (!empty($_FILES['file-img']['name'])) {
+            $file_name = $_FILES['file-img']['name'];
+            $temp_name = $_FILES['file-img']['tmp_name'];
+            $img_url = './packagesImages/' . $file_name;
+            if (move_uploaded_file($temp_name, $img_url)) {
+                $conn->query("
+                  UPDATE packagesection 
+                  SET packageimage = '$img_url'
+                  WHERE packageid = '$section_id'
+                ");
+            }
+        }
+        
+        echo "<meta http-equiv='refresh' content='0'>";
+    }
+}
