@@ -20,6 +20,7 @@
         <div class="backgroundDesign"></div>
         <button onclick="window.location.href='../admin/dashboard.php'" id="dashboardButton" class="active"><i class="fa-solid fa-gauge-simple-high"></i> Dashboard</button>
         <button id="ordersButton"><i class="fa-solid fa-truck"></i> Orders</button>
+        <button id="usersButton"><i class="fa-solid fa-address-card"></i> Users</button>
         <button id="logoutButton"><i class="fa-solid fa-right-from-bracket"></i><a id="logoutButton" href="sign-out.php"> Logout</a></button>
 </div>
     </div>
@@ -61,6 +62,11 @@
             }
 
             if(button.id === 'ordersButton') {
+                var dashboards = document.querySelectorAll('.dashboard');
+                dashboards.forEach(function(dashboard) {
+                    dashboard.style.display = "none";
+                });
+            } else if(button.id === 'usersButton') {
                 var dashboards = document.querySelectorAll('.dashboard');
                 dashboards.forEach(function(dashboard) {
                     dashboard.style.display = "none";
