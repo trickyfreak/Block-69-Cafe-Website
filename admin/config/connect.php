@@ -15,7 +15,7 @@ function get_connection(): mysqli {
 
     return $conn;
   } catch (\Throwable $th) {
-    //   die("Connection failed: " . $conn->connect_error);
+     //   die("Connection failed: " . $conn->connect_error);
     echo "POGI NI ERIC";
     exit;
   }

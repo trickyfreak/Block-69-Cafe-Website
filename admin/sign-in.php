@@ -6,19 +6,34 @@ include './partials/header.php';
 
 <link rel="stylesheet" href="css/sign-in.css">
 
+<div id="incorrectuser">
+  <p>Incorrect username. Please input correct credentials.</p> 
+</div>
+<div id="incorrectpass">
+  <p>Incorrect password. Please input correct credentials.</p> 
+</div>
+<div id="nullaccount">
+  <p>No user account detected. Join now before signing in.</p> 
+</div>
+
 <form action="sign-in.php" method="post">
   <div class="sign-in-container">
     <h1 h1>Sign in or create an account</h1>
     <div class="form-container">
       <p>*indicates required field</p>
-      <input type="text" name="username" placeholder="* Username">
-      <input type="text" name="password" placeholder="* Password">
-      <div class="chk"> <input id="KeepSession" type="checkbox"> Keep me signed in. <a href="#" style="color: Black">Details</a></div>
-      <a href="" class="forgot-info">Forgot your username?</a>
-      <a href="" class="forgot-info">Forgot your password?</a>
+      <input type="text" name="username" placeholder="* Username" required autocomplete="off">
+      <input type="text" name="password" placeholder="* Password" required autocomplete="off">
+      <a href="forgot-password.php" class="forgot-info">Forgot your password?</a>
       <input type="submit" name="submit" value="Sign in">
     </div>
   </div>
+  <div class="join-container">
+    <p style="font-size: 22px; font-weight: bold;">JOIN BLOCK 69 CAFE REWARDS</p>
+    <p style="font-size: 20px;">Join Block 69 Cafe Loyalty Cards to earn a free cup <br> of coffee of your choice in
+        your 10th payment.</p>
+        <a style="font-size: 18px; text-decoration: none; padding:1em; background-color: transparent; border: 1px solid black; color: black;" href="sign-up.php" id="Sign-up">Join now</a>
+  </div>
+  
 </form>
 
 <?php 
@@ -65,9 +80,26 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
   
         }
       }elseif(!($result1 && mysqli_num_rows($result1) > 0)){
-        echo "incorrect username";
+        echo "<script>
+              document.getElementById('incorrectuser').style.display = 'flex';
+              document.addEventListener('click', function() {
+                document.getElementById('incorrectuser').style.display = 'none';
+              });
+            </script>";
       }elseif(!($result2 && mysqli_num_rows($result2) > 0)){
-        echo "incorrect password";
+        echo "<script>
+              document.getElementById('incorrectpass').style.display = 'flex';
+              document.addEventListener('click', function() {
+                document.getElementById('incorrectpass').style.display = 'none';
+              });
+            </script>";
+      }else{
+        echo "<script>
+              document.getElementById('nullaccount').style.display = 'flex';
+              document.addEventListener('click', function() {
+                document.getElementById('nullaccount').style.display = 'none';
+              });
+            </script>";
       }
     }
 }
