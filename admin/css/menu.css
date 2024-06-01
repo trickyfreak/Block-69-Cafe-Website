@@ -8,6 +8,18 @@ li{
   list-style: none;
 }
 
+.notification {
+  display: none; 
+  position: fixed; 
+  top: 10px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  background-color: black; 
+  padding: 12px 20px;
+  border-radius: 5px;
+  color: white; 
+  font: 500 1.05em League Spartan;
+}
 .sidebarAndContent {
   height: 54em;
   width: 100%;
@@ -48,6 +60,21 @@ li{
   height: 35em;
   width: 82%;
   padding: 15px 50px 0px 50px;
+}
+.txtEspresso, 
+.txtBrew, 
+.txtNoncoffeeandtea,
+.txtMatcha,
+.txtBeverages,
+.txtAlldaybreakfast,
+.txtSilog,
+.txtPasta,
+.txtSidesandnibbles,
+.txtCarbsnadcaffeine {
+  display: flex; 
+}
+.column {
+  flex: 1 1 50%;
 }
 .txtEspresso p,
 .txtBrew p {
@@ -413,10 +440,7 @@ body .popup-open{
   justify-content: end;
 }
 .add-buy > input {
-  margin-right: 18px;
-}
-.addCart,
-.buyNow {
+  margin-right: 0.8em;
   padding: 10px 25px;
   cursor: pointer;
   border-radius: 20px;

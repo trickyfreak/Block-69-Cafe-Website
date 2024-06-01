@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 15em;
 }
 .address-container {
   height: 120px;
@@ -25,7 +26,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin-left: 1.5em;
+  margin-left: 2em;
   margin-top: 1.5em;
 }
 .contact-number,
@@ -50,14 +51,17 @@
   justify-content: start;
 }
 .products-ordered {
-  margin-left: 1.5em;
+  margin-left: 2em;
 }
 .products-ordered p {
   font: 400 1.4em League Spartan;
 }
-.item-image {
-  width: 80px;
-  border-radius: 20px;
+.item-image img {
+  width: 7em;
+  border-radius: 2em;
+}
+.item-subtotal {
+  margin-right: 1em;
 }
 .shipping-container {
   height: 5em;
@@ -68,7 +72,12 @@
   border-top: 1px dashed grey;
 }
 .shipping-fee {
-  margin-right: 1em;
+  margin-right: 5em;
+}
+.column {
+  flex: 1 1 16.6%;
+  display: flex;
+  justify-content: center;
 }
 .order-total-container {
   height: 5em;
@@ -79,19 +88,21 @@
   border-top: 1px dashed grey;
 }
 .order-total {
-  margin-right: 1em;
+  margin-right: 5em;
 }
 .orders {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2em 0em;
+  padding: 1em 0em;
+}
+.orders > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .item-image {
-  margin-left: 1.5em;
-}
-.item-subtotal {
-  margin-right: 1.5em;
+  margin-left: 1em;
 }
 .mod-container {
   width: 1250px;
@@ -99,8 +110,11 @@
 }
 .txt-payment {
   height: 2.5em;
-  margin-left: 1.5em;
+  margin-left: 2em;
   margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .txt-payment p {
   font: 400 1.4em League Spartan;
@@ -116,7 +130,10 @@
   border-top: 1px dashed grey;
 }
 .payment-info > div {
-  margin-right: 1.5em;
+  margin-right: 5em;
+}
+.payment-method {
+  margin-right: 5em;
 }
 .place-order {
   height: 6em;
@@ -126,7 +143,7 @@
   border-top: 1px dashed grey;
 }
 .place-order button {
-  margin-right: 1.5em;
+  margin-right: 5em;
   padding: 10px 25px;
   background-color: black;
   border: none;
