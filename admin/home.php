@@ -24,8 +24,8 @@
     $contentIdName= 'content_id'.$content['content_id'];
     $contentTitleName = 'content_title'.$content['content_id'];
     $contentCaptionName = 'content_caption'.$content['content_id'];
-    $contentImageId = 'content_image'.$content['content_id'];
-    $customFileUploadClass = 'custom-file-upload custom-file-upload'.$content['content_id'];
+$contentImageId = 'content_image'.$content['content_id'];
+    $customFileUploadClass = 'custom-file-upload custom-file-upload'.$content['content_id']    ;
     
     echo '
     
