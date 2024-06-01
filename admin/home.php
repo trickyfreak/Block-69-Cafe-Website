@@ -12,7 +12,7 @@
   $content_id = 0;
   $contents = get_content($conn);
 
-  if(!($user_type == 'admin')){
+  if(!($user_type == 'admin' || $user_type == 'staff')){
     echo '<div id="preloader"></div>';
   }
 ?>
@@ -48,8 +48,17 @@ if ($newContentAdded) {
 <input type="hidden" name="content_id">
   <?php 
   
-  if($user_type == 'admin'){
+  if($user_type == 'staff'){
   echo '
+    <div style="background-color: white; margin: 3em;">
+
+      <a href="dashboard.php" class="dashboard-btn"><i class="fa-solid fa-users-gear"></i> Dashboard</a>
+
+    </div>';
+  }
+  
+  if ($user_type == 'admin') {
+    echo '
     <div style="background-color: white; margin: 2em;">
 
       <a href="dashboard.php" class="dashboard-btn"><i class="fa-solid fa-users-gear"></i> Dashboard</a>

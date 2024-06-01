@@ -29,8 +29,8 @@
 
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="content_id">
-    <div id="notification" class="notification">
-      <p>Item added to cart successfully!</p>
+    <div id="notification">
+      Item added to cart successfully!
     </div>
     <!-- Sidebar -->
     <div class="sidebarAndContent">
