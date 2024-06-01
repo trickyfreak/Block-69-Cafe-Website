@@ -1,7 +1,7 @@
 <?php 
 
 include('partials/header.php'); 
-include_once('config/connect.php') 
+include_once('config/connect.php');
 
 ?>
 
