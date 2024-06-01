@@ -2,12 +2,16 @@
 <?php 
 include_once './config/connect.php';
 $conn = get_connection();
+$newContentAdded = false;
+$ContentDeleted = false;
 
 // Handle content deletion
 if (isset($_POST['delete_content_id'])) {
     $delete_content_id = mysqli_real_escape_string($conn, $_POST['delete_content_id']);
     $query = "DELETE FROM homecontent WHERE content_id = '$delete_content_id'";
+    $ContentDeleted = true;
     if (mysqli_query($conn, $query)) {
+        $ContentDeleted = true;
         echo '
         <script>
             if (window.history.replaceState) {
@@ -56,8 +60,10 @@ if (isset($_POST['submit'])) {
     } else {
         // Insert new content
         if ($file_name) {
+            $newContentAdded = true;
             $query = "INSERT INTO homecontent (content_id, content_title, content_caption, content_image) VALUES ('$content_id', '$content_title', '$content_caption', '$folder')";
         } else {
+            $newContentAdded = true;
             $query = "INSERT INTO homecontent (content_id, content_title, content_caption) VALUES ('$content_id', '$content_title', '$content_caption')";
         }
     }
