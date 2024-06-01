@@ -44,7 +44,7 @@ if($user_type == 'admin'){
                 echo '<img src="' . $img0 . '" alt="Home image" class="w-full h-96 object-cover">';
             ?>
         </div>
-        <div class="px-40 gap-20">
+        <div class="px-40 flex flex-col gap-3">
             <h1 class="text-3xl">
             <?php echo $title0; ?>
             </h1>
@@ -58,7 +58,7 @@ if($user_type == 'admin'){
         <div class="bg-modal modal-1" id="modal-1">
             <div class="modal-content">
                 <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
-                <div class="flex flex-col gap-4 bg-black p-10">
+                <div class="flex flex-col gap-4 bg-black py-10 px-60">
                     <div class="flex flex-col gap-4">
                         <label class="text-white custom-file-upload" for="section1title">Title</label>
                         <textarea id="section1title" name="section1title"><?php echo $packagesection[0]["packagetitle"]; ?></textarea>
@@ -94,7 +94,7 @@ if($user_type == 'admin'){
                     $id1 = $packagesection[1]["packageid"];
                     echo '<img src="' . $img1 . '" alt="Home image" class="w-1/5 mb-5">'; 
                 ?>
-                <h1 class="text-3xl mb-1">
+                <h1 class="text-3xl mb-4">
                     <?php echo $title1; ?>
                 </h1>
                 <h3 class="font-light px-11">
@@ -118,13 +118,13 @@ if($user_type == 'admin'){
                     $id2 = $packagesection[2]["packageid"];
                     echo '<img src="' . $img2 . '" alt="Home image" class="w-1/5 mb-5">'; 
                 ?>
-                <h1 class="text-3xl mb-1">
+                <h1 class="text-3xl mb-4">
                     <?php echo $title2; ?>
                 </h1>
                 <h3 class="font-light px-11">
                     <?php echo $desc2; ?>
                 </h3>
-                <a href="cafePackages.php" class="w-1/5 bg-white text-black border-black border-2 rounded p-3 mt-3 hover:bg-black hover:text-white">More</a>
+                <a href="cateringServices.php" class="w-1/5 bg-white text-black border-black border-2 rounded p-3 mt-3 hover:bg-black hover:text-white">More</a>
                 <?php
                 if($user_type == 'admin'){
                     echo '
@@ -143,7 +143,7 @@ if($user_type == 'admin'){
         <div class="bg-modal modal-2" id="modal-2">
             <div class="modal-content">
                 <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
-                <div class="flex flex-col gap-4 bg-black p-10">
+                <div class="flex flex-col gap-4 bg-black py-10 px-60">
                     <div class="flex flex-col gap-4">
                         <label class="text-white custom-file-upload" for="section1title">Title</label>
                         <textarea id="section2title" name="section1title"><?php echo $packagesection[1]["packagetitle"]; ?></textarea>
@@ -172,7 +172,7 @@ if($user_type == 'admin'){
         <div class="bg-modal modal-3" id="modal-3">
             <div class="modal-content">
                 <div class="close"><i class="fa-solid fa-square-xmark" style="color: #ffffff;"></i></div>
-                <div class="flex flex-col gap-4 bg-black p-10">
+                <div class="flex flex-col gap-4 bg-black py-10 px-60">
                     <div class="flex flex-col gap-4">
                         <label class="text-white custom-file-upload" for="section1title">Title</label>
                         <textarea id="section3title" name="section1title"><?php echo $packagesection[2]["packagetitle"]; ?></textarea>

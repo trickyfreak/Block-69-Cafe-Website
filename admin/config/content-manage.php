@@ -146,6 +146,38 @@ function get_gallerysection($conn){
     return $all_content;
   }
 
+  function get_cafepackageshomecontent($conn){
+    $query = "SELECT * FROM cafepackageshomecontent";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_cateringservicestable($conn){
+    $query = "SELECT * FROM cateringservicestable";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_cateringservicescontent($conn){
+    $query = "SELECT * FROM cateringservicescontent";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
+  function get_packagecontactcontent($conn){
+    $query = "SELECT * FROM packagecontactcontent";
+  
+    $result = mysqli_query($conn, $query);
+    $all_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $all_content;
+  }
+
   function update_image_when_submit($conn) {
     if(isset($_POST['img_ID']) && !empty($_FILES['file-img']['name'])) {
         $img_id = $_POST['img_ID'];
