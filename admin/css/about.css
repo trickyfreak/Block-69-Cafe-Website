@@ -1,19 +1,30 @@
-.heading {
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Start of Content Design */
+
+.container-heading {
+  display: flex;
+  flex-direction: column;
 }
 
-.heading p {
+.heading {
+    text-align: center;
+    font-family: 'League Spartan';
+}
+
+.header {
     margin-top: 60px;
     color: brown;
     font-size: 35px;
-    font-weight: bolder;
+    font-weight: 450;
+   
 }
 
-.heading h2 {
+.header-caption  {
     margin-top: 10px;
     color: black;
     font-size: 45px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 .image1 {
@@ -31,9 +42,10 @@
 .content1 {
     margin-top: 15px;
     text-align: justify; 
+    font-family: 'League Spartan';
 }
 
-.content1 p {
+.content1 {
     max-width: 700px; 
     margin: 0 auto; 
     padding: 0 10px;
@@ -48,13 +60,14 @@
   min-height: 100vh;
   background-color: black;
   color: white;
+  font-family: 'League Spartan';
 }
 
 .container {
   width: 80%;
   display: block;
   margin: auto;
-  padding-top: 80px
+  padding-top: 80px;
 }
 
 .content-section {
@@ -65,6 +78,7 @@
 .image2 {
   float: right;
   width: 40%;
+  margin-top: 20px;
 }
 
 .image2 img {
@@ -72,15 +86,16 @@
   height: 500px;
 }
 
-.content-section .title-mission {
+.title-mission {
   text-transform: uppercase;
   font-size: 35px;
+  margin-top: 40px;
 }
 
-.content-section .title-vision {
+.title-vision {
   text-transform: uppercase;
   font-size: 35px;
-  margin-top: 90px;
+  margin-top: 100px;
 }
 
 .content-section .content-mission {
@@ -100,11 +115,12 @@
 }
 
 .section2 {
-  margin-top: 50px;
+  margin-top: 10px;
   width: 100%;
-  min-height: 90vh;
+  min-height: 80vh;
   background-color: white;
   color: black;
+  font-family: 'League Spartan';
 }
 
 .container2 {
@@ -119,9 +135,10 @@
   width: 100%;
 }
 
-.content-section2 .title-compadv {
+.title-compadv {
   font-size: 35px;
-  font-weight: 200;
+  font-weight: bold;
+  margin-top: 20px;
 
 } 
 .content-1st {
@@ -148,6 +165,7 @@
   width: 100%;
   min-height: 90vh;
   background-color: black;
+  font-family: 'League Spartan';
 }
 
 .container3 {
@@ -161,12 +179,13 @@
   float: left;
   width: 40%;
   color: white;
+  margin-top: 50px;
 }
 
 .image3 {
   float: right;
   width: 40%;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .image3 img {
@@ -174,246 +193,908 @@
   height: 400px;
 }
 
-.content-section3 .title-compland {
+.title-compland {
   font-size: 35px;
+  padding-top: 10px;
 }
 
-.content-section3 .content-compl p {
+.content-compl  {
   margin-top: 80px;
   line-height: 25px;
   font-size: 20px;
   text-align: justify;
 }
+/* End of Content Design */
 
-@media screen and (max-width: 768px) {
-  
-  .heading p {
-    margin-top: 80px;
-    color: brown;
-    font-size: 25px;
-    font-weight: bolder;
-}
-
-.heading h2 {
-    margin-top: 10px;
-    color: black;
-    font-size: 35px;
-    font-weight: bolder;
-}
-
-.image1 {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 15px;
-    margin-left: 10px;
-}
-
-.image1 img {
-  height: 200px;
-  width: 500px;
-}
-
-.content1 {
-  margin-top: 15px;
-  text-align: justify; 
-}
-
-.content1 p {
-  max-width: 700px; 
-  margin: 0 auto; 
-  padding: 0 10px;
-  font-size: 15px;
-  margin-top: 15px; 
-  line-height: 25px;
-}
-
-.container {
-  width: 80%;
-  display: block;
-  margin: auto;
-  padding-top: 50px;
-}
-
-.content-section {
-  float: none;
-  width: 100%;
-  display: block;
-  margin: auto;
-}
-
-.content-section .title-mission {
-  text-transform: uppercase;
-  font-size: 20px;
-}
-
-.content-section .title-vision {
-  text-transform: uppercase;
-  font-size: 20px;
-  margin-top: 20px;
-}
-
-.content-section .content-mission {
-  margin-top: 10px;
-  font-size: 15px;
-  line-height: 25px;
-  text-align: justify;
-  width: 100%;
-}
-
-.content-section .content-vision {
-  margin-top: 10px;
-  font-size: 15px;
-  line-height: 25px;
-  text-align: justify;
-  width: 100%;
-}
-
-.section {
-  margin-top: 40px;
-  width: 100%;
-  min-height: 110vh;
+/* Start of 1stModal Design */
+.edit-btn {
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  margin: 1em;
+  left: 86vw;
   background-color: black;
-  color: white;
+  padding: 1em;
+  font-family: League Spartan;
+  font-size: 18px;
+  border: 1px solid white;
 }
 
-.image2 {
-  float: none;
+.edit-btn:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.content-edit {
+  position: absolute;
+}
+
+.ck-editor__editable[role="textbox"] {
+  display: block !important;
+  margin: 1em;
+  height: 10em;
+  width: 40.5em;
+  border: 5px solid black; /* Add black border */
+  background-color: white; /* Ensure background is white */
+}
+
+.bg-modal {
+  z-index: 100;
   width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  border: 20px solid black;
+}
+
+.bg-modal textarea {
+  height: 10em;
   display: block;
-  margin: auto;
-  margin-top: 10px;
+  margin: 0 auto;
+  border: 1em solid black; /* Add black border */
+  background-color: white; /* Ensure background is white */
 }
 
-.image2 img {
-  width: 400px;
-  height: 300px;
-}
-
-.content-1st,
-  .content-2nd {
-    width: 90%; 
-    float: none; 
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 15px;
-}
-
-.container3 {
-  width: 80%;
-  display: block;
-  margin: auto;
-  padding-top: 50px;
-}
-
-.content-section3 {
-  float: none;
-  width: 100%;
-  color: white;
-  display: block;
-  margin: auto;
-}
-
-.section3 {
-  width: 100%;
-  min-height: 100vh;
-  background-color: black;
-}
-
-.image3 {
-  float: none;
-  width: 100%;
-  color: white;
-  display: block;
-  margin: auto;
-  margin-top: 20px;
+.modal-content {
+  width: 45em;
+  max-height: 80vh; /* Adjust as needed */
   text-align: center;
+  color: black;
+  background-color: white;
+  padding: 1em;
+  border: 1px solid black; /* Add black border */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.image3 img {
-  width: 200px;
-  height: 250px;
+.edit-content {
+  z-index: 100;
+  background-color: white;
+  color: black;
+  padding: 10em;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-modal {
+  display: none;
+}
+
+.saveBtn {
+  font-family: League Spartan;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  border: 1px solid white;
+  background-color: black;
+  width: 6.5em;
+  padding: 1em;
+  position: relative;
+  top: -0.7em;
+  left: 15.4em;
+}
+
+.saveBtn:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.close {
+  position: relative;
+  left: 21.2em;
+  font-size: 2em;
+  width: 30px !important;
+  cursor: pointer;
+}
+
+.modal-title, .modal-caption {
+  padding: 0.5em;
+  color: black;
+  font-family: League Spartan;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.inputfile {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  font-family: League Spartan;
+  font-size: 18px;
   display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  position: relative;
+  right: 12.9em;
+  border-radius: 4px;
 }
 
-.content-section3 .content-compl p {
-  margin-top: 40px;
-  line-height: 25px;
-  font-size: 15px;
-  text-align: justify;
+.custom-file-upload:hover {
+  background-color: rgb(26, 26, 26);
+}
+/* End of 1stModal Design */
+
+/* Start of 2ndModal Design */
+.edit-btn2nd {
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  margin: 1em;
+  left: 86vw;
+  background-color: black;
+  padding: 1em;
+  font-family: League Spartan;
+  font-size: 18px;
+  border: 1px solid white;
 }
 
+.edit-btn2nd:hover {
+  background-color: rgb(26, 26, 26);
 }
 
-@media screen and (max-width: 576px) {
-  
-  .heading p {
-    margin-top: 60px;
-    font-size: 20px;
-  }
+.content-edit {
+  position: absolute;
+}
 
-  .heading h2 {
-    margin-top: 5px;
-    font-size: 30px;
-  }
+.ck-editor__editable[role="textbox"] {
+  display: block !important;
+  margin: 1em;
+  height: 10em;
+  width: 40.5em;
+  border: 5px solid black; /* Add black border */
+  background-color: white; /* Ensure background is white */
+}
 
-  .image1 img {
-    height: auto;
+.bg-modal2 {
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  border: 20px solid black;
+}
+
+.bg-modal2 textarea {
+  height: 10em;
+  display: block;
+  margin: 0 auto;
+  border: 1em solid black; /* Add black border */
+  background-color: white; /* Ensure background is white */
+}
+
+.modal-content2 {
+  width: 45em;
+  max-height: 80vh; /* Adjust as needed */
+  text-align: center;
+  color: black;
+  background-color: white;
+  padding: 1em;
+  border: 1px solid black; /* Add black border */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.edit-content {
+  z-index: 100;
+  background-color: white;
+  color: black;
+  padding: 10em;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-modal2 {
+  display: none;
+}
+
+.saveBtn {
+  font-family: League Spartan;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  border: 1px solid white;
+  background-color: black;
+  width: 6.5em;
+  padding: 1em;
+  position: relative;
+  top: -0.7em;
+  left: 15.4em;
+}
+
+.saveBtn:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.close2 {
+  position: relative;
+  left: 21.2em;
+  font-size: 2em;
+  width: 30px !important;
+  cursor: pointer;
+}
+
+.modal-title, .modal-caption {
+  padding: 0.5em;
+  color: black;
+  font-family: League Spartan;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.inputfile {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  font-family: League Spartan;
+  font-size: 18px;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  position: relative;
+  right: 12.9em;
+  border-radius: 4px;
+}
+
+.custom-file-upload:hover {
+  background-color: rgb(26, 26, 26);
+}
+/* End of 2ndModal Design */
+
+/* Start of 3rdModal Design */
+.edit-btn3rd {
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  margin: 1em;
+  left: 86vw;
+  background-color: black;
+  padding: 1em;
+  font-family: League Spartan;
+  font-size: 18px;
+  border: 1px solid white;
+}
+
+.edit-btn3rd:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.content-edit {
+  position: absolute;
+}
+
+.ck-editor__editable[role="textbox"] {
+  display: block !important;
+  margin: 1em;
+  height: 10em;
+  width: 40.5em;
+  border: 5px solid black; /* Add black border */
+  background-color: white; /* Ensure background is white */
+}
+
+.bg-modal3 {
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  border: 20px solid black;
+}
+
+.bg-modal3 textarea {
+  height: 10em;
+  display: block;
+  margin: 0 auto;
+  border: 1em solid black; /* Add black border */
+  background-color: white; /* Ensure background is white */
+}
+
+.modal-content3 {
+  width: 45em;
+  max-height: 80vh; /* Adjust as needed */
+  text-align: center;
+  color: black;
+  background-color: white;
+  padding: 1em;
+  border: 1px solid black; /* Add black border */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.edit-content {
+  z-index: 100;
+  background-color: white;
+  color: black;
+  padding: 10em;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-modal3 {
+  display: none;
+}
+
+.saveBtn {
+  font-family: League Spartan;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  border: 1px solid white;
+  background-color: black;
+  width: 6.5em;
+  padding: 1em;
+  position: relative;
+  top: -0.7em;
+  left: 15.4em;
+}
+
+.saveBtn:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.close3 {
+  position: relative;
+  left: 21.2em;
+  font-size: 2em;
+  width: 30px !important;
+  cursor: pointer;
+}
+
+.modal-title, .modal-caption {
+  padding: 0.5em;
+  color: black;
+  font-family: League Spartan;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.inputfile {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  font-family: League Spartan;
+  font-size: 18px;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  position: relative;
+  right: 12.9em;
+  border-radius: 4px;
+}
+
+.custom-file-upload:hover {
+  background-color: rgb(26, 26, 26);
+}
+/* End of 3rdModal Design */
+
+/* Start of 4thModal Design */
+.edit-btn4th {
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  margin: 1em;
+  left: 86vw;
+  background-color: black;
+  padding: 1em;
+  font-family: League Spartan;
+  font-size: 18px;
+  border: 1px solid white;
+}
+
+.edit-btn4th:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.content-edit {
+  position: absolute;
+}
+
+.ck-editor__editable[role="textbox"] {
+  display: block !important;
+  margin: 1em;
+  height: 10em;
+  width: 40.5em;
+  border: 5px solid black; /* Add black border */
+  background-color: white; /* Ensure background is white */
+}
+
+.bg-modal4 {
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  border: 20px solid black;
+}
+
+.bg-modal4 textarea {
+  height: 10em;
+  display: block;
+  margin: 0 auto;
+  border: 1em solid black; /* Add black border */
+  background-color: white; /* Ensure background is white */
+}
+
+.modal-content4 {
+  width: 45em;
+  max-height: 80vh; /* Adjust as needed */
+  text-align: center;
+  color: black;
+  background-color: white;
+  padding: 1em;
+  border: 1px solid black; /* Add black border */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.edit-content {
+  z-index: 100;
+  background-color: white;
+  color: black;
+  padding: 10em;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-modal4 {
+  display: none;
+}
+
+.saveBtn {
+  font-family: League Spartan;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  border: 1px solid white;
+  background-color: black;
+  width: 6.5em;
+  padding: 1em;
+  position: relative;
+  top: -0.7em;
+  left: 15.4em;
+}
+
+.saveBtn:hover {
+  background-color: rgb(26, 26, 26);
+}
+
+.close4 {
+  position: relative;
+  left: 21.2em;
+  font-size: 2em;
+  width: 30px !important;
+  cursor: pointer;
+}
+
+.modal-title, .modal-caption {
+  padding: 0.5em;
+  color: black;
+  font-family: League Spartan;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.inputfile {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  font-family: League Spartan;
+  font-size: 18px;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  position: relative;
+  right: 12.9em;
+  border-radius: 4px;
+}
+
+.custom-file-upload:hover {
+  background-color: rgb(26, 26, 26);
+}
+/* End of 4thModal Design */
+
+@media (max-width: 320px) {
+
+  .container-heading {
     width: 100%;
   }
 
-  .content1 p {
-    font-size: 14px;
-    line-height: 22px;
+  .heading {
+    width: 100%;
+  }
+
+  .header {
+    margin-top: 30px; 
+    font-size: 20px; 
+    font-weight: 400; 
+  }
+
+  .header-caption {
+    margin-top: 5px; 
+    font-size: 25px; 
+    font-weight: bold; 
+  }
+
+  .image1 {
+    width: 80%;
+    margin-left: 40px;
+  }
+
+  .image1 img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .content1 {
+    font-size: 15px;
+    margin-left: 30px;
+    width: 80%;
+  }
+
+  .section {
+    height: 110vh;
   }
 
   .container {
-    width: 90%;
-    padding-top: 30px;
+    width: 100%; /* Adjust container width for smaller screens */
+    padding-top: 20px; /* Reduce padding-top for smaller screens */
   }
 
-  .content-section .title-mission,
-  .content-section .title-vision {
-    font-size: 18px;
+  .content-section {
+    width: 100%; /* Take full width on smaller screens */
+    float: none; /* Clear float */
+  }
+
+  .image2 {
+    float: none; /* Clear float */
+    width: 80%; /* Take full width */
+    margin-top: 20px; /* Adjust margin */
+    margin-left: 35px;
+  }
+
+  .image2 img {
+    width: 100%; /* Make image width 100% of its container */
+    height: auto; /* Ensure image height adjusts proportionally */
+    object-fit: cover;
+  }
+
+  .title-mission,
+  .title-vision {
+    font-size: 20px; /* Decrease font size for titles */
+    margin-top: 20px;
+    margin-left: 30px;
   }
 
   .content-section .content-mission,
   .content-section .content-vision {
-    font-size: 14px;
-    line-height: 22px;
+    margin-top: 10px;
+    font-size: 15px; /* Decrease font size for content */
+    width: 80%; /* Take full width */
+    margin-left: 30px;
   }
 
-  .section {
-    min-height: auto;
-    padding: 40px 0;
+  .section2 {
+    height: 145vh;/* Remove min-height to allow content to dictate height */
   }
 
-  .image2 img {
-    width: 100%;
-    height: auto;
+  .container2 {
+    padding-top: 60px; /* Adjust padding for smaller screens */
+    width: 90%;
+  }
+
+  .title-compadv {
+    font-size: 20px; /* Decrease font size for the title */
+    margin-top: -20px; /* Adjust margin for the title */
   }
 
   .content-1st,
   .content-2nd {
-    width: 90%; 
-    font-size: 14px;
+    width: 100%; /* Take full width on smaller screens */
+    float: none; /* Clear float */
+    margin: 0; /* Remove margin */
+  }
+
+  .content-1st {
+    margin-top: 20px; /* Adjust top margin */
+    font-size: 15px;
+    width: 80%;
+    margin-left: 30px;
+  }
+
+  .content-2nd {
+    margin-top: 20px; /* Adjust top margin */
+    font-size: 15px;
+    width: 80%;
+    margin-left: 30px;
+  }
+
+  .section3 {
+    height: 110vh; /* Remove min-height to allow content to dictate height */
   }
 
   .container3 {
-    padding-top: 30px;
+    padding-top: 20px; /* Adjust padding for smaller screens */
+  }
+
+  .title-compland {
+    font-size: 20px; /* Decrease font size for the title */
+    padding-top: 0px; /* Adjust padding for the title */
+  }
+
+  .content-section3 {
+    float: none; /* Clear float */
+    width: 100%; /* Take full width on smaller screens */
+    margin-top: 20px; /* Adjust top margin */
+  }
+
+  .image3 {
+    float: none; /* Clear float */
+    width: 100%; /* Take full width on smaller screens */
+    margin-top: 20px; /* Adjust top margin */
   }
 
   .image3 img {
-    width: 150px;
-    height: auto;
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 200px; /* Set maximum width for smaller screens */
+    margin-top: 10px; /* Adjust top margin */
   }
 
-  .content-section3 .content-compl p {
-    font-size: 14px;
-    line-height: 22px;
-    width: 90%;
+  .content-compl {
+    margin-top: 20px; /* Adjust top margin */
+    font-size: 15px; /* Decrease font size for content */
+    line-height: 22px; /* Decrease line height for better readability */
   }
+
+  .edit-btn {
+    position: relative;
+    top: 10px;
+    right: auto;
+    left: 100px;
+    font-size: 12px; /* Decrease font size for smaller screens */
+  }
+  
+  .edit-btn2nd {
+    position: relative;
+    top: 10px;
+    right: auto;
+    left: 100px;
+    font-size: 12px; /* Decrease font size for smaller screens */
+  }
+
+  .edit-btn3rd {
+    position: relative;
+    top: 10px;
+    right: auto;
+    left: 100px;
+    font-size: 12px; /* Decrease font size for smaller screens */
+  }
+
+  .edit-btn4th {
+    position: relative;
+    top: 10px;
+    right: auto;
+    left: 100px;
+    font-size: 12px; /* Decrease font size for smaller screens */
+  }
+
 }
 
+@media (max-width: 768px) {
+
+  .container-heading,
+  .heading {
+    width: 100%; /* Take full width on smaller screens */
+  }
+
+  .header {
+    margin-top: 20px; /* Adjust margin */
+    font-size: 18px; /* Decrease font size */
+    font-weight: 400; 
+  }
+
+  .header-caption {
+    margin-top: 5px; /* Adjust margin */
+    font-size: 22px; /* Decrease font size */
+    font-weight: bold; 
+  }
+
+  .image1 {
+    width: 80%; /* Adjust width */
+    margin-left: 30px; /* Adjust margin */
+  }
+
+  .image1 img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+  }
+
+  .content1 {
+    font-size: 14px; /* Decrease font size */
+    margin-left: 20px; /* Adjust margin */
+    width: 80%; /* Adjust width */
+  }
+
+  .section {
+    height: auto; /* Allow content to dictate height */
+  }
+
+  .container {
+    width: 100%; /* Adjust container width */
+    padding-top: 15px; /* Adjust padding-top */
+  }
+
+  .content-section {
+    width: 100%; /* Take full width */
+    float: none; /* Clear float */
+  }
+
+  .image2 {
+    float: none; /* Clear float */
+    width: 80%; /* Adjust width */
+    margin-top: 15px; /* Adjust margin */
+    margin-left: 30px; /* Adjust margin */
+  }
+
+  .image2 img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+  }
+
+  .title-mission,
+  .title-vision {
+    font-size: 18px; /* Decrease font size */
+    margin-top: 15px; /* Adjust margin */
+    margin-left: 20px; /* Adjust margin */
+  }
+
+  .content-section .content-mission,
+  .content-section .content-vision {
+    margin-top: 10px; /* Adjust margin */
+    font-size: 14px; /* Decrease font size */
+    width: 80%; /* Adjust width */
+    margin-left: 20px; /* Adjust margin */
+  }
+
+  .section2 {
+    height: auto; /* Allow content to dictate height */
+  }
+
+  .container2 {
+    padding-top: 30px; /* Adjust padding */
+    width: 90%; /* Adjust width */
+  }
+
+  .title-compadv {
+    font-size: 18px; /* Decrease font size */
+    margin-top: -15px; /* Adjust margin */
+  }
+
+  .content-1st,
+  .content-2nd {
+    width: 100%; /* Take full width */
+    float: none; /* Clear float */
+    margin: 0; /* Remove margin */
+  }
+
+  .content-1st,
+  .content-2nd {
+    margin-top: 15px; /* Adjust margin */
+    font-size: 14px; /* Decrease font size */
+    width: 80%; /* Adjust width */
+    margin-left: 20px; /* Adjust margin */
+  }
+
+  .section3 {
+    height: auto; /* Allow content to dictate height */
+  }
+
+  .container3 {
+    padding-top: 15px; /* Adjust padding */
+  }
+
+  .title-compland {
+    font-size: 18px; /* Decrease font size */
+    padding-top: 0px; /* Adjust padding */
+  }
+
+  .content-section3 {
+    float: none; /* Clear float */
+    width: 100%; /* Take full width */
+    margin-top: 15px; /* Adjust margin */
+  }
+
+  .image3 {
+    float: none; /* Clear float */
+    width: 100%; /* Take full width */
+    margin-top: 15px; /* Adjust margin */
+  }
+
+  .image3 img {
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 150px; /* Set maximum width */
+    margin-top: 10px; /* Adjust margin */
+  }
+
+  .content-compl {
+    margin-top: 15px; /* Adjust margin */
+    font-size: 14px; /* Decrease font size */
+    line-height: 20px; /* Adjust line height */
+  }
+
+  .edit-btn,
+  .edit-btn2nd,
+  .edit-btn3rd,
+  .edit-btn4th {
+    position: relative;
+    top: 10px;
+    right: auto;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    font-size: 12px; /* Decrease font size */
+  }
+
+}
 
 
