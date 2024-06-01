@@ -29,8 +29,8 @@
 
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="content_id">
-    <div id="notification" class="notification">
-      <p>Item added to cart successfully!</p>
+    <div id="notification">
+      Item added to cart successfully!
     </div>
     <!-- Sidebar -->
     <div class="sidebarAndContent">
@@ -209,7 +209,7 @@
                             <div><p>Quantity:</p></div>
                             <div class="addMinus">
                               <button class="btnMinus" onclick="updateQuantity(-1, \'popup-'.$item["item_name"].$item['item_id'].'\')">-</button>
-                              <input class="quantity-input" type="text" name="itemquantity"; value="1" readonly>
+                              <input class="quantity-input" type="text" name="itemquantity" value="'.$item['item_quantity'].'" readonly>
                               <button class="btnAdd" onclick="updateQuantity(1, \'popup-'.$item["item_name"].$item['item_id'].'\')">+</button>
                             </div>
                           </div>
@@ -235,85 +235,85 @@
   include('partials/footer.php');
 ?>
 
-  <script>
-    document.querySelectorAll('.cms-add').forEach(function(button) {
-      button.addEventListener('click', function(event) {
-          event.preventDefault();
-          document.querySelector('.bg-modal-add').style.display = 'flex';
-          handleAddButtonClick();
-      });
-    });
-
-    document.querySelectorAll('.close').forEach(function(element) {
-      element.addEventListener('click', function() {
-        // document.querySelector('.bg-modal.'+modalClass).style.display = 'none';
-        document.querySelector('.bg-modal-add').style.display = 'none';
-      });
-    });
-
-    document.querySelectorAll('.delete-cms').forEach(function(button) {
+<script>
+  document.querySelectorAll('.cms-add').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
-        var contentId = button.getAttribute('data-content-id');
-        if (confirm('Are you sure you want to delete this content?')) {
-            var form = document.createElement('form');
-            form.method = 'post';
-            form.action = 'menu.php';
-            var input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'delete_content_id';
-            input.value = contentId;
-            form.appendChild(input);
-            document.body.appendChild(form);
-            form.submit();
-        }
+        document.querySelector('.bg-modal-add').style.display = 'flex';
+        handleAddButtonClick();
     });
+  });
+
+  document.querySelectorAll('.close').forEach(function(element) {
+    element.addEventListener('click', function() {
+      // document.querySelector('.bg-modal.'+modalClass).style.display = 'none';
+      document.querySelector('.bg-modal-add').style.display = 'none';
     });
+  });
 
-    // Prevents Add to Cart navigate to shopping-cart.php
-    document.addEventListener("DOMContentLoaded", function() {
-      document.querySelectorAll('.addCart').forEach(function(button) {
-        button.addEventListener('click', function(event) {
-          event.preventDefault();
-          var form = this.closest('form');
-          var formData = new FormData(form);
-
-          fetch('shopping-cart.php', {
-            method: 'POST',
-            body: formData
-          })
-          .then(response => response.text())
-          .then(data => {
-            showNotification('Item added to cart successfully!');
-            var itemId = form.querySelector('input[name="itemid"]').value;
-            closePopup(itemId);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-        });
-      });
-      document.querySelectorAll('.buyNow').forEach(function(button) {
-        button.addEventListener('click', function() {
-          var form = this.closest('form');
-          form.action = 'shopping-cart.php';
+  document.querySelectorAll('.delete-cms').forEach(function(button) {
+  button.addEventListener('click', function(event) {
+      event.preventDefault();
+      var contentId = button.getAttribute('data-content-id');
+      if (confirm('Are you sure you want to delete this content?')) {
+          var form = document.createElement('form');
+          form.method = 'post';
+          form.action = 'menu.php';
+          var input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'delete_content_id';
+          input.value = contentId;
+          form.appendChild(input);
+          document.body.appendChild(form);
           form.submit();
+      }
+  });
+  });
+
+  // Prevents Add to Cart navigate to shopping-cart.php
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.addCart').forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        var form = this.closest('form');
+        var formData = new FormData(form);
+
+        fetch('shopping-cart.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+          showNotification('Item added to cart successfully!');
+          var itemId = form.querySelector('input[name="itemid"]').value;
+          closePopup(itemId);
+        })
+        .catch(error => {
+          console.error('Error:', error);
         });
       });
     });
+    document.querySelectorAll('.buyNow').forEach(function(button) {
+      button.addEventListener('click', function() {
+        var form = this.closest('form');
+        form.action = 'shopping-cart.php';
+        form.submit();
+      });
+    });
+  });
 
-    // Notify items are added to cart
-    function showNotification(message) {
-      var notification = document.getElementById('notification');
-      notification.textContent = message;
-      notification.style.display = 'block';
-      setTimeout(function() {
-        notification.style.display = 'none';
-        
-      }, 2000);
-    }
-    // const dialog = document.getElementById(`popup-${itemId}`);
-    // const wrapper = document.querySelector(".wrapper");
-    // const showPopup = (show) => show ? dialog.showModal() : dialog.close()
-    // dialog.addEventListener('click', (e) => !wrapper.contains(e.target) && dialog.close())
-  </script>
+  // Notify items are added to cart
+  function showNotification(message) {
+    var notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.style.display = 'block';
+    setTimeout(function() {
+      notification.style.display = 'none';
+      
+    }, 2000);
+  }
+  // const dialog = document.getElementById(`popup-${itemId}`);
+  // const wrapper = document.querySelector(".wrapper");
+  // const showPopup = (show) => show ? dialog.showModal() : dialog.close()
+  // dialog.addEventListener('click', (e) => !wrapper.contains(e.target) && dialog.close())
+</script>

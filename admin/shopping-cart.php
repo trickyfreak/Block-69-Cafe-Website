@@ -67,9 +67,9 @@
 <div class="cart-container">
   <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST">
     <div class="cart-summary">
-      <div class="column select-all-container">
+      <!-- <div class="column select-all-container">
         <input type="checkbox" id="select-all" class="select select-all" value="products">
-      </div>
+      </div> -->
       <div class="column summary-image"></div>
       <div class="column summary-product">
         <p>Product</p>
@@ -97,9 +97,9 @@
       <?php foreach ($cartItems as $item): ?>
         <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST">
           <div class="cart-items" id="cartitem-<?php echo $item['item_id']; ?>">
-            <div class="column select-container">
+            <!-- <div class="column select-container">
               <input type="checkbox" id="select" name="select" class="select select-item" a value="<?php echo $item['item_id']; ?>">
-            </div>
+            </div> -->
             <div class="column product-image">
               <input type="hidden" name="item_image" value="<?php echo $item['item_image']; ?>">
               <img src="<?php echo $item['item_image']; ?>">
@@ -138,9 +138,9 @@
   
   <form action="checkout.php" method="POST" enctype="multipart/form-data">
     <div class="checkout-area">
-      <div class="checkout select-all-checkout">
+      <!-- <div class="checkout select-all-checkout">
         <input type="checkbox" id="select-all-checkout" name="select-all-checkout" class="select select-all-checkout" value="select-all-checkout">
-      </div>
+      </div> -->
       <div class="checkout select-all-text">
         <p>Select All (?)</p>
       </div>

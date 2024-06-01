@@ -8,7 +8,7 @@ li{
   list-style: none;
 }
 
-.notification {
+#notification {
   display: none; 
   position: fixed; 
   top: 10px; 
@@ -309,18 +309,19 @@ h2 span {
   background-color: white;
   border: 5px solid black;
   border-radius: 3em;
-  top: 100%;
-  left: 50%;
+  top: -25%; 
+  left: 75%; 
   visibility: hidden;
-  transform: translate(-50%,-50%) scale(0.2);
-  transition: transform 0.3s, top 0.3s;
+  transform: scale(0.1);
+  transition: all 0.3s;
   z-index: 1001;
   filter: blur(0px);
 }
 .open-popup {
   visibility: visible;
-  top: 50%;
-  transform: translate(-50%,-50%) scale(1);
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%) scale(1); /* Center the popup and scale it up */
 }
 .open-popup .overlay {
   display: block; /* Show overlay when popup is open */

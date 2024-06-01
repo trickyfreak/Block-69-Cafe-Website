@@ -155,9 +155,28 @@
       </div>
     </div>
     <div class="place-order">
-      <button>Place Order</button>
+      <button type="submit" name="placeorder">Place Order</button>
     </div>
   </div>
 </div>
 
 <?php include('partials/footer.php'); ?>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var nav = document.getElementById("mainNav");
+
+    var listItems = nav.getElementsByTagName("li");
+
+    for (var i = 0; i < listItems.length; i++) {
+        listItems[i].style.display = "none";
+
+        listItems[0].style.display = "block";
+        listItems[0].innerHTML = "<span style='font-weight: lighter;'>|</span>" + "<span style='margin-left: 1em;'>Checkout</span>";
+        listItems[0].style.fontWeight = "bold";
+        listItems[0].style.fontFamily = "League Spartan";
+        listItems[0].style.fontSize = "30px";
+    }
+    document.getElementById('Cart').style.display = "none";
+  });
+</script>

@@ -1,12 +1,21 @@
 
 <?php 
-
   include_once './config/functions.php';
   include_once './config/connect.php';
 
   $conn = get_connection();
   $userActive = check_login($conn);
 
+  $cartCount_query = "SELECT COUNT(*) as cart_count FROM cartcontent";
+  $cartCountresult = mysqli_query($conn, $cartCount_query);
+  $cart_count = 0;
+  //  Updates cart item count
+  if(mysqli_num_rows($cartCountresult) > 0) {
+    $row = mysqli_fetch_assoc($cartCountresult);
+    $cart_count = $row['cart_count'];
+  } else {
+    $cart_count = 0;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -70,13 +79,13 @@
 
     if($userActive){
         echo '
-        <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"><span>0</span></i></a>
+        <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"></i></a>
         <a href="sign-out.php" id="Sign-out"><i class="fa-sharp fa-solid fa-right-from-bracket" style="font-size: 25px; margin-right: 10px;"></i></a>
         </div>';
     }else{
         echo '<a href="sign-in.php" id="Sign-in">Login</a>
         <a href="sign-up.php" id="Sign-up">Join now</a>
-        <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"></i></a>';
+        <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"><span>'; echo $cart_count; echo'</span></i></a>';
     }
     ?>
     </div>
