@@ -7,7 +7,18 @@
   $conn = get_connection();
   $user_data = check_login($conn);
   $user_type = check_usertype($conn);
-  $content_id = 0;
+
+  // Clear checkout content if the user navigates back from the checkout page
+  if (isset($_SESSION['checkout_in_progress']) && $_SESSION['checkout_in_progress'] === true) {
+    $clear_checkout_query = "DELETE FROM checkoutcontent";
+    if (mysqli_query($conn, $clear_checkout_query)) {
+        // Successfully cleared checkout content
+        unset($_SESSION['checkout_in_progress']);
+    } else {
+        echo "Error: " . $clear_checkout_query . "<br>" . mysqli_error($conn);
+    }
+  }
+
   // Fetch content for drinks and foods separately
   $drinks_content = get_content($conn, $drink_categories);
   $foods_content = get_content($conn, $food_categories);
@@ -23,214 +34,214 @@
   $sidesandnibbles_items = get_items($conn, $sidesandnibbles);
   $carbsandcaffeine_items = get_items($conn, $carbsandcaffeine);
 ?>
-  
-  <link href="css/menu.css" rel="stylesheet">
-  <script src="javascript/menu.js"></script>
 
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
-  <input type="hidden" name="content_id">
-    <div id="notification">
-      Item added to cart successfully!
-    </div>
-    <!-- Sidebar -->
-    <div class="sidebarAndContent">
-      <div class="sidebar" id="sidebar">
-        <ul>
-          <li class="header1"><a href="#menu" onclick="showCategory('menu')">Menu</a></li><br><br>
-          <li class="header2">Drinks</li>
-          <?php
-          foreach($drinks_content as $drink_category) {
-              echo '<li class="choice"><a href="#'.strtolower(str_replace(' ', '', $drink_category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $drink_category['product_name'])).'\')">'.$drink_category['product_name'].'</a></li>';
-          }
-          ?>
-          <br><br>
-          <li class="header2">Foods</li>
-          <?php 
-          foreach($foods_content as $food_category) {
-            echo '<li class="choice"><a href="#'.strtolower(str_replace(' ', '', $food_category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $food_category['product_name'])).'\')">'.$food_category['product_name'].'</a></li>';
-          }
-          ?>
-        </ul>
-      </div>
+<title>Menu</title>
+<link href="css/menu.css" rel="stylesheet">
+<script src="javascript/menu.js"></script>
 
-      <!-- Disabling click events -->
-      <div class="overlay" id="overlay"></div>
-
-      <div class="contents">
-        <div id="menu" class="category">
-          <!-- Display drinks options -->
-          <div class="txtDrinks">
-            <h2>Drinks</h2>
-            <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add category</button></div>'; ?>
-            <!-- Start of Add Modal -->
-            <div class="bg-modal-add">
-              <div class="modal-content-add">
-                <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
-                <p class="modal-title">Product Name</p>
-                <textarea class="edit-content" name="content_title"></textarea>
-                <p class="modal-caption">Product Subname</p>
-                <textarea class="edit-content" name="content_caption"></textarea>
-                <div>
-                  <label for="image" class="custom-file-upload">Upload Image</label>
-                  <input type="file" id="image" class="inputfile" name="content_image" required>
-                </div>
-                <input class="saveBtn" type="submit" name="submit">
-              </div>
-            </div>
-            <!-- End of Modal -->
-          </div>
-          <hr>
-          <div class="drinksOptions" id="drinksNav">
-            <?php 
-              foreach($drinks_content as $category) {
-                echo '
-                    <div class="options" id="'.$category['product_id'].'" name="'.$category['product_name'].'">
-                      <div class="option">
-                        <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><img src="'.$category['product_image'].'"></a>
-                        <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><p>'.$category['product_name']."<br>".$category['product_subname'].'</p></a>';
-                if($user_type == 'admin') echo '<div class="cms-edit-delete"><button class="delete-cms" name="edit-btn" data-content-id="'.$category['product_id'].'"><i class="fa-regular fa-trash-can"></i></button> <button class="edit-cms"><i class="fa-regular fa-pen-to-square"></i></button></button></div>';     
-                echo '</div></div>';
-              }
-            ?>
-          </div>
-          <!-- Display foods options -->
-          <div class="txtFoods">
-            <h2>Foods</h2>
-            <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add category</button></div>'; ?>
-          </div>
-          <hr>
-          <div class="foodsOptions" id="foodsNav">
-            <?php
-              foreach($foods_content as $category) {
-                echo '
-                    <div class="options" id="'.$category['product_id'].'" name="'.$category['product_name'].'">
-                      <div class="option">
-                        <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><img src="'.$category['product_image'].'"></a>
-                        <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><p>'.$category['product_name']."<br>".$category['product_subname'].'</p></a>';
-                if($user_type == 'admin') echo '<div class="cms-edit-delete"><button class="delete-cms" name="edit-btn" data-content-id="'.$category['product_id'].'"><i class="fa-regular fa-trash-can"></i></button> <button class="edit-cms"><i class="fa-regular fa-pen-to-square"></i></button></button></div>';     
-                echo '</div></div>';
-              }
-            ?>
-          </div>
-        </div>
-
-        <!-- Other categories section -->
-        <?php    
-          // Array of categories with corresponding items
-          $categories = [
-            'espresso' => $espresso_items,
-            'brew' => $brew_items,
-            'non-coffee-and-tea' => $noncoffeeandtea_items,
-            'matcha' => $matcha_items,
-            'beverages' => $beverages_items,
-            'all-day-breakfast' => $alldaybreakfast_items,
-            'silog' => $silog_items,
-            'pasta' => $pasta_items,
-            'bargain-bites' => $bargainbites_items,
-            'sides-and-nibbles' => $sidesandnibbles_items,
-            'carbs-and-caffeine' => $carbsandcaffeine_items
-          ]; 
-          // Create sections for each Category
-          foreach($categories as $category => $items) {
-            echo '
-              <div id="'.str_replace('-', '', $category).'" class="category">
-              <div id="'.str_replace('-', '', $category).'-container">
-                <div class="txt'.str_replace('-', '', ucfirst($category)).'" id="'.str_replace('-', '', $category).'-text">
-                  <div class="column">
-                    <h2>'.ucwords(str_replace('-', ' ', $category)).'</h2>';
-                    if($category == 'espresso' || $category == 'brew') echo '<p>Iced/Hot</p>';
-                  echo '</div>';
-                  if($user_type == 'admin') echo '<div class="column cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add item</button></div>';
-                echo' 
-                </div>
-                <hr>
-                <div class="menuContainer" id="'.str_replace('-', '', $category).'MenuContainer">';
-                // All items depends on Category
-                foreach($items as $item) {
-                  echo '
-                    <div class="menu-options" id="'.$item['item_id'].'">
-                      <div class="menu-option">';
-                  if($user_type == 'admin') echo '<div class="cms-edit-delete"><button class="delete-cms"><i class="fa-regular fa-trash-can"></i></button> <button class="edit-cms"><i class="fa-regular fa-pen-to-square"></i></button></button></div>';    
-                  echo '
-                        <img src="'.$item['item_image'].'" onclick="openPopup(\''.$item["item_name"].$item['item_id'].'\')">
-                        <p onclick="openPopup(\''.$item["item_name"].$item['item_id'].'\')">'.$item['item_name'].'</p>
-                      </div>
-                    </div>';
-                }
-                echo '
-                  </div>
-                    </div>'; 
-        ?> 
-        </form>
-        <?php   // Popup for items
-                foreach($items as $item) {
-                  echo'
-                    <form method="POST" enctype="multipart/form-data">
-                      <div class="popup" id="popup-'.$item["item_name"].$item['item_id'].'">
-                        <input type="hidden" name="itemid" value="'.$item['item_name'].'-'.$item['item_id'].'-">
-                        <input type="hidden" name="itemcategory" value="'.$item['item_category'].'">
-                        <div class="popupImage">
-                          <input type="hidden" name="itemimage" value="'.$item['item_image'].'">
-                          <img src="'.$item['item_image'].'">
-                        </div>
-                        <div class="popupContent">
-                          <div class="btnClose">
-                            <button onclick="closePopup(\''.$item["item_name"].$item['item_id'].'\')"><img src="icons/x.png"></button>
-                          </div>
-                          <div class="productName">
-                            <input type="hidden" name="itemcategory" value="'.$item['item_category'].'">
-                            <input type="hidden" name="itemname" value="'.$item['item_name'].'">
-                            <h1>'.$item['item_name'].'</h1>
-                          </div>
-                          <div class="description">
-                            <p>Enjoy our creamy '.$item['item_name'].', made with premium espresso, sweetened condensed milk, and whole milk. Perfectly balanced for a smooth, sweet coffee experience.</p>
-                          </div>
-                          <div class="price">
-                            <div class="txt-price"><p>Price:</p></div>
-                            <div class="price-list">
-                              <input type="hidden" name="itemcustomization" value=" ">
-                              <p>'; 
-                              // Drinks: 12oz/16oz customization | Foods: Solo/Savor customization 
-                              if($item['item_category'] == 'All Day Breakfast' || $item['item_category'] == 'Silog' || $item['item_category'] == 'Pasta' || $item['item_category'] == 'Bargain Bites' ||
-                                $item['item_category'] == 'Sides And Nibbles' || $item['item_category'] == 'Carbs And Caffeine') {
-                                echo '
-                                  <input type="radio" name="itemprice" value="'.$item['item_priceoption1'].'" onclick="updateCustomization(this)"> Solo: <span>₱'.$item['item_priceoption1'].'</span> &nbsp | &nbsp 
-                                  <input type="radio" name="itemprice" value="'.$item['item_priceoption2'].'" onclick="updateCustomization(this)"> Savor: <span>₱'.$item['item_priceoption2'].'</span>';
-                              } else {
-                                echo '
-                                  <input type="radio" name="itemprice" value="'.$item['item_priceoption1'].'" onclick="updateCustomization(this)"> 12oz: <span>₱'.$item['item_priceoption1'].'</span> &nbsp | &nbsp 
-                                  <input type="radio" name="itemprice" value="'.$item['item_priceoption2'].'" onclick="updateCustomization(this)"> 16oz: <span>₱'.$item['item_priceoption2'].'</span>';
-                              }   
-                            echo '
-                              </p>
-                            </div>
-                          </div>
-                          <div class="quantity">
-                            <div><p>Quantity:</p></div>
-                            <div class="addMinus">
-                              <button class="btnMinus" onclick="updateQuantity(-1, \'popup-'.$item["item_name"].$item['item_id'].'\')">-</button>
-                              <input class="quantity-input" type="text" name="itemquantity" value="'.$item['item_quantity'].'" readonly>
-                              <button class="btnAdd" onclick="updateQuantity(1, \'popup-'.$item["item_name"].$item['item_id'].'\')">+</button>
-                            </div>
-                          </div>
-                          <div class="total">
-                            <input type="hidden" class="total-price" name="itemtotalprice" value="0">
-                            <p class="totalPrice">Total: <span></span></p>
-                          </div>
-                          <div class="add-buy">
-                            <input type="submit" class="addCart" onclick="closePopup(\''.$item["item_name"].$item['item_id'].'\')" name="add-buy" value="Add to Cart">
-                            <input type="submit" class="buyNow" name="add-buy" value="Buy Now">
-                          </div>
-                        </div>
-                      </div>
-                    </form>'; 
-                }
-                echo '
-                  </div>';
-          }
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" enctype="multipart/form-data">
+  <div id="notification">
+    Item added to cart successfully!
+  </div>
+  <!-- Sidebar -->
+  <div class="sidebarAndContent">
+    <div class="sidebar" id="sidebar">
+      <ul>
+        <li class="header1"><a href="#menu" onclick="showCategory('menu')">Menu</a></li><br><br>
+        <li class="header2">Drinks</li>
+        <?php
+        foreach($drinks_content as $drink_category) {
+            echo '<li class="choice"><a href="#'.strtolower(str_replace(' ', '', $drink_category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $drink_category['product_name'])).'\')">'.$drink_category['product_name'].'</a></li>';
+        }
         ?>
-      </div>
+        <br><br>
+        <li class="header2">Foods</li>
+        <?php 
+        foreach($foods_content as $food_category) {
+          echo '<li class="choice"><a href="#'.strtolower(str_replace(' ', '', $food_category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $food_category['product_name'])).'\')">'.$food_category['product_name'].'</a></li>';
+        }
+        ?>
+      </ul>
     </div>
+
+    <!-- Disabling click events -->
+    <div class="overlay" id="overlay"></div>
+
+    <div class="contents">
+      <div id="menu" class="category">
+        <!-- Display drinks options -->
+        <div class="txtDrinks">
+          <h2>Drinks</h2>
+          <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add category</button></div>'; ?>
+          <!-- Start of Add Modal -->
+          <div class="bg-modal-add">
+            <div class="modal-content-add">
+              <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
+              <p class="modal-title">Product Name</p>
+              <textarea class="edit-content" name="content_title"></textarea>
+              <p class="modal-caption">Product Subname</p>
+              <textarea class="edit-content" name="content_caption"></textarea>
+              <div>
+                <label for="image" class="custom-file-upload">Upload Image</label>
+                <input type="file" id="image" class="inputfile" name="content_image" required>
+              </div>
+              <input class="saveBtn" type="submit" name="submit">
+            </div>
+          </div>
+          <!-- End of Modal -->
+        </div>
+        <hr>
+        <div class="drinksOptions" id="drinksNav">
+          <?php 
+            foreach($drinks_content as $category) {
+              echo '
+                  <div class="options" id="'.$category['product_id'].'" name="'.$category['product_name'].'">
+                    <div class="option">
+                      <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><img src="'.$category['product_image'].'"></a>
+                      <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><p>'.$category['product_name']."<br>".$category['product_subname'].'</p></a>';
+              if($user_type == 'admin') echo '<div class="cms-edit-delete"><button class="delete-cms" name="edit-btn" data-content-id="'.$category['product_id'].'"><i class="fa-regular fa-trash-can"></i></button> <button class="edit-cms"><i class="fa-regular fa-pen-to-square"></i></button></button></div>';     
+              echo '</div></div>';
+            }
+          ?>
+        </div>
+        <!-- Display foods options -->
+        <div class="txtFoods">
+          <h2>Foods</h2>
+          <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add category</button></div>'; ?>
+        </div>
+        <hr>
+        <div class="foodsOptions" id="foodsNav">
+          <?php
+            foreach($foods_content as $category) {
+              echo '
+                  <div class="options" id="'.$category['product_id'].'" name="'.$category['product_name'].'">
+                    <div class="option">
+                      <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><img src="'.$category['product_image'].'"></a>
+                      <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><p>'.$category['product_name']."<br>".$category['product_subname'].'</p></a>';
+              if($user_type == 'admin') echo '<div class="cms-edit-delete"><button class="delete-cms" name="edit-btn" data-content-id="'.$category['product_id'].'"><i class="fa-regular fa-trash-can"></i></button> <button class="edit-cms"><i class="fa-regular fa-pen-to-square"></i></button></button></div>';     
+              echo '</div></div>';
+            }
+          ?>
+        </div>
+      </div>
+
+      <!-- Other categories section -->
+      <?php    
+        // Array of categories with corresponding items
+        $categories = [
+          'espresso' => $espresso_items,
+          'brew' => $brew_items,
+          'non-coffee-and-tea' => $noncoffeeandtea_items,
+          'matcha' => $matcha_items,
+          'beverages' => $beverages_items,
+          'all-day-breakfast' => $alldaybreakfast_items,
+          'silog' => $silog_items,
+          'pasta' => $pasta_items,
+          'bargain-bites' => $bargainbites_items,
+          'sides-and-nibbles' => $sidesandnibbles_items,
+          'carbs-and-caffeine' => $carbsandcaffeine_items
+        ]; 
+        // Create sections for each Category
+        foreach($categories as $category => $items) {
+          echo '
+            <div id="'.str_replace('-', '', $category).'" class="category">
+            <div id="'.str_replace('-', '', $category).'-container">
+              <div class="txt'.str_replace('-', '', ucfirst($category)).'" id="'.str_replace('-', '', $category).'-text">
+                <div class="column">
+                  <h2>'.ucwords(str_replace('-', ' ', $category)).'</h2>';
+                  if($category == 'espresso' || $category == 'brew') echo '<p>Iced/Hot</p>';
+                echo '</div>';
+                if($user_type == 'admin') echo '<div class="column cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add item</button></div>';
+              echo' 
+              </div>
+              <hr>
+              <div class="menuContainer" id="'.str_replace('-', '', $category).'MenuContainer">';
+              // All items depends on Category
+              foreach($items as $item) {
+                echo '
+                  <div class="menu-options" id="'.$item['item_id'].'">
+                    <div class="menu-option">';
+                if($user_type == 'admin') echo '<div class="cms-edit-delete"><button class="delete-cms"><i class="fa-regular fa-trash-can"></i></button> <button class="edit-cms"><i class="fa-regular fa-pen-to-square"></i></button></button></div>';    
+                echo '
+                      <img src="'.$item['item_image'].'" onclick="openPopup(\''.$item["item_name"].$item['item_id'].'\')">
+                      <p onclick="openPopup(\''.$item["item_name"].$item['item_id'].'\')">'.$item['item_name'].'</p>
+                    </div>
+                  </div>';
+              }
+              echo '
+                </div>
+                  </div>'; 
+      ?> 
+      </form>
+      <?php   // Popup for items
+              foreach($items as $item) {
+                echo'
+                  <form method="POST" enctype="multipart/form-data">
+                    <div class="popup" id="popup-'.$item["item_name"].$item['item_id'].'">
+                      <input type="hidden" name="itemid" value="'.$item['item_name'].'-'.$item['item_id'].'-">
+                      <input type="hidden" name="itemcategory" value="'.$item['item_category'].'">
+                      <div class="popupImage">
+                        <input type="hidden" name="itemimage" value="'.$item['item_image'].'">
+                        <img src="'.$item['item_image'].'">
+                      </div>
+                      <div class="popupContent">
+                        <div class="btnClose">
+                          <button onclick="closePopup(\''.$item["item_name"].$item['item_id'].'\')"><img src="icons/x.png"></button>
+                        </div>
+                        <div class="productName">
+                          <input type="hidden" name="itemcategory" value="'.$item['item_category'].'">
+                          <input type="hidden" name="itemname" value="'.$item['item_name'].'">
+                          <h1>'.$item['item_name'].'</h1>
+                        </div>
+                        <div class="description">
+                          <p>Enjoy our creamy '.$item['item_name'].', made with premium espresso, sweetened condensed milk, and whole milk. Perfectly balanced for a smooth, sweet coffee experience.</p>
+                        </div>
+                        <div class="price">
+                          <div class="txt-price"><p>Price:</p></div>
+                          <div class="price-list">
+                            <input type="hidden" name="itemcustomization" value=" ">
+                            <p>'; 
+                            // Drinks: 12oz/16oz customization | Foods: Solo/Savor customization 
+                            if($item['item_category'] == 'All Day Breakfast' || $item['item_category'] == 'Silog' || $item['item_category'] == 'Pasta' || $item['item_category'] == 'Bargain Bites' ||
+                              $item['item_category'] == 'Sides And Nibbles' || $item['item_category'] == 'Carbs And Caffeine') {
+                              echo '
+                                <input type="radio" name="itemprice" value="'.$item['item_priceoption1'].'" onclick="updateCustomization(this)"> Solo: <span>₱'.$item['item_priceoption1'].'</span> &nbsp | &nbsp 
+                                <input type="radio" name="itemprice" value="'.$item['item_priceoption2'].'" onclick="updateCustomization(this)"> Savor: <span>₱'.$item['item_priceoption2'].'</span>';
+                            } else {
+                              echo '
+                                <input type="radio" name="itemprice" value="'.$item['item_priceoption1'].'" onclick="updateCustomization(this)"> 12oz: <span>₱'.$item['item_priceoption1'].'</span> &nbsp | &nbsp 
+                                <input type="radio" name="itemprice" value="'.$item['item_priceoption2'].'" onclick="updateCustomization(this)"> 16oz: <span>₱'.$item['item_priceoption2'].'</span>';
+                            }   
+                          echo '
+                            </p>
+                          </div>
+                        </div>
+                        <div class="quantity">
+                          <div><p>Quantity:</p></div>
+                          <div class="addMinus">
+                            <button class="btnMinus" onclick="updateQuantity(-1, \'popup-'.$item["item_name"].$item['item_id'].'\')">-</button>
+                            <input class="quantity-input" type="text" name="itemquantity" value="'.$item['item_quantity'].'" readonly>
+                            <button class="btnAdd" onclick="updateQuantity(1, \'popup-'.$item["item_name"].$item['item_id'].'\')">+</button>
+                          </div>
+                        </div>
+                        <div class="total">
+                          <input type="hidden" class="total-price" name="itemtotalprice" value="0">
+                          <p class="totalPrice">Total: <span></span></p>
+                        </div>
+                        <div class="add-buy">
+                          <input type="submit" class="addCart" onclick="closePopup(\''.$item["item_name"].$item['item_id'].'\')" name="add-buy" value="Add to Cart">
+                          <input type="submit" class="buyNow" name="add-buy" value="Buy Now">
+                        </div>
+                      </div>
+                    </div>
+                  </form>'; 
+              }
+              echo '
+                </div>';
+        }
+      ?>
+    </div>
+  </div>
 <?php
   include('partials/footer.php');
 ?>

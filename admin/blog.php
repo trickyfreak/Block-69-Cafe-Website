@@ -12,7 +12,7 @@ include_once('partials/header.php');
 
 ?>
 <!-- ############################################################################################### -->
-
+<title>Blog</title>
 <!--START: ADDING OF BLOG CONTENT-->
     <?php
 

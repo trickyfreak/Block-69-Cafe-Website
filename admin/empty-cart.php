@@ -5,6 +5,7 @@ include_once './config/functions.php';
 include_once './config/connect.php';
 ?>
 
+<title>Shopping Cart</title>
 <link rel="stylesheet" href="css/cart.css">
 
   <div class="cart-container">

@@ -24,7 +24,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BLOCK 69 Café</title>
 
   <!-- LINK -->
   <link rel="icon" href="icons/newlogo-light.png">

@@ -4,24 +4,48 @@
   include_once('config/functions.php');
   $conn = get_connection();
 
+  // Handle delete all operation 
+  if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete-all"])) {
+    $delete_query = "DELETE FROM cartcontent";
+    if(mysqli_query($conn, $delete_query)) {
+      // Successfully deleted all, redirect to avoid form resubmission
+      header("Location: shopping-cart.php");
+      exit();
+    } else {
+      echo "Error: " . $delete_query . "<br>" . mysqli_error($conn);
+    }
+  }
+
   // Handle checkout operation
   if(isset($_POST["checkout"]) && isset($_POST["checkout"])) {
     $checkout_query = "INSERT INTO checkoutcontent (item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice)
                       SELECT item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice FROM cartcontent";
     if (mysqli_query($conn, $checkout_query)) {
-      echo '<script>alert("Checkout successful!");</script>';
-        // // Successfully inserted into checkoutcontent, now clear the cart
-        // $clear_cart_query = "DELETE FROM cartcontent";
-        // if (mysqli_query($conn, $clear_cart_query)) {
-        //     // Successfully cleared the cart, redirect to a confirmation page or the checkout page
-        //     // header("Location: checkout.php");
-        //     exit();
-        // } else {
-        //     echo "Error: " . $clear_cart_query . "<br>" . mysqli_error($conn);
-        // }
+      $_SESSION['checkout_in_progress'] = true;
+      // echo '<script>alert("Checkout successful!");</script>';
+      // // Successfully inserted into checkoutcontent, now clear the cart
+      // $clear_cart_query = "DELETE FROM cartcontent";
+      // if (mysqli_query($conn, $clear_cart_query)) {
+      //     // Successfully cleared the cart, redirect to a confirmation page or the checkout page
+      //     // header("Location: checkout.php");
+      //     exit();
+      // } else {
+      //     echo "Error: " . $clear_cart_query . "<br>" . mysqli_error($conn);
+      // }
     } else {
         echo "Error: " . $checkout_query . "<br>" . mysqli_error($conn);
     }
+  }
+
+  $checkoutCount_query = "SELECT COUNT(*) as checkout_count FROM checkoutcontent";
+  $checkoutCountresult = mysqli_query($conn, $checkoutCount_query);
+  $checkout_count = 0;
+  //  Updates cart item count
+  if(mysqli_num_rows($checkoutCountresult) > 0) {
+    $row = mysqli_fetch_assoc($checkoutCountresult);
+    $checkout_count = $row['checkout_count'];
+  } else {
+    $checkout_count = 0;
   }
 
   // // Handle insert operation
@@ -68,6 +92,7 @@
   $checkoutItems = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 
+<title>Checkout</title>
 <link href="css/checkout.css" rel="stylesheet">
 
 <div class="checkout-container">
@@ -118,17 +143,25 @@
         </div>
       <?php endforeach; ?>
     <?php else: 
-      //header("Location: empty-cart.php");
+      header("Location: empty-cart.php");
     endif; ?>
 
       <div class="shipping-container">
+        <div class="txt-shipping-fee">
+          <p>Shipping Fee:</p>
+        </div>
         <div class="shipping-fee">
-          <p>Shipping Fee: <span>₱?</span></p>
+          <span>₱?</span>
         </div>
       </div>
       <div class="order-total-container">
+        <div class="txt-order-total">
+          <p>Order Total (<?php echo $checkout_count ?> item<?php if($checkout_count > 1) echo "s"; ?>):</p>
+        </div>
         <div class="order-total">
-          <p>Order Total:<span>₱?</span></p>
+          <span>
+            ₱<?php $orderTotal = 0; foreach($checkoutItems as $item) $orderTotal += $item["item_totalprice"]; echo number_format($orderTotal, 0, '.', ','); ?>
+          </span>
         </div>
       </div>
     </div>
@@ -140,18 +173,46 @@
         <p>Payment Method</p>
       </div>
       <div class="payment-method">
-        <P>?</P>
+        <p>
+          <select id="paymentmethod" class="paymentmethod" name="paymentmethod">
+              <option value="option1">Cash on Delivery</option>
+              <option value="option2">GCash</option>
+          </select>
+        </p>
       </div>
     </div>
     <div class="payment-info">
-      <div class="subtotal">
-        <p>Subtotal: <span>₱?</span></p>
+      <div class="flex subtotal">
+        <div>
+          <p>Subtotal: </p>
+        </div>
+        <div class="row subtotal-price">
+          <span>₱<?php echo number_format($orderTotal, 0, '.', ','); ?></span>
+        </div>
       </div>
-      <div class="shipping-total">
-        <p>Shipping Total: <span>₱?</span></p>
+      <div class="flex shipping-total">
+        <div>
+          <p>Shipping Fee: </p>
+        </div>
+        <div class="row">
+          <span>₱<?php echo "?"; ?></span>
+        </div>
       </div>
-      <div class="total-payment">
-        <p>Total Payment: <span>₱?</span></p>
+      <div class="flex shipping-total">
+        <div>
+          <p>Tax: </p>
+        </div>
+        <div class="row">
+          <span>₱<?php echo "?"; ?></span>
+        </div>
+      </div>
+      <div class="flex total-payment">
+        <div class>
+          <p>Total Payment: </p>
+        </div>
+        <div class="total-payment-price">
+          <span>₱<?php echo "?"; ?></span>
+        </div>
       </div>
     </div>
     <div class="place-order">
