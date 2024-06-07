@@ -3,16 +3,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 1em;
   margin-bottom: 15em;
 }
 .address-container {
-  height: 120px;
+  padding: 0.5em 0em;
   width: 1250px;
   box-shadow: 1px 1px 8px rgb(0, 0, 0, .1);
+  border-top: 2px dashed black;
+  border-image: linear-gradient(to right, black, transparent, black, transparent, black, transparent, black, transparent, black, transparent, black) 30;
 }
 .products-ordered-container {
   box-shadow: 1px 1px 8px rgb(0, 0, 0, .1);
+  border-top: 2px dashed black;
+  border-image: linear-gradient(to right, black, transparent, black, transparent, black, transparent, black, transparent, black, transparent, black) 30;
 }
 .address-text {
   width: 100%;
@@ -26,32 +30,52 @@
   width: 100%;
   display: flex;
   align-items: center;
+  
   margin-left: 2em;
   margin-top: 1.5em;
+  padding: 0.8em 0em;
 }
-.contact-number,
-.address {
-  width: 50%;
-}
-.contact-number label,
-.address label {
-  font: 400 1.2em League Spartan;
+.address-info > div,
+.address > div {
+  margin-right: 1em;
 }
 .contact-number input,
-.address input {
-  padding: 0.4em 3em;
-  -webkit-appearance: none;
+.address input,
+.full-name input {
+  padding: 0.7em 1em;
   border: 1px solid black;
+  border: 1px solid #ccc; /* Add a thin border */
+  border-radius: 4px;
+}
+.contact-number input {
+  width: 12em;
+}
+.address input {
+  width: 10em;
+}
+.address {
+  display: flex;
+  margin-left: 5em;
+}
+.CB input {
+  width: 13em;
+}
+.SBH input {
+  width: 20em;
 }
 .products-summary-container {
   height: 4em;
   width: 1250px;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
 }
-.products-ordered {
-  margin-left: 2em;
+.products-summary-container p {
+  color: rgb(136, 136, 136);
+}
+.products-ordered h3 {
+  margin-left: 0.95em;
+  font: 400 1.32em League Spartan;
 }
 .products-ordered p {
   font: 400 1.4em League Spartan;
@@ -99,7 +123,7 @@
 }
 .order-total span {
   color: green;
-  font: 500 1.4em League Spartan;
+  font: 500 1.3em League Spartan;
 }
 .orders {
   display: flex;
@@ -118,9 +142,11 @@
 .mod-container {
   width: 1250px;
   box-shadow: 1px 1px 8px rgb(0, 0, 0, .1);
+  border-top: 2px dashed black;
+  border-image: linear-gradient(to right, black, transparent, black, transparent, black, transparent, black, transparent, black, transparent, black) 30;
 }
 .txt-payment {
-  margin-left: 2em;
+  margin-left: 1.5em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -186,6 +212,9 @@
   align-items: center;
   justify-content: end;
   color: green;
-  font: 600 2em League Spartan;
-  width: 3.5em;
+  font: 600 1.7em League Spartan;
+  width: 7em;
+}
+.txt-total-payment {
+  margin-right: -5em;
 }

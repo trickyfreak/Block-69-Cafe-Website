@@ -3,7 +3,7 @@
   include_once('config/functions.php');
   include_once('partials/header.php'); 
   $conn = get_connection();
-  
+
   // Clear checkout content if the user navigates back from the checkout page
   if (isset($_SESSION['checkout_in_progress']) && $_SESSION['checkout_in_progress'] === true) {
     $clear_checkout_query = "DELETE FROM checkoutcontent";
