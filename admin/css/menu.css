@@ -179,21 +179,24 @@ h2 span {
   display: flex;
   align-items: center;
 }
-.cms-add {
+.cms-add,
+.cms-add-item {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: end;
   gap: 25px;
 }
-.cms-add button {
+.cms-add button,
+.cms-add-item button {
   padding: 1em 2em;
   background: transparent;
   border: 1px solid black;
   cursor: pointer;
   transition: all 0.3s;
 }
-.cms-add button:hover {
+.cms-add button:hover,
+.cms-add-item button:hover {
   background-color: black;
   color: white;
 }
@@ -216,7 +219,9 @@ h2 span {
   font-size: 1.2em;
 }
 
-.bg-modal-add{
+.bg-modal-add, 
+.bg-modal-add-item
+ {
   z-index: 10;
   width: 100vw;
   height: 100vh;
@@ -315,9 +320,6 @@ h2 span {
   background-color: black;
   color: white;
   border-radius: 4px;
-}
-.custom-file-upload:hover {
-  background-color: rgb(26, 26, 26);
 }
 
 .bg-modal-add {

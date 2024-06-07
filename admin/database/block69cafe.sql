@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 02:55 AM
+-- Generation Time: Jun 07, 2024 at 01:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -433,13 +433,14 @@ INSERT INTO `menucategory` (`product_id`, `product_category`, `product_image`, `
 (2, 'Drinks', 'BLK/COLD BREW.png', 'Brew', 'Iced/Hot'),
 (3, 'Drinks', 'BLK/PINK PARADISE.png', 'Non Coffee And Tea', ''),
 (4, 'Drinks', 'BLK/MATCHA MANGO.png', 'Matcha', ''),
-(5, 'Drinks', 'BLK/MANGO JUICE.png', 'Beverages', ''),
+(5, 'Drinks', './BLK/REGULAR COCA-COLA.png', 'Beverages', ''),
 (6, 'Foods', 'BLK/FRENCH TOAST.png', 'All Day Breakfast', ''),
 (7, 'Foods', 'BLK/LUNCHEONSILOG.png', 'Silog', ''),
 (8, 'Foods', 'BLK/AGLIO OLIO.png', 'Pasta', ''),
 (9, 'Foods', 'BLK/CHICKEN KATSUDON.png', 'Bargain Bites', ''),
 (10, 'Foods', 'BLK/CHICKEN BALLS MIX.png', 'Sides And Nibbles', ''),
-(11, 'Foods', 'BLK/CLUBHOUSE SANDWICH.png', 'Carbs And Caffeine', '');
+(11, 'Foods', './BLK/CLUBHOUSE SANDWICH.png', 'Carbs And Caffeine', ''),
+(35, '', './BLK/lor.jpg', '', '');
 
 -- --------------------------------------------------------
 
@@ -557,7 +558,7 @@ INSERT INTO `menuitems` (`item_id`, `item_category`, `item_image`, `item_name`, 
 --
 
 CREATE TABLE `orderdetails` (
-  `order_id` int(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `shipping_fee` int(255) NOT NULL,
   `payment_method` varchar(255) NOT NULL,
   `total_payment` int(255) NOT NULL,
@@ -566,7 +567,8 @@ CREATE TABLE `orderdetails` (
   `address` varchar(255) NOT NULL,
   `receipt` varchar(255) DEFAULT NULL,
   `gcash_number` int(255) DEFAULT NULL,
-  `reference_number` varchar(255) DEFAULT NULL
+  `reference_number` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -674,7 +676,8 @@ CREATE TABLE `useraccounts` (
 
 INSERT INTO `useraccounts` (`email`, `status`, `username`, `password`, `token`) VALUES
 ('meinardsantoss@gmail.com', 'admin', 'admin', 'admin123', ''),
-('elor.k12150411@umak.edu.ph', 'staff', 'eric', 'lor123', '');
+('elor.k12150411@umak.edu.ph', 'staff', 'eric', 'lor123', ''),
+('louigiecads@gmail.com', 'customer', 'louie', 'louie123', '');
 
 --
 -- Indexes for dumped tables
@@ -787,7 +790,7 @@ ALTER TABLE `menuitems`
 -- Indexes for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  ADD PRIMARY KEY (`order_id`);
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Indexes for table `orderitems`
@@ -905,19 +908,13 @@ ALTER TABLE `galleryvideo`
 -- AUTO_INCREMENT for table `menucategory`
 --
 ALTER TABLE `menucategory`
-  MODIFY `product_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `product_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `menuitems`
 --
 ALTER TABLE `menuitems`
-  MODIFY `item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
-
---
--- AUTO_INCREMENT for table `orderdetails`
---
-ALTER TABLE `orderdetails`
-  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `packagecontactcontent`
