@@ -44,6 +44,16 @@
             </div>
         </div>
     </div>
+
+    <div class="orders">
+        <div class="container">
+            <div><h1>Orders</h1></div>
+            <div class="order-form">
+                
+            </div>
+        </div>
+    </div>
+
     <form action="dashboard.php" method="post">
     <div id="success" class="success">
         Successfully added user. 
@@ -149,8 +159,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             if(button.id === 'ordersButton') {
                 var dashboards = document.querySelectorAll('.dashboard');
                 var users = document.querySelectorAll('.users');
+                var orders = document.querySelectorAll('.orders');
                 dashboards.forEach(function(dashboard) {
                     dashboard.style.display = "none";
+                });
+                orders.forEach(function(orders) {
+                    orders.style.display = "flex";
                 });
                 users.forEach(function(users) {
                     users.style.display = "none";
@@ -158,8 +172,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             } else if(button.id === 'usersButton') {
                 var dashboards = document.querySelectorAll('.dashboard');
                 var users = document.querySelectorAll('.users');
+                var orders = document.querySelectorAll('.orders');
                 dashboards.forEach(function(dashboard) {
                     dashboard.style.display = "none";
+                });
+                orders.forEach(function(orders) {
+                    orders.style.display = "none";
                 });
                 users.forEach(function(users) {
                     users.style.display = "flex";
@@ -258,16 +276,17 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     let popChart3 = new Chart(chart3, {
         type: 'doughnut',
         data:{
-            labels: ['Admin', 'Customer'], // Updated labels
+            labels: ['Admin', 'Staff', 'Customer'], // Updated labels
             datasets:[
                 {
                     label: 'Blog engagement for Admin, Customer, and Staff',
                     data: [
                         2, // Admin data
-                        10 // Staff data
+                        10, // Staff data
+                        20 // Cutomer data
                     ],
-                    backgroundColor:["black", "brown"], 
-                    borderColor: "rgba(0,0,255,0.1)",
+                    backgroundColor:["#6a040f", "#370617", "#03071e"], 
+                    borderColor: "white",
                 }
             ],
             options: {

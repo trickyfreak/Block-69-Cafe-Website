@@ -8,6 +8,15 @@ li{
   list-style: none;
 }
 
+#preloader{
+    background: white url(../Images/preloader.gif) no-repeat center;
+    background-size: 30%;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
 #notification {
   display: none; 
   position: fixed; 

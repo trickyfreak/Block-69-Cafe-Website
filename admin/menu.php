@@ -1,7 +1,6 @@
 <?php 
   session_start();
   include_once('config/functions.php');
-  include_once('partials/header.php'); 
   include_once('config/menu-cms.php'); 
 
   $conn = get_connection();
@@ -21,6 +20,11 @@
   // Fetch all categories and items
   $categories = get_all_categories($conn);
   $items = get_all_items($conn);
+
+  if(!($user_type == 'admin' || $user_type == 'staff')){
+    echo '<div id="preloader"></div>';
+  }
+  include_once('partials/header.php'); 
 ?>
 
 <title>Menu</title>
@@ -286,6 +290,13 @@
 ?>
 
 <script>
+  var loader =document.getElementById('preloader');
+  window.addEventListener("load", function(){
+    setTimeout(function(){
+      loader.style.display = "none";
+    }, 1000)
+  })
+
   function openEditModal(categoryId) {
     console.log("Edit button clicked for category:", categoryId);
     const category = <?php echo json_encode($categories); ?>.find(cat => cat.product_id === categoryId);

@@ -263,3 +263,25 @@ body{
 .users .inputFIeld div{
     margin-left: -13em;
 }
+
+
+
+.orders{
+    display: flex;
+    margin-left: 25vw;
+    width: 100vw;
+    display: flex;
+    height: 100%; 
+    width: 100vw;
+}
+.orders h1{
+    font-family: league spartan;
+    font-size: 35px;
+    margin: 1em 0 0 0;
+    color: black;
+}
+.orders .container{
+    width: 70%;
+    height: 100%;
+    margin-bottom: 51em !important;
+}
