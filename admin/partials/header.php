@@ -78,6 +78,7 @@
 
     if($userActive){
         echo '
+        <a id="UserAccount" href="useraccount.php"><i class="fa-solid fa-circle-user"></i></a>
         <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"><span>'; echo $cart_count; echo'</span></i></a>
         <a href="sign-out.php" id="Sign-out"><i class="fa-sharp fa-solid fa-right-from-bracket" style="font-size: 25px; margin-right: 10px;"></i></a>
         </div>

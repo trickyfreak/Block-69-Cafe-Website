@@ -72,3 +72,27 @@ function cartcontents($conn){
   $cart_content = mysqli_fetch_all($result, MYSQLI_ASSOC);
   return $cart_content;
 }
+
+function useraccounts($conn){
+  $query = "SELECT * FROM useraccounts";
+  
+  $result = mysqli_query($conn, $query);
+  $user_accounts = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $user_accounts;
+}
+
+function orderdetails($conn){
+  $query = "SELECT * FROM orderdetails";
+  
+  $result = mysqli_query($conn, $query);
+  $order_details = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $order_details;
+}
+
+function orderitems($conn){
+  $query = "SELECT * FROM orderitems";
+  
+  $result = mysqli_query($conn, $query);
+  $order_items = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $order_items;
+}

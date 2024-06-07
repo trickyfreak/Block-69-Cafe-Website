@@ -95,6 +95,11 @@ nav .fa-cart-shopping{
   margin-top: 4px;
   /* margin-right: 10em; */
 }
+.fa-circle-user{
+  font-size: 29px;
+  margin-top: 4px;
+}
+
 #Cart span {
   display: flex;
   position: absolute;

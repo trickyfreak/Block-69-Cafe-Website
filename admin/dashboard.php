@@ -44,6 +44,16 @@
             </div>
         </div>
     </div>
+
+    <div class="orders">
+        <div class="container">
+            <div><h1>Orders</h1></div>
+            <div class="order-form">
+                
+            </div>
+        </div>
+    </div>
+
     <form action="dashboard.php" method="post">
     <div id="success" class="success">
         Successfully added user. 
@@ -149,8 +159,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             if(button.id === 'ordersButton') {
                 var dashboards = document.querySelectorAll('.dashboard');
                 var users = document.querySelectorAll('.users');
+                var orders = document.querySelectorAll('.orders');
                 dashboards.forEach(function(dashboard) {
                     dashboard.style.display = "none";
+                });
+                orders.forEach(function(orders) {
+                    orders.style.display = "flex";
                 });
                 users.forEach(function(users) {
                     users.style.display = "none";
@@ -158,8 +172,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             } else if(button.id === 'usersButton') {
                 var dashboards = document.querySelectorAll('.dashboard');
                 var users = document.querySelectorAll('.users');
+                var orders = document.querySelectorAll('.orders');
                 dashboards.forEach(function(dashboard) {
                     dashboard.style.display = "none";
+                });
+                orders.forEach(function(orders) {
+                    orders.style.display = "none";
                 });
                 users.forEach(function(users) {
                     users.style.display = "flex";
