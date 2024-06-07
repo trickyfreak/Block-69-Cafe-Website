@@ -258,16 +258,17 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     let popChart3 = new Chart(chart3, {
         type: 'doughnut',
         data:{
-            labels: ['Admin', 'Customer'], // Updated labels
+            labels: ['Admin', 'Staff', 'Customer'], // Updated labels
             datasets:[
                 {
                     label: 'Blog engagement for Admin, Customer, and Staff',
                     data: [
                         2, // Admin data
-                        10 // Staff data
+                        10, // Staff data
+                        20 // Cutomer data
                     ],
-                    backgroundColor:["black", "brown"], 
-                    borderColor: "rgba(0,0,255,0.1)",
+                    backgroundColor:["#6a040f", "#370617", "#03071e"], 
+                    borderColor: "white",
                 }
             ],
             options: {
