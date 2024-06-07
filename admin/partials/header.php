@@ -80,11 +80,12 @@
         echo '
         <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"></i></a>
         <a href="sign-out.php" id="Sign-out"><i class="fa-sharp fa-solid fa-right-from-bracket" style="font-size: 25px; margin-right: 10px;"></i></a>
-        </div>';
+        </div>
+        <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"><span>'; echo $cart_count; echo'</span></i></a>';
     }else{
         echo '<a href="sign-in.php" id="Sign-in">Login</a>
         <a href="sign-up.php" id="Sign-up">Join now</a>
-        <a id="Cart" href="shopping-cart.php"><i class="fa-solid fa-cart-shopping" style="font-size: 25px;"><span>'; echo $cart_count; echo'</span></i></a>';
+        ';
     }
     ?>
     </div>
