@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 01:51 PM
+-- Generation Time: Jun 07, 2024 at 03:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -237,6 +237,7 @@ INSERT INTO `cafepackagespaxandprices` (`id`, `pax`, `rate`) VALUES
 --
 
 CREATE TABLE `cartcontent` (
+  `username` varchar(255) NOT NULL,
   `item_id` varchar(255) NOT NULL,
   `item_category` varchar(255) NOT NULL,
   `item_image` varchar(255) NOT NULL,
@@ -304,6 +305,7 @@ INSERT INTO `cateringservicestable` (`id`, `pax`, `cps`, `ct`, `ck`, `pt`, `pk`,
 --
 
 CREATE TABLE `checkoutcontent` (
+  `username` varchar(255) NOT NULL,
   `item_id` varchar(255) NOT NULL,
   `item_category` varchar(255) NOT NULL,
   `item_image` varchar(255) NOT NULL,
@@ -789,12 +791,6 @@ ALTER TABLE `menuitems`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `orderitems`
---
-ALTER TABLE `orderitems`
-  ADD PRIMARY KEY (`item_id`);
-
---
 -- Indexes for table `packagecontactcontent`
 --
 ALTER TABLE `packagecontactcontent`
@@ -904,13 +900,13 @@ ALTER TABLE `galleryvideo`
 -- AUTO_INCREMENT for table `menucategory`
 --
 ALTER TABLE `menucategory`
-  MODIFY `product_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `product_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `menuitems`
 --
 ALTER TABLE `menuitems`
-  MODIFY `item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `packagecontactcontent`

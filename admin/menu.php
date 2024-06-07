@@ -60,16 +60,16 @@
     <div class="modal-content-add">
       <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
       <p class="modal-title">Item Category</p>
-      <textarea class="edit-content" name="item_category" required></textarea>
+      <textarea class="edit-content" name="item_category"></textarea>
       <p class="modal-title">Item Name</p>
-      <textarea class="edit-content" name="item_name" required></textarea>
+      <textarea class="edit-content" name="item_name"></textarea>
       <p class="modal-caption">Item Subname</p>
       <textarea class="edit-content" name="item_subname"></textarea>
       <div>
         <!-- <label for="image" class="custom-file-upload">Upload Image</label> -->
         <input type="file" id="image" class="inputfile3" name="item_image">
       </div>
-      <input class="saveBtn" type="submit" name="add-item" value="Add">
+      <input class="saveBtn" type="submit" name="add-item" value="Add-item">
     </div>
   </div>
   <!-- End of Modal -->
