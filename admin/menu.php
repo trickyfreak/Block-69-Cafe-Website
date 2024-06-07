@@ -32,7 +32,7 @@
     Item added to cart successfully!
   </div>
 
-  <!-- Start of Add Modal -->
+  <!-- Start of Category Add Modal -->
   <div class="bg-modal-add">
     <div class="modal-content-add">
       <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
@@ -44,9 +44,28 @@
       <textarea class="edit-content" name="content_caption"></textarea>
       <div>
         <label for="image" class="custom-file-upload">Upload Image</label>
-        <input type="file" id="image" class="inputfile" name="content_image" required>
+        <input type="file" id="image" class="inputfile" name="content_image">
       </div>
       <input class="saveBtn" type="submit" name="add" value="Add">
+    </div>
+  </div>
+  <!-- End of Modal -->
+
+  <!-- Start of Item Add Modal -->
+  <div class="bg-modal-add-item" style="display: none;">
+    <div class="modal-content-add">
+      <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
+      <p class="modal-title">Item Category</p>
+      <textarea class="edit-content" name="item_category" required></textarea>
+      <p class="modal-title">Item Name</p>
+      <textarea class="edit-content" name="item_name" required></textarea>
+      <p class="modal-caption">Item Subname</p>
+      <textarea class="edit-content" name="item_subname"></textarea>
+      <div>
+        <!-- <label for="image" class="custom-file-upload">Upload Image</label> -->
+        <input type="file" id="image" class="inputfile3" name="item_image">
+      </div>
+      <input class="saveBtn" type="submit" name="add-item" value="Add">
     </div>
   </div>
   <!-- End of Modal -->
@@ -65,7 +84,7 @@
       
       <p style="color: black; margin:1em 2em 0.5em 2em; font-family: league spartan; font-size: 18px; font-weight:bold;">Uploaded Image</p>
       <label id="edit_image" class="edit_image"></label>
-      <input type="file" id="edit_image2" name="edit_image">
+      <input type="file" id="image" class="inputfile2" name="edit_image">
       
       <input class="saveBtn" type="submit" name="edit" value="Edit">
     </div>
@@ -171,7 +190,7 @@
                   <h2>'.ucwords(str_replace('-', ' ', $category)).'</h2>';
                   if($category == 'espresso' || $category == 'brew') echo '<p>Iced/Hot</p>';
                 echo '</div>';
-                if($user_type == 'admin') echo '<div class="column cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add item</button></div>';
+                if($user_type == 'admin') echo '<div class="column cms-add-item"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add item</button></div>';
               echo' 
               </div>
               <hr>
@@ -283,24 +302,29 @@
         img.src = category.product_image;
         img.style.maxWidth = '20%';
         editImage.appendChild(img);
-
-        const existingImageInput = document.createElement('input');
-        existingImageInput.type = 'hidden';
-        existingImageInput.id = 'existing_image';
-        existingImageInput.name = 'existing_image';
-        existingImageInput.value = category.product_image;
-        editImage.appendChild(existingImageInput);
-
-        document.querySelector('.bg-modal-edit').style.display = 'flex';
     } else {
         console.log("Category not found for ID:", categoryId);
     }
-}
+  } 
 
   document.querySelectorAll('.cms-add').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
         document.querySelector('.bg-modal-add').style.display = 'flex';
+        handleAddButtonClick();
+    });
+  });
+  document.querySelectorAll('.cms-add-item').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        document.querySelector('.bg-modal-add-item').style.display = 'flex';
+        handleAddButtonClick();
+    });
+  });
+  document.querySelectorAll('.edit-cms').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        document.querySelector('.bg-modal-edit').style.display = 'flex';
         handleAddButtonClick();
     });
   });
@@ -310,6 +334,7 @@
       // document.querySelector('.bg-modal.'+modalClass).style.display = 'none';
       document.querySelector('.bg-modal-add').style.display = 'none';
       document.querySelector('.bg-modal-edit').style.display = 'none';
+      document.querySelector('.bg-modal-add-item').style.display = 'none';
     });
   });
 
