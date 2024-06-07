@@ -3,36 +3,24 @@
   include_once('config/functions.php');
   include_once('partials/header.php'); 
   include_once('config/menu-cms.php'); 
-  
+
   $conn = get_connection();
   $user_data = check_login($conn);
   $user_type = check_usertype($conn);
-
+  
   // Clear checkout content if the user navigates back from the checkout page
   if (isset($_SESSION['checkout_in_progress']) && $_SESSION['checkout_in_progress'] === true) {
-    $clear_checkout_query = "DELETE FROM checkoutcontent";
-    if (mysqli_query($conn, $clear_checkout_query)) {
-        // Successfully cleared checkout content
-        unset($_SESSION['checkout_in_progress']);
-    } else {
-        echo "Error: " . $clear_checkout_query . "<br>" . mysqli_error($conn);
-    }
+      $clear_checkout_query = "DELETE FROM checkoutcontent";
+      if (mysqli_query($conn, $clear_checkout_query)) {
+          unset($_SESSION['checkout_in_progress']);
+      } else {
+          echo "Error: " . $clear_checkout_query . "<br>" . mysqli_error($conn);
+      }
   }
 
-  // Fetch content for drinks and foods separately
-  $drinks_content = get_content($conn, $drink_categories);
-  $foods_content = get_content($conn, $food_categories);
-  $espresso_items = get_items($conn, $espresso);
-  $brew_items = get_items($conn, $brew);
-  $noncoffeeandtea_items = get_items($conn, $noncoffeeandtea);
-  $matcha_items = get_items($conn, $matcha);
-  $beverages_items = get_items($conn, $beverages);
-  $alldaybreakfast_items = get_items($conn, $alldaybreakfast);
-  $silog_items = get_items($conn, $silog);
-  $pasta_items = get_items($conn, $pasta);
-  $bargainbites_items = get_items($conn, $bargainbites);
-  $sidesandnibbles_items = get_items($conn, $sidesandnibbles);
-  $carbsandcaffeine_items = get_items($conn, $carbsandcaffeine);
+  // Fetch all categories and items
+  $categories = get_all_categories($conn);
+  $items = get_all_items($conn);
 ?>
 
 <title>Menu</title>
@@ -43,6 +31,47 @@
   <div id="notification">
     Item added to cart successfully!
   </div>
+
+  <!-- Start of Add Modal -->
+  <div class="bg-modal-add">
+    <div class="modal-content-add">
+      <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
+      <p class="modal-title">Category</p>
+      <textarea class="edit-content" name="content_category"></textarea>
+      <p class="modal-title">Name</p>
+      <textarea class="edit-content" name="content_title"></textarea>
+      <p class="modal-caption">Subname</p>
+      <textarea class="edit-content" name="content_caption"></textarea>
+      <div>
+        <label for="image" class="custom-file-upload">Upload Image</label>
+        <input type="file" id="image" class="inputfile" name="content_image" required>
+      </div>
+      <input class="saveBtn" type="submit" name="add" value="Add">
+    </div>
+  </div>
+  <!-- End of Modal -->
+
+  <!-- Start of Edit Modal -->
+  <div class="bg-modal-edit" style="display: none;">
+    <div class="modal-edit-content">
+      <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
+      <input id="edit_id" type="hidden" name="edit_id">
+      <p class="modal-title">Category</p>
+      <textarea id="edit_category" class="edit-content" name="edit_category"></textarea>
+      <p class="modal-title">Name</p>
+      <textarea id="edit_name" class="edit-content" name="edit_name"></textarea>
+      <p class="modal-caption">Subname</p>
+      <textarea id="edit_subname" class="edit-content" name="edit_subname"></textarea>
+      
+      <p style="color: black; margin:1em 2em 0.5em 2em; font-family: league spartan; font-size: 18px; font-weight:bold;">Uploaded Image</p>
+      <label id="edit_image" class="edit_image"></label>
+      <input type="file" id="edit_image2" name="edit_image">
+      
+      <input class="saveBtn" type="submit" name="edit" value="Edit">
+    </div>
+  </div>
+  <!-- End of Modal -->
+
   <!-- Sidebar -->
   <div class="sidebarAndContent">
     <div class="sidebar" id="sidebar">
@@ -50,15 +79,19 @@
         <li class="header1"><a href="#menu" onclick="showCategory('menu')">Menu</a></li><br><br>
         <li class="header2">Drinks</li>
         <?php
-        foreach($drinks_content as $drink_category) {
-            echo '<li class="choice"><a href="#'.strtolower(str_replace(' ', '', $drink_category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $drink_category['product_name'])).'\')">'.$drink_category['product_name'].'</a></li>';
+        foreach($categories as $category) {
+          if ($category['product_category'] == 'Drinks') {
+            echo '<li class="choice"><a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')">'.$category['product_name'].'</a></li>';
+          }
         }
         ?>
         <br><br>
         <li class="header2">Foods</li>
         <?php 
-        foreach($foods_content as $food_category) {
-          echo '<li class="choice"><a href="#'.strtolower(str_replace(' ', '', $food_category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $food_category['product_name'])).'\')">'.$food_category['product_name'].'</a></li>';
+        foreach($categories as $category) {
+          if ($category['product_category'] == 'Foods') {
+            echo '<li class="choice"><a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')">'.$category['product_name'].'</a></li>';
+          }        
         }
         ?>
       </ul>
@@ -73,34 +106,23 @@
         <div class="txtDrinks">
           <h2>Drinks</h2>
           <?php if($user_type == 'admin') echo '<div class="cms-add"><button class="add-cms" name="add-cms" value="drinks"><i class="fa-solid fa-plus"></i> Add category</button></div>'; ?>
-          <!-- Start of Add Modal -->
-          <div class="bg-modal-add">
-            <div class="modal-content-add">
-              <div class="close"><i class="fa-solid fa-square-xmark" style="color: black;"></i></div>
-              <p class="modal-title">Product Name</p>
-              <textarea class="edit-content" name="content_title"></textarea>
-              <p class="modal-caption">Product Subname</p>
-              <textarea class="edit-content" name="content_caption"></textarea>
-              <div>
-                <label for="image" class="custom-file-upload">Upload Image</label>
-                <input type="file" id="image" class="inputfile" name="content_image" required>
-              </div>
-              <input class="saveBtn" type="submit" name="submit">
-            </div>
-          </div>
-          <!-- End of Modal -->
         </div>
         <hr>
         <div class="drinksOptions" id="drinksNav">
           <?php 
-            foreach($drinks_content as $category) {
-              echo '
-                  <div class="options" id="'.$category['product_id'].'" name="'.$category['product_name'].'">
-                    <div class="option">
-                      <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><img src="'.$category['product_image'].'"></a>
-                      <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><p>'.$category['product_name']."<br>".$category['product_subname'].'</p></a>';
-              if($user_type == 'admin') echo '<div class="cms-edit-delete"><button class="delete-cms" name="edit-btn" data-content-id="'.$category['product_id'].'"><i class="fa-regular fa-trash-can"></i></button> <button class="edit-cms"><i class="fa-regular fa-pen-to-square"></i></button></button></div>';     
-              echo '</div></div>';
+            foreach($categories as $category) {
+              if ($category['product_category'] == 'Drinks') {
+                echo '
+                <div class="options" id="'.$category['product_id'].'" name="'.$category['product_name'].'">
+                  <div class="option">
+                    <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><img src="'.$category['product_image'].'"></a>
+                    <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><p>'.$category['product_name']."<br>".$category['product_subname'].'</p></a>';
+                if($user_type == 'admin') echo '<div class="cms-edit-delete">
+                                                  <button class="delete-cms" name="edit-btn" data-content-id="'.$category['product_id'].'"><i class="fa-regular fa-trash-can"></i>
+                                                  </button> <button class="edit-cms" onclick="openEditModal(\''.$category['product_id'].'\')"><i class="fa-regular fa-pen-to-square"></i></button></button>
+                                                 </div>';     
+                echo '</div></div>';          
+              }
             }
           ?>
         </div>
@@ -112,14 +134,19 @@
         <hr>
         <div class="foodsOptions" id="foodsNav">
           <?php
-            foreach($foods_content as $category) {
-              echo '
-                  <div class="options" id="'.$category['product_id'].'" name="'.$category['product_name'].'">
-                    <div class="option">
-                      <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><img src="'.$category['product_image'].'"></a>
-                      <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><p>'.$category['product_name']."<br>".$category['product_subname'].'</p></a>';
-              if($user_type == 'admin') echo '<div class="cms-edit-delete"><button class="delete-cms" name="edit-btn" data-content-id="'.$category['product_id'].'"><i class="fa-regular fa-trash-can"></i></button> <button class="edit-cms"><i class="fa-regular fa-pen-to-square"></i></button></button></div>';     
-              echo '</div></div>';
+            foreach($categories as $category) {
+              if ($category['product_category'] == 'Foods') {
+                echo '
+                <div class="options" id="'.$category['product_id'].'" name="'.$category['product_name'].'">
+                  <div class="option">
+                    <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><img src="'.$category['product_image'].'"></a>
+                    <a href="#'.strtolower(str_replace(' ', '', $category['product_name'])).'" onclick="showCategory(\''.strtolower(str_replace(' ', '', $category['product_name'])).'\')"><p>'.$category['product_name']."<br>".$category['product_subname'].'</p></a>';
+                if($user_type == 'admin') echo '<div class="cms-edit-delete">
+                                                  <button class="delete-cms" name="edit-btn" data-content-id="'.$category['product_id'].'"><i class="fa-regular fa-trash-can"></i></button> 
+                                                  <button class="edit-cms" onclick="openEditModal(\''.$category['product_id'].'\')"><i class="fa-regular fa-pen-to-square"></i></button></button>
+                                                </div>';     
+                echo '</div></div>';
+              }
             }
           ?>
         </div>
@@ -127,22 +154,15 @@
 
       <!-- Other categories section -->
       <?php    
-        // Array of categories with corresponding items
-        $categories = [
-          'espresso' => $espresso_items,
-          'brew' => $brew_items,
-          'non-coffee-and-tea' => $noncoffeeandtea_items,
-          'matcha' => $matcha_items,
-          'beverages' => $beverages_items,
-          'all-day-breakfast' => $alldaybreakfast_items,
-          'silog' => $silog_items,
-          'pasta' => $pasta_items,
-          'bargain-bites' => $bargainbites_items,
-          'sides-and-nibbles' => $sidesandnibbles_items,
-          'carbs-and-caffeine' => $carbsandcaffeine_items
-        ]; 
+        // Group items by category
+        $grouped_items = [];
+        foreach ($items as $item) {
+            $category_key = strtolower(str_replace(' ', '', $item['item_category']));
+            $grouped_items[$category_key][] = $item;
+        }
+
         // Create sections for each Category
-        foreach($categories as $category => $items) {
+        foreach($grouped_items as $category => $items) {
           echo '
             <div id="'.str_replace('-', '', $category).'" class="category">
             <div id="'.str_replace('-', '', $category).'-container">
@@ -205,12 +225,12 @@
                             if($item['item_category'] == 'All Day Breakfast' || $item['item_category'] == 'Silog' || $item['item_category'] == 'Pasta' || $item['item_category'] == 'Bargain Bites' ||
                               $item['item_category'] == 'Sides And Nibbles' || $item['item_category'] == 'Carbs And Caffeine') {
                               echo '
-                                <input type="radio" name="itemprice" value="'.$item['item_priceoption1'].'" onclick="updateCustomization(this)"> Solo: <span>₱'.$item['item_priceoption1'].'</span> &nbsp | &nbsp 
-                                <input type="radio" name="itemprice" value="'.$item['item_priceoption2'].'" onclick="updateCustomization(this)"> Savor: <span>₱'.$item['item_priceoption2'].'</span>';
+                                <input type="radio" required name="itemprice" value="'.$item['item_priceoption1'].'" onclick="updateCustomization(this)" > Solo: <span>₱'.$item['item_priceoption1'].'</span> &nbsp | &nbsp 
+                                <input type="radio" required name="itemprice" value="'.$item['item_priceoption2'].'" onclick="updateCustomization(this)" > Savor: <span>₱'.$item['item_priceoption2'].'</span>';
                             } else {
                               echo '
-                                <input type="radio" name="itemprice" value="'.$item['item_priceoption1'].'" onclick="updateCustomization(this)"> 12oz: <span>₱'.$item['item_priceoption1'].'</span> &nbsp | &nbsp 
-                                <input type="radio" name="itemprice" value="'.$item['item_priceoption2'].'" onclick="updateCustomization(this)"> 16oz: <span>₱'.$item['item_priceoption2'].'</span>';
+                                <input type="radio" required name="itemprice" value="'.$item['item_priceoption1'].'" onclick="updateCustomization(this)" > 12oz: <span>₱'.$item['item_priceoption1'].'</span> &nbsp | &nbsp 
+                                <input type="radio" required name="itemprice" value="'.$item['item_priceoption2'].'" onclick="updateCustomization(this)" > 16oz: <span>₱'.$item['item_priceoption2'].'</span>';
                             }   
                           echo '
                             </p>
@@ -247,6 +267,36 @@
 ?>
 
 <script>
+  function openEditModal(categoryId) {
+    console.log("Edit button clicked for category:", categoryId);
+    const category = <?php echo json_encode($categories); ?>.find(cat => cat.product_id === categoryId);
+    if (category) {
+        console.log("Category found:", category);
+        document.getElementById('edit_category').value = category.product_category;
+        document.getElementById('edit_name').value = category.product_name;
+        document.getElementById('edit_subname').value = category.product_subname;
+        document.getElementById('edit_id').value = category.product_id;
+
+        const editImage = document.getElementById('edit_image');
+        editImage.innerHTML = ''; 
+        const img = document.createElement('img');
+        img.src = category.product_image;
+        img.style.maxWidth = '20%';
+        editImage.appendChild(img);
+
+        const existingImageInput = document.createElement('input');
+        existingImageInput.type = 'hidden';
+        existingImageInput.id = 'existing_image';
+        existingImageInput.name = 'existing_image';
+        existingImageInput.value = category.product_image;
+        editImage.appendChild(existingImageInput);
+
+        document.querySelector('.bg-modal-edit').style.display = 'flex';
+    } else {
+        console.log("Category not found for ID:", categoryId);
+    }
+}
+
   document.querySelectorAll('.cms-add').forEach(function(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
@@ -259,6 +309,7 @@
     element.addEventListener('click', function() {
       // document.querySelector('.bg-modal.'+modalClass).style.display = 'none';
       document.querySelector('.bg-modal-add').style.display = 'none';
+      document.querySelector('.bg-modal-edit').style.display = 'none';
     });
   });
 
@@ -281,12 +332,15 @@
   });
   });
 
-  // Prevents Add to Cart navigate to shopping-cart.php
   document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('.addCart').forEach(function(button) {
       button.addEventListener('click', function(event) {
         event.preventDefault();
         var form = this.closest('form');
+        if (!isRadioButtonSelected(form)) {
+          alert('Please select a price before adding to cart.');
+          return;
+        }
         var formData = new FormData(form);
 
         fetch('shopping-cart.php', {
@@ -304,14 +358,30 @@
         });
       });
     });
+
     document.querySelectorAll('.buyNow').forEach(function(button) {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function(event) {
         var form = this.closest('form');
+        if (!isRadioButtonSelected(form)) {
+          alert('Please select a price before proceeding to buy.');
+          event.preventDefault();
+          return;
+        }
         form.action = 'shopping-cart.php';
         form.submit();
       });
     });
   });
+
+  function isRadioButtonSelected(form) {
+    var radios = form.querySelectorAll('input[type="radio"][name="itemprice"]');
+    for (var i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   // Notify items are added to cart
   function showNotification(message) {

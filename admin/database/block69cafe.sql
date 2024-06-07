@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2024 at 03:56 PM
+-- Generation Time: Jun 07, 2024 at 02:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -311,13 +311,7 @@ CREATE TABLE `checkoutcontent` (
   `item_customization` varchar(255) NOT NULL,
   `item_price` int(255) NOT NULL,
   `item_quantity` int(255) NOT NULL,
-  `item_totalprice` int(255) NOT NULL,
-  `order_total` int(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `paymentmethod` varchar(255) NOT NULL,
-  `shippingtotal` int(255) NOT NULL,
-  `totalpayment` int(255) NOT NULL,
-  `phonenumber` int(255) DEFAULT NULL
+  `item_totalprice` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -506,7 +500,7 @@ INSERT INTO `menuitems` (`item_id`, `item_category`, `item_image`, `item_name`, 
 (35, 'Matcha', 'BLK/NUTTY GREEN TEA.png', 'Nutty Green Tea', NULL, 99, 149, 1),
 (36, 'Matcha', 'BLK/VANILLA KISSED MATCHA.png', 'Vanilla Kissed Matcha', NULL, 99, 149, 1),
 (37, 'Matcha', 'BLK/SPICY MATCHA.png', 'Spicy Matcha', NULL, 99, 149, 1),
-(38, 'Matcha', 'BLK/TITA MAGGIE\'S MATCHA.png', 'Tita Maggie\'s Matcha', NULL, 99, 149, 1),
+(38, 'Matcha', 'BLK/TITA MAGGIES MATCHA.png', 'Tita Maggie\'s Matcha', NULL, 99, 149, 1),
 (39, 'Matcha', 'BLK/WHITEOUT MATCHA.png', 'Whiteout Matcha', NULL, 99, 149, 1),
 (40, 'Matcha', 'BLK/MATCHA LATTE.png', 'Matcha Latte', NULL, 99, 149, 1),
 (41, 'Matcha', 'BLK/DIRTY MATCHA.png', 'Dirty Matcha', NULL, 109, 159, 1),
@@ -522,7 +516,7 @@ INSERT INTO `menuitems` (`item_id`, `item_category`, `item_image`, `item_name`, 
 (51, 'All Day Breakfast', 'BLK/FLUFFY PANCAKES.png', 'Fluffy Pancakes', NULL, 139, 169, 1),
 (52, 'All Day Breakfast', 'BLK/FRENCH TOAST.png', 'French Toast', NULL, 139, 0, 1),
 (53, 'All Day Breakfast', 'BLK/CLASSIC WAFFLES.png', 'Classic Waffles', NULL, 129, 0, 1),
-(54, 'All Day Breakfast', 'BLK/MARGA\'S FAVE.png', 'Marga\'s Fave', NULL, 250, 0, 1),
+(54, 'All Day Breakfast', 'BLK/MARGAS FAVE.png', 'Marga\'s Fave', NULL, 250, 0, 1),
 (55, 'All Day Breakfast', 'BLK/BREAKFAST PLATTER.png', 'Breakfast Platter', NULL, 250, 0, 1),
 (56, 'Silog', 'BLK/CHICKSILOG.png', 'Chicksilog', NULL, 180, 340, 1),
 (57, 'Silog', 'BLK/TAPSILOG.png', 'Tapsilog', NULL, 180, 340, 1),
@@ -555,6 +549,42 @@ INSERT INTO `menuitems` (`item_id`, `item_category`, `item_image`, `item_name`, 
 (84, 'Carbs And Caffeine', 'BLK/STRAWBERRY FIELD.png', 'Strawberry Field', NULL, 120, 150, 1),
 (86, 'Carbs And Caffeine', 'BLK/MANGO TANGO.png', 'Mango Tango', NULL, 120, 150, 1),
 (87, 'Carbs And Caffeine', 'BLK/CHOCO TRUFFLE.png', 'Choco Truffle', NULL, 120, 150, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderdetails`
+--
+
+CREATE TABLE `orderdetails` (
+  `order_id` int(255) NOT NULL,
+  `shipping_fee` int(255) NOT NULL,
+  `payment_method` varchar(255) NOT NULL,
+  `total_payment` int(255) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `phone_number` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `receipt` varchar(255) DEFAULT NULL,
+  `gcash_number` int(255) DEFAULT NULL,
+  `reference_number` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderitems`
+--
+
+CREATE TABLE `orderitems` (
+  `item_id` varchar(255) NOT NULL,
+  `item_category` varchar(255) NOT NULL,
+  `item_image` varchar(255) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `item_customization` varchar(255) NOT NULL,
+  `item_price` int(255) NOT NULL,
+  `item_quantity` int(255) NOT NULL,
+  `item_totalprice` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -754,6 +784,18 @@ ALTER TABLE `menuitems`
   ADD PRIMARY KEY (`item_id`);
 
 --
+-- Indexes for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD PRIMARY KEY (`order_id`);
+
+--
+-- Indexes for table `orderitems`
+--
+ALTER TABLE `orderitems`
+  ADD PRIMARY KEY (`item_id`);
+
+--
 -- Indexes for table `packagecontactcontent`
 --
 ALTER TABLE `packagecontactcontent`
@@ -863,13 +905,19 @@ ALTER TABLE `galleryvideo`
 -- AUTO_INCREMENT for table `menucategory`
 --
 ALTER TABLE `menucategory`
-  MODIFY `product_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `product_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `menuitems`
 --
 ALTER TABLE `menuitems`
   MODIFY `item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+
+--
+-- AUTO_INCREMENT for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  MODIFY `order_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `packagecontactcontent`
