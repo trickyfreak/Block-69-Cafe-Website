@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2024 at 01:10 PM
+-- Generation Time: Jun 07, 2024 at 01:51 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -578,6 +578,7 @@ CREATE TABLE `orderdetails` (
 --
 
 CREATE TABLE `orderitems` (
+  `username` varchar(255) NOT NULL,
   `item_id` varchar(255) NOT NULL,
   `item_category` varchar(255) NOT NULL,
   `item_image` varchar(255) NOT NULL,
@@ -585,7 +586,8 @@ CREATE TABLE `orderitems` (
   `item_customization` varchar(255) NOT NULL,
   `item_price` int(255) NOT NULL,
   `item_quantity` int(255) NOT NULL,
-  `item_totalprice` int(255) NOT NULL
+  `item_totalprice` int(255) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -787,12 +789,6 @@ ALTER TABLE `menuitems`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `orderdetails`
---
-ALTER TABLE `orderdetails`
-  ADD PRIMARY KEY (`username`);
-
---
 -- Indexes for table `orderitems`
 --
 ALTER TABLE `orderitems`
@@ -914,7 +910,7 @@ ALTER TABLE `menucategory`
 -- AUTO_INCREMENT for table `menuitems`
 --
 ALTER TABLE `menuitems`
-  MODIFY `item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `item_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `packagecontactcontent`

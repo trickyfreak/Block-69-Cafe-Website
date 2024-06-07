@@ -17,8 +17,7 @@
         $checkout_query = "INSERT INTO orderdetails (`username`, `shipping_fee`, `payment_method`, `total_payment`, `full_name`, `phone_number`, `address`)
                         VALUES ('$username', '$shippingfee', '$paymentmethod', '$totalpayment', '$fullname', '$phone', '$fulladdress')";
         $order_query = "INSERT INTO orderitems (item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice)
-                      SELECT item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice FROM checkoutcontent";
-
+        SELECT item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice FROM checkoutcontent";
         if (mysqli_query($conn, $checkout_query) && mysqli_query($conn, $order_query)) {
             // If insertion is successful, clear the cart
             $clear_cart_query = "DELETE FROM cartcontent";
@@ -60,11 +59,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm"])) {
     $receipt_folder = "receipts/" . $receipt;
     move_uploaded_file($receipt_tmp, $receipt_folder);
 
-    $checkout_query = "INSERT INTO orderdetails (`shipping_fee`, `payment_method`, `total_payment`, `full_name`, `phone_number`, `address`, `receipt`, `gcash_number`, `reference_number`)
-                    VALUES ('$shippingfee', '$paymentmethod', '$totalpayment', '$fullname', '$phone', '$fulladdress', '$receipt_folder', '$gcash_num', '$reference_num')";
+    $checkout_query = "INSERT INTO orderdetails (`username`, `shipping_fee`, `payment_method`, `total_payment`, `full_name`, `phone_number`, `address`, `receipt`, `gcash_number`, `reference_number`)
+                    VALUES ('$username', '$shippingfee', '$paymentmethod', '$totalpayment', '$fullname', '$phone', '$fulladdress', '$receipt_folder', '$gcash_num', '$reference_num')";
     $order_query = "INSERT INTO orderitems (item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice)
     SELECT item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice FROM checkoutcontent";
-    
+  
       if (mysqli_query($conn, $checkout_query) && mysqli_query($conn, $order_query)) {
         // If insertion is successful, clear the cart
         $clear_cart_query = "DELETE FROM cartcontent";
