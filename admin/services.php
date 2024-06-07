@@ -2,7 +2,6 @@
 <?php 
 
 session_start();
-include('partials/header.php'); 
 include_once './config/connect.php';
 include_once './config/functions.php';
 include_once './config/services-content-manage.php';
@@ -15,6 +14,10 @@ $user_type = check_usertype($conn);
 $content = get_services_content($conn);
 $content_id = 0;
 
+if(!($user_type == 'admin' || $user_type == 'staff')){
+  echo '<div id="preloader"></div>';
+}
+include('partials/header.php'); 
 ?>
 
 <title>Services</title>
@@ -171,6 +174,12 @@ var contentId = 1;
 var contentCaption = "";
 var contentImage ="";
 var contentImageId = 'content_images'+contentId;
+var loader =document.getElementById('preloader');
+  window.addEventListener("load", function(){
+    setTimeout(function(){
+      loader.style.display = "none";
+    }, 1000)
+  })
 
 document.querySelectorAll('.edit-btn').forEach(function(button) {
     button.addEventListener('click', function(event) {
