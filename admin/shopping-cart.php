@@ -4,6 +4,8 @@
   include_once('partials/header.php'); 
   $conn = get_connection();
 
+  $username = $_SESSION['username'];  
+
   // Clear checkout content if the user navigates back from the checkout page
   if (isset($_SESSION['checkout_in_progress']) && $_SESSION['checkout_in_progress'] === true) {
     $clear_checkout_query = "DELETE FROM checkoutcontent";
@@ -45,8 +47,8 @@
 
     // if Buy Now
     if(isset($_POST["add-buy"]) && $_POST["add-buy"] == "Buy Now") {
-      $insert_query = "INSERT INTO checkoutcontent (item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice) 
-                       VALUES ('$itemid', '$itemcategory', '$itemimage', '$itemname', '$itemcustomization', '$itemprice', '$itemquantity', '$itemtotalprice')";
+      $insert_query = "INSERT INTO checkoutcontent (username, item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice) 
+                       VALUES ('$username', '$itemid', '$itemcategory', '$itemimage', '$itemname', '$itemcustomization', '$itemprice', '$itemquantity', '$itemtotalprice')";
       if(mysqli_query($conn, $insert_query)) {
         $_SESSION['checkout_in_progress'] = true;
         header("Location: checkout.php");
@@ -68,8 +70,8 @@
         }
       } else {
         // Item does not exist, insert it
-        $insert_query = "INSERT INTO cartcontent (item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice) 
-                         VALUES ('$itemid', '$itemcategory', '$itemimage', '$itemname', '$itemcustomization', '$itemprice', '$itemquantity', '$itemtotalprice')";
+        $insert_query = "INSERT INTO cartcontent (username, item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice) 
+                         VALUES ('$username', '$itemid', '$itemcategory', '$itemimage', '$itemname', '$itemcustomization', '$itemprice', '$itemquantity', '$itemtotalprice')";
         if (mysqli_query($conn, $insert_query)) {
           echo '<script>if (window.history.replaceState) {window.history.replaceState(null, null, window.location.href);}</script>';
         } else {

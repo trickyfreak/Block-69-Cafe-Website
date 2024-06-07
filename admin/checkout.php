@@ -4,6 +4,8 @@
   include_once('config/functions.php');
   $conn = get_connection();
 
+  $username = $_SESSION['username'];   
+
   // Handle delete all operation 
   if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete-all"])) {
     $delete_query = "DELETE FROM cartcontent";
@@ -18,8 +20,8 @@
 
   // Handle checkout operation
   if(isset($_POST["checkout"]) && isset($_POST["checkout"])) {
-    $checkout_query = "INSERT INTO checkoutcontent (item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice)
-                      SELECT item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice FROM cartcontent";
+    $checkout_query = "INSERT INTO checkoutcontent (username, item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice)
+                      SELECT username, item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice FROM cartcontent";
     if (mysqli_query($conn, $checkout_query)) {
       $_SESSION['checkout_in_progress'] = true;
       // echo '<script>alert("Checkout successful!");</script>';
