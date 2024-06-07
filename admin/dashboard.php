@@ -10,6 +10,7 @@
   
 ?>
 
+<title>Dashboard</title>
 <?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/dashboard.css">
 

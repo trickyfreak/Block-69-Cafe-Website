@@ -60,11 +60,9 @@
   width: 7em;
   border-radius: 2em;
 }
-.item-subtotal {
-  margin-right: 1em;
-}
 .shipping-container {
-  height: 5em;
+  height: auto;
+  padding: 2em 0em;
   width: 1250px;
   display: flex;
   align-items: center;
@@ -72,7 +70,11 @@
   border-top: 1px dashed grey;
 }
 .shipping-fee {
-  margin-right: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 6em;
+  margin-right: 3em;
 }
 .column {
   flex: 1 1 16.6%;
@@ -80,7 +82,8 @@
   justify-content: center;
 }
 .order-total-container {
-  height: 5em;
+  height: auto;
+  padding: 2em 0em;
   width: 1250px;
   display: flex;
   align-items: center;
@@ -88,7 +91,15 @@
   border-top: 1px dashed grey;
 }
 .order-total {
-  margin-right: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 6em;
+  margin-right: 3em;
+}
+.order-total span {
+  color: green;
+  font: 500 1.4em League Spartan;
 }
 .orders {
   display: flex;
@@ -109,31 +120,38 @@
   box-shadow: 1px 1px 8px rgb(0, 0, 0, .1);
 }
 .txt-payment {
-  height: 2.5em;
   margin-left: 2em;
-  margin-top: 1em;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1.5em 0;
 }
 .txt-payment p {
   font: 400 1.4em League Spartan;
 }
 .payment-info {
+  height: auto;
+  width: 1250px;
   display: flex;
   flex-direction: column;
-  gap: 0.4em;
   align-items: end;
   justify-content: center;
-  padding-top: 1.2em;
-  padding-bottom: 1.2em;
+  padding: 1.5em 0em;
   border-top: 1px dashed grey;
 }
 .payment-info > div {
-  margin-right: 5em;
+  margin-right: 3em;
 }
 .payment-method {
-  margin-right: 5em;
+  margin-right: 3em;
+  margin-bottom: 5px;
+}
+.paymentmethod {
+  padding: 5px 12px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 5px;
+  font: 500 18px League Spartan;
 }
 .place-order {
   height: 6em;
@@ -143,11 +161,31 @@
   border-top: 1px dashed grey;
 }
 .place-order button {
-  margin-right: 5em;
+  margin-right: 3em;
   padding: 10px 25px;
   background-color: black;
   border: none;
   cursor: pointer;
   color: white;
   font: 500 1em League Spartan;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 7em;
+  padding: 0.5em 0;
+}
+.total-payment-price {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  color: green;
+  font: 600 2em League Spartan;
+  width: 3.5em;
 }

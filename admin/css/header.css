@@ -102,11 +102,11 @@ nav .fa-cart-shopping{
   align-items: center;
   height: 21px;
   width: 21px;
-  font: 500 12px League Spartan;
+  font: 700 14px League Spartan;
   border-radius: 100%;
   background-color: wheat;
-  top: 60px;
-  right: 5.8em;
+  top: 35px;
+  right: 12px;
 }
 
 nav .user-icon{

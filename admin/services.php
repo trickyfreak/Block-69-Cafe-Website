@@ -17,6 +17,7 @@ $content_id = 0;
 
 ?>
 
+<title>Services</title>
 <link rel="stylesheet" href="css/services.css">
 
   <div class="landing-page"> 
