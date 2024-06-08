@@ -82,17 +82,77 @@ function useraccounts($conn){
 }
 
 function orderdetails($conn){
+  $username = $_SESSION['username'];
+  $query = "SELECT * FROM orderdetails WHERE username='$username' AND status='Pending'";
+  
+  $result = mysqli_query($conn, $query);
+  $order_details = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $order_details;
+}
+ 
+function orderitems($conn){
+  $username = $_SESSION['username'];
+  $query = "SELECT * FROM orderitems WHERE username='$username' AND status='Pending'";
+  
+  $result = mysqli_query($conn, $query);
+  $order_items = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $order_items;
+}
+
+function adminOrderDetails($conn){
+  $username = $_SESSION['username'];
   $query = "SELECT * FROM orderdetails";
   
   $result = mysqli_query($conn, $query);
   $order_details = mysqli_fetch_all($result, MYSQLI_ASSOC);
   return $order_details;
 }
-
-function orderitems($conn){
-  $query = "SELECT * FROM orderitems";
+ 
+function adminOrderItems($conn){
+  $username = $_SESSION['username'];
+  $query = "SELECT * FROM orderitems WHERE status != 'Receiving' AND status != 'Cancelled'";
   
   $result = mysqli_query($conn, $query);
-  $order_items = mysqli_fetch_all($result, MYSQLI_ASSOC);
-  return $order_items;
+  $adminOrderItems = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $adminOrderItems;
+}
+
+function shippingOrders($conn){
+  $username = $_SESSION['username'];
+  $query = "SELECT * FROM orderitems WHERE status='Shipping'";
+  
+  $result = mysqli_query($conn, $query);
+  $shippingOrders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $shippingOrders;
+}
+
+function receivingOrders($conn){
+  $username = $_SESSION['username'];
+  $query = "SELECT * FROM orderitems WHERE status='Receiving'";
+  
+  $result = mysqli_query($conn, $query);
+  $receivingOrders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $receivingOrders;
+}
+function cancelledOrders($conn){
+  $username = $_SESSION['username'];
+  $query = "SELECT * FROM orderitems WHERE status='Cancelled'";
+  
+  $result = mysqli_query($conn, $query);
+  $cancelledOrders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $cancelledOrders;
+}
+
+function completedOrders($conn){
+  $username = $_SESSION['username'];
+  $query = "SELECT * FROM orderitems WHERE status='Completed'";
+  
+  $result = mysqli_query($conn, $query);
+  $completedOrders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+  return $completedOrders;
+}
+
+function updateOrderStatus($conn, $item_id, $status) {
+  $query = "UPDATE orderitems SET status = '$status' WHERE item_id = '$item_id'";
+  mysqli_query($conn, $query);
 }
