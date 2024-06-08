@@ -61,8 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["confirm"])) {
 
     $checkout_query = "INSERT INTO orderdetails (`username`, `shipping_fee`, `payment_method`, `total_payment`, `full_name`, `phone_number`, `address`, `receipt`, `gcash_number`, `reference_number`)
                     VALUES ('$username', '$shippingfee', '$paymentmethod', '$totalpayment', '$fullname', '$phone', '$fulladdress', '$receipt_folder', '$gcash_num', '$reference_num')";
-    $order_query = "INSERT INTO orderitems (item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice)
-    SELECT item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice FROM checkoutcontent";
+    $order_query = "INSERT INTO orderitems (username, item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice)
+    SELECT username, item_id, item_category, item_image, item_name, item_customization, item_price, item_quantity, item_totalprice FROM checkoutcontent";
   
       if (mysqli_query($conn, $checkout_query) && mysqli_query($conn, $order_query)) {
         // If insertion is successful, clear the cart

@@ -7,6 +7,13 @@
   $conn = get_connection();
   $user_data = check_login($conn);
   $user_type = check_usertype($conn);
+  $order_details = adminOrderDetails($conn);
+  $order_items = adminOrderItems($conn);
+
+  if(isset($_SESSION['username'])){
+    $username = $_SESSION['username'];
+  }
+
   
 ?>
 
@@ -19,7 +26,7 @@
     <div class="container">
         <img id="logoButton" src="Icons/newlogo.png" onclick="window.location.href='../admin/home.php'" style="cursor: pointer;" alt="">
         <div class="backgroundDesign"></div>
-        <button onclick="window.location.href='../admin/dashboard.php'" id="dashboardButton" class="active"><i class="fa-solid fa-gauge-simple-high"></i> Dashboard</button>
+        <button id="dashboardButton" class="active"><i class="fa-solid fa-gauge-simple-high"></i> Dashboard</button>
         <button id="ordersButton"><i class="fa-solid fa-truck"></i> Orders</button>
         <?php if ($user_type == "admin"){
             echo '<button id="usersButton"><i class="fa-solid fa-address-card"></i> Users</button>';
@@ -44,16 +51,47 @@
             </div>
         </div>
     </div>
-
+    
     <div class="orders">
         <div class="container">
             <div><h1>Orders</h1></div>
             <div class="order-form">
-                
+                <div class="order-container">
+                <?php 
+                if(empty($order_items)){
+                    echo '
+                    <div class="emptyOrders">
+                    <h1>Theres no orders right now.</h1>
+                    </div>
+                    ';
+                }
+                foreach($order_items as $orderInfo) {
+                    $buttonLabel = ($orderInfo['status'] === 'Shipping') ? 'To Receive' : 'Approve Order';
+                    echo '
+                    <div class="all">
+                        <div class="orderContainer">
+                            <img src="'.$orderInfo['item_image'].'" alt="">
+                            <div>
+                                <h1>'.$orderInfo['item_name'].'</h1>
+                                <p>'.$orderInfo['item_category'].'</p>
+                                <p style="margin: 1em 0 0 0; font-size: 14px"> Quantity: '.$orderInfo['item_quantity'].'</p>
+                            </div>
+                        </div>
+                        <form action="orders.php" method="post"> 
+                            <input type="hidden" name="item_id" value="'.$orderInfo['item_id'].'"> 
+                            <input type="submit" name="action" value="'.$buttonLabel.'"> 
+                            
+                        </form>
+                    </div>
+                    ';
+                }
+                ?>
+                </div>
+                <!-- <input type="submit" name="action" value="Cancel Order"> -->
             </div>
         </div>
     </div>
-
+    
     <form action="dashboard.php" method="post">
     <div id="success" class="success">
         Successfully added user. 
