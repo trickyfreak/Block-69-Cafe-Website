@@ -17,6 +17,9 @@ li{
     z-index: 100;
 }
 
+textarea {
+  resize: none;
+}
 #notification {
   display: none; 
   position: fixed; 
@@ -29,6 +32,7 @@ li{
   color: white; 
   font: 500 1.05em League Spartan;
 }
+
 .sidebarAndContent {
   height: 54em;
   width: 100%;
@@ -216,7 +220,7 @@ h2 span {
 .fa-plus,
 .fa-trash-can,
 .fa-pen-to-square {
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
 .bg-modal-add, 
@@ -241,7 +245,7 @@ h2 span {
   padding: 0.5em;
   border: 3px solid black;
 }
-.modal-title, .modal-caption{
+.modal-title, .modal-caption, .modal-price1, .modal-price2{
   padding: .5em;
   color: black;
   font-family: League Spartan;
@@ -254,11 +258,20 @@ h2 span {
   border: 1px solid black;
   text-align: center;
 }
-.inputfile {
-  display: none;
+.edit-item-image {
+  width: 8em;
+  border-radius: 50%;
+}
+.input-file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4em;
+  margin-top: 2em;
 }
 
-.bg-modal-edit {
+.bg-modal-edit,
+.bg-modal-edit-item {
   z-index: 10;
   width: 100vw;
   height: 100vh;
@@ -309,7 +322,7 @@ h2 span {
   background-color: rgb(26, 26, 26);
 }
 
-.custom-file-upload {
+/* .custom-file-upload {
   border: 1px solid #ccc;
   font-family: League Spartan;
   font-size: 18px;
@@ -320,18 +333,20 @@ h2 span {
   background-color: black;
   color: white;
   border-radius: 4px;
-}
+} */
 
 .bg-modal-add {
   display: none;
 }
 
-.close{
-  position: relative;
-  left: 20.6em;
-  font-size: 2em;
-  width: 30px !important;
+.close,
+.edit-close {
+  width: 100%;
   cursor: pointer;
+  width: 30x !important;
+  font-size: 2em;
+  display: flex;
+  justify-content: end;
 }
 
 .overlay {
@@ -457,12 +472,12 @@ body .popup-open{
   color:gray;
 }
 .quantity-input {
-  width: 1em;
+  width: 2em;
   text-align: center;
   color: rgba(0, 0, 0, .8);
   border: 1px solid rgba(0, 0, 0, .09);
   -webkit-appearance: none;
-  padding: 3px 10px;
+  padding: 3px 5px;
 }
 .total {
   margin-top: 30px;
