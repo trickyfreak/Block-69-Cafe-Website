@@ -255,7 +255,7 @@
       ?> 
       </form>
       <?php   // Popup for items
-      if(isset($_SESSION['username'])) {
+      if(isset($_SESSION['username']) && $user_type !== 'admin' && $user_type !== 'staff') {
         foreach($items as $item) {
           echo'
             <form method="POST" enctype="multipart/form-data">
