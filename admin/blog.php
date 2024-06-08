@@ -8,66 +8,70 @@ $conn = get_connection();
 $user_data = check_login($conn);
 $user_type = check_usertype($conn);
 
+if(!($user_type == 'admin' || $user_type == 'staff')){
+    echo '<div id="preloader"></div>';
+}
+
 include_once('partials/header.php');
 
 ?>
 <!-- ############################################################################################### -->
-
+<title>Blog</title>
 <!--START: ADDING OF BLOG CONTENT-->
-<?php
+    <?php
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "block69cafe";
+    $host = "localhost";
+    $user = "root";
+    $password = "";
+    $database = "block69cafe";
 
-$data = mysqli_connect($host, $user, $password, $database);
+    $data = mysqli_connect($host, $user, $password, $database);
 
-if ($data === false) {
-    die("CONNECTION ERROR");
-}
-
-if (isset($_POST['submit'])) {
-    $slider_image_blog = $_FILES['image_blog']['name'];
-    $dst = "./blog_db_sliderImages/" . $slider_image_blog;
-    $dbSliderImages = "blog_db_sliderImages/" . $slider_image_blog;
-
-    if (move_uploaded_file($_FILES['image_blog']['tmp_name'], $dst)) {
-        $query = "INSERT INTO blogslider (blogSliderImage) VALUES ('$dbSliderImages')";
-        $result = mysqli_query($data, $query);
-        
-        if ($result) {
-            $_SESSION['blogUploadStatus'] = 'BLOG CONTENT INSERTED SUCCESSFULLY!';
-            // Get the last inserted ID
-            $blog_last_id = mysqli_insert_id($data);
-            $_SESSION['last_inserted_id'] = $blog_last_id;
-        } else {
-            $_SESSION['blogUploadStatus'] = 'ERROR';
-        }
-    } else {
-        $_SESSION['blogUploadStatus'] = 'ERROR UPLOADING IMAGE';
+    if ($data === false) {
+        die("CONNECTION ERROR");
     }
-    header("Location: blog.php");
-    exit();
-}
-?>
+
+    if (isset($_POST['submit'])) {
+        $slider_image_blog = $_FILES['image_blog']['name'];
+        $dst = "./blog_db_sliderImages/" . $slider_image_blog;
+        $dbSliderImages = "blog_db_sliderImages/" . $slider_image_blog;
+
+        if (move_uploaded_file($_FILES['image_blog']['tmp_name'], $dst)) {
+            $query = "INSERT INTO blogslider (blogSliderImage) VALUES ('$dbSliderImages')";
+            $result = mysqli_query($data, $query);
+            
+            if ($result) {
+                $_SESSION['blogUploadStatus'] = 'BLOG CONTENT INSERTED SUCCESSFULLY!';
+                // Get the last inserted ID
+                $blog_last_id = mysqli_insert_id($data);
+                $_SESSION['last_inserted_id'] = $blog_last_id;
+            } else {
+                $_SESSION['blogUploadStatus'] = 'ERROR';
+            }
+        } else {
+            $_SESSION['blogUploadStatus'] = 'ERROR UPLOADING IMAGE';
+        }
+        header("Location: blog.php");
+        exit();
+    }
+    ?>
 <!--END: ADDING OF BLOG CONTENT-->
 
 <!--START: MESSAGE OF UPLOAD SUCCESS-->
-<?php
-if (isset($_SESSION['blogUploadStatus'])) {
-    echo '
-    <div class="blogMessageSuccess" id="blogMessageSuccess">
-        <div class="blogAlertMsg" role="alert">
-            <strong><h3>Congratulations!</h3></strong>
-            <p>You inserted your Blog Content <b>Successfully!</b></p>
-            <img src="Icons/close-button-white.png" class="blogCloseAlertBtn" alt="CLOSE">
+    <?php
+    if (isset($_SESSION['blogUploadStatus'])) {
+        echo '
+        <div class="blogMessageSuccess" id="blogMessageSuccess">
+            <div class="blogAlertMsg" role="alert">
+                <strong><h3>Congratulations!</h3></strong>
+                <p>You inserted a new image <b>Successfully!</b></p>
+                <img src="Icons/close-button-white.png" class="blogCloseAlertBtn" alt="CLOSE">
+            </div>
         </div>
-    </div>
-    ';
-    unset($_SESSION['blogUploadStatus']);
-}
-?>
+        ';
+        unset($_SESSION['blogUploadStatus']);
+    }
+    ?>
 <!--END: MESSAGE OF UPLOAD SUCCESS-->
 
 <div class="BlogAddContainer" id="BlogAddContainer">
@@ -138,39 +142,46 @@ if (isset($_SESSION['blogUploadStatus'])) {
 </script>
 <!--END: BACKDROP EFFECT-->
 
-<!--START: CONTENT PREVIEW OF BLOG-->
-<?php
-$query = "SELECT * FROM blogslider";
-$result = mysqli_query($data, $query);
+<!--START: IMAGE SLIDER-->
+    <?php
+    $query = "SELECT * FROM blogslider ORDER BY blogIdNum ASC";
+    $result = mysqli_query($data, $query);
 
-if ($result) {
-    echo '
-    <section aria-label="Newest Photos">
-        <div class="carousel" data-carousel>
-            <div class="container">
-                <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
-                <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
-                <ul data-slides>
-    ';
-    while ($content = $result->fetch_assoc()) {
+    if ($result) {
         echo '
-            <li class="slide">
-                <img src="' . $content["blogSliderImage"] . '" alt="Blog Image">
-            </li>
+        <section aria-label="Newest Photos">
+            <div class="carousel" data-carousel>
+                <div class="container">
+                    <button class="carousel-button prev" data-carousel-button="prev">&#8249;</button>
+                    <button class="carousel-button next" data-carousel-button="next">&#8250;</button>
+                    <ul data-slides>
         ';
-    }
-    echo '
-                </ul>
+        
+        $firstSlide = true; // Initialize a flag for the first slide
+
+        while ($content = $result->fetch_assoc()) {
+            // Check if it's the first slide
+            $dataActive = $firstSlide ? 'data-active' : '';
+            $firstSlide = false; // After the first iteration, set this to false
+
+            echo '
+                <li class="slide" ' . $dataActive . '>
+                    <img src="' . $content["blogSliderImage"] . '" alt="Blog Image">
+                </li>
+            ';
+        }
+        echo '
+                    </ul>
+                </div>
             </div>
-        </div>
-    </section>
-    ';
-} else {
-    echo "Error: " . mysqli_error($data);
-}
-mysqli_close($data);
-?>
-<!--END: CONTENT PREVIEW OF BLOG-->
+        </section>
+        ';
+    } else {
+        echo "Error: " . mysqli_error($data);
+    }
+    mysqli_close($data);
+    ?>
+<!--END: IMAGE SLIDER-->
 
 
 
@@ -179,7 +190,7 @@ mysqli_close($data);
 <script src="javascript/blog.js" defer></script>
 
 
-<!--START: SLIDER-->
+<!--START: DESIGN SLIDER-->
         <!-- <section aria-label="Newest Photos">
             <div class="carousel" data-carousel>
                 <div class="container">
@@ -238,7 +249,47 @@ mysqli_close($data);
 <!--END: SLIDER-->
 
 <!--START: BLOG CONTENT-->
-    <div class="BlogMainContainer">
+<div class="BlogMainContainer">
+    <div class="BlogDivider">
+        <div class="TextContainer blog">
+            <h1>Recent Post</h1>
+        </div>
+        <div class="ButtonContainer">
+            <button onclick="window.open('blog-allpost.php', '_self')">SEE ALL</button>
+        </div>
+        <hr>
+    </div>
+    
+    <div class="BlogContainer">
+        <?php
+        // Fetch the 6 most recent blog posts
+        $query = "SELECT * FROM blogcontents ORDER BY blogIDNum desc LIMIT 6";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            while ($content = $result->fetch_assoc()) {
+                echo 
+                "<div class='indivblog'>
+                    <div class='blog-group'>
+                        <img height='150' width='150' src='{$content['blogImage']}' alt='Blog Image'>
+                        <h2>{$content['blogTitle']}</h2>
+                        <form method='post' action='blog-article.php'>
+                            <input type='hidden' name='blogID' value='{$content['blogIDNum']}'>
+                            <button class='blogReadMore' name='blogIndivArticle'>Read More</button>
+                        </form>
+                    </div>
+                </div>";
+            }
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+        ?>
+    </div>
+</div>
+
+
+<!-- HTML FORM OF THE BLOG CONTENT -->
+    <!-- <div class="BlogMainContainer">
         <div class="BlogDivider">
             <div class="TextContainer blog">
                 <h1>Recent Post</h1>
@@ -296,7 +347,11 @@ mysqli_close($data);
                 </div>
             </div>
         </div>     
-	</div>     	    
+	</div> -->
+<!-- HTML FORM OF THE BLOG CONTENT -->
+
+
+
 <!--END: BLOG CONTENT-->
 
 <?php

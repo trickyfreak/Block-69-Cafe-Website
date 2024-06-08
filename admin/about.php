@@ -36,6 +36,7 @@ $id = 0;
 $contents = get_content($conn);
 ?>
 
+<title>About Us</title>
 <?php include('partials/header.php'); ?>
 <link rel="stylesheet" href="css/about.css">
 
